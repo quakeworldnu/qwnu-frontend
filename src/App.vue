@@ -59,7 +59,7 @@
               <div class="py-1 px-2 box-header rounded-top">News</div>
               <div class="p-2 box-body rounded-bottom">
                 <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
-                  <h1>Lorem ipsum dolor sit amet</h1>
+                  <h1><a href="">Lorem ipsum dolor sit amet</a></h1>
                   <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
                   <div class="box-content-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
@@ -76,7 +76,7 @@
                   </div>
                 </div>
                 <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
-                  <h1>Lorem ipsum dolor sit amet</h1>
+                  <h1><a href="">Lorem ipsum dolor sit amet</a></h1>
                   <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
                   <div class="box-content-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
@@ -266,6 +266,10 @@ background-image: url('./assets/bg-footer.jpg');
 .box-content-footer {
   padding: 10px;
   background-color: #e7e7e7;
+}
+
+.box-content h1 a {
+  color: inherit;
 }
 
 .column-body {
