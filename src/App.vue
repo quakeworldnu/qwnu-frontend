@@ -112,7 +112,7 @@
                   <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
                     <!-- Login box -->
                     <form>
-                      <div class="form-group">
+                      <div class="form-group mb-0">
                         <input type="text" class="form-control form-control-sm mt-1" placeholder="username"/>
                         <input type="password" class="form-control form-control-sm mt-1" placeholder="password"/>
                         <button type="submit" class="btn btn-dark btn-sm bg-dark mt-2">Login</button>
