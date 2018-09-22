@@ -64,37 +64,15 @@
                   <div class="box-content-body">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
                     <br/><br/>
-                    <table class="table">
-                      <tr>
-                      <th>Player</th>
-                      <th>Kills</th>
-                      <th>Deaths</th>
-                      </tr>
-                      <tr>
-                        <td>Goljat</td>
-                        <td>54</td>
-                        <td>14</td>
-                      </tr>
-                      <tr>
-                        <td>Paradoks</td>
-                        <td>82</td>
-                        <td>10</td>
-                      </tr>
-                      <tr>
-                        <td>Hib</td>
-                        <td>93</td>
-                        <td>16</td>
-                      </tr>
-                      <tr>
-                        <td>Vana</td>
-                        <td>54</td>
-                        <td>33</td>
-                      </tr>
-                    </table>
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam sodales, tellus nec efficitur ultrices, sem mi varius purus, vitae dictum urna nisi quis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis in est quis felis malesuada dapibus. Nam est nibh, egestas eget magna sit amet, congue euismod leo. Nulla porta metus vitae nunc volutpat euismod. Vestibulum pellentesque dignissim tincidunt. Mauris quis lacus tellus. Vestibulum accumsan tortor vel aliquam volutpat. In rhoncus sem et tempor vulputate. Cras mi urna, maximus vel suscipit id, consequat ut ligula.
                   </div>
                   <div class="box-content-footer">
-                    <a href="">7 comments</a>
+                    <i class="fas fa-comments mr-2"></i>
+                    <a href="">7</a>
+                    <div class="float-right">
+                      <i class="fas fa-pen mr-2"></i> 
+                      <i class="fas fa-trash"></i>
+                    </div>
                   </div>
                 </div>
                 <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
@@ -106,7 +84,12 @@
                     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam sodales, tellus nec efficitur ultrices, sem mi varius purus, vitae dictum urna nisi quis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis in est quis felis malesuada dapibus. Nam est nibh, egestas eget magna sit amet, congue euismod leo. Nulla porta metus vitae nunc volutpat euismod. Vestibulum pellentesque dignissim tincidunt. Mauris quis lacus tellus. Vestibulum accumsan tortor vel aliquam volutpat. In rhoncus sem et tempor vulputate. Cras mi urna, maximus vel suscipit id, consequat ut ligula.
                   </div>
                   <div class="box-content-footer">
-                    <a href="">4 comments</a>
+                    <i class="fas fa-comments mr-2"></i>
+                    <a href="">4</a>
+                    <div class="float-right">
+                      <i class="fas fa-pen mr-2"></i> 
+                      <i class="fas fa-trash"></i>
+                    </div>
                   </div>
                 </div>
               </div>
