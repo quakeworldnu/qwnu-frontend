@@ -4,13 +4,15 @@
 
         <div class="col-md-12 p-2 text-left logo-background">
           <div class="container p-2 rounded" style="background: rgba(0,0,0,0.2)">
-            <div>
+            <div class="mb-2">
               <a href=""><img src="./assets/logo.gif" class="logo"/></a>
             </div>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+            <nav class="navbar navbar-expand-lg">
               <!-- <a class="navbar-brand" href="#">Navbar</a> -->
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa fa-bars float-left m-1"></i>
+                QuakeWorld.nu
               </button>
 
               <div class="collapse navbar-collapse" id="navbarColor01">
@@ -27,15 +29,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Maps</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Configs</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Site</a>
-                  </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Game files
+                      Game content
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="#">Configs</a>
@@ -43,11 +39,19 @@
                       <a class="dropdown-item" href="#">Maps</a>
                     </div>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Media</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Site</a>
+                  </li>
                 </ul>
+                <!--
                 <form class="form-inline">
-                  <!-- <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" /> -->
-                  <!-- <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button> -->
+                  <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                -->
               </div>
             </nav>
           </div>
@@ -405,6 +409,17 @@ footer ul {
   border-width: 1px;
   border-color: #ce5b22 #ce5b22 #000 #000;
   padding: 0;
+  @media (max-width: 768px) {
+    border: none;
+  }
+}
+
+.navbar-toggler {
+  width: 100%;
+  border-style: solid solid solid solid;
+  border-width: 1px;
+  border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
+  color: #f5f5f5;
 }
 
 .navbar ul {
@@ -434,15 +449,24 @@ footer ul {
   border-style: solid none;
   border-width: 1px;
   border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
-  color: #fff;
+  color: #f5f5f5;
 }
 
 .nav-item .nav-link {
-  color: #fff;
+  color: #f5f5f5;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    border-style: solid none;
+    border-width: 1px;
+    border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
+  }
 }
 
 .nav-item:hover, .dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(179, 115, 43, 0.5);
+    border-color: rgb(190, 123, 46) rgb(190, 123, 46) rgb(116, 74, 20) rgb(116, 74, 20);
+    color: #fff;
 }
 
 .main-container {
