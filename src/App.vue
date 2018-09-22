@@ -2,10 +2,10 @@
   <div id="app">
     <div class="container">
 
-        <div class="col-md-12 px-3 py-2 text-left logo-background">
+        <div class="col-md-12 p-2 text-left logo-background">
           <div class="container p-2 rounded" style="background: rgba(0,0,0,0.2)">
             <div>
-              <img src="./assets/logo.gif" class="logo"/>
+              <a href=""><img src="./assets/logo.gif" class="logo"/></a>
             </div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
               <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -105,6 +105,7 @@
           </div>
           <div class="col-md-3 m-0 p-0 pb-2 column-body">
             <div class="col-md-12">
+
               <div class="mt-2 bg-light rounded-top rounded-bottom">
                 <div class="py-1 px-2 box-header rounded-top">Login</div>
                 <div class="p-2 box-body rounded-bottom">
@@ -124,6 +125,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="mt-2 bg-light rounded-top rounded-bottom">
                 <div class="py-1 px-2 box-header rounded-top">Header</div>
                 <div class="p-2 box-body rounded-bottom">
@@ -132,6 +134,7 @@
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
