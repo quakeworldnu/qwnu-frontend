@@ -87,7 +87,7 @@
                     <i class="fas fa-comments mr-2"></i>
                     <a href="">4</a>
                     <div class="float-right">
-                      <i class="fas fa-pen mr-2"></i> 
+                      <i class="fas fa-pen mr-2"></i>
                       <i class="fas fa-trash"></i>
                     </div>
                   </div>
@@ -107,7 +107,10 @@
             <div class="col-md-12">
 
               <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">Login</div>
+                <div class="py-1 px-2 box-header rounded-top">
+                  <i class="fas fa-key m-1"></i>
+                  Login
+                </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
                   <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
                     <!-- Login box -->
@@ -127,7 +130,10 @@
               </div>
 
               <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">Streams</div>
+                <div class="py-1 px-2 box-header rounded-top">
+                  <i class="fas fa-video m-1"></i>
+                  Streams
+                </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
                   <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
                     Text
@@ -136,16 +142,46 @@
               </div>
 
               <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">Forum activity</div>
+                <div class="py-1 px-2 box-header rounded-top">
+                  <i class="fas fa-comments m-1"></i>
+                  Forum activity
+                </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
-                    Text
+                  <div class="mb-2">
+                    <div class="box-content-record">
+                      Odd ezuake restrictions
+                      <span class="box-content-record-info">2 hours ago in client talk</span>
+                      <span class="box-content-record-author">By povohat</span>
+                    </div>
+                    <div class="box-content-record">
+                      QW Duel Showdown 2018 - online duel tournament with prize...
+                      <span class="box-content-record-info">2 days ago in General Discussion</span>
+                      <span class="box-content-record-author">By lordlame</span>
+                    </div>
+                    <div class="box-content-record">
+                      Deathmatch TV - Russia
+                      <span class="box-content-record-info">2 days ago in LAN tournaments</span>
+                      <span class="box-content-record-author">By Hooraytio</span>
+                    </div>
+                    <div class="box-content-record">
+                      QW Duel Showdown 2018 - online duel tournament with prize...
+                      <span class="box-content-record-info">1 week ago in General Discussion</span>
+                      <span class="box-content-record-author">By Bps</span>
+                    </div>
+                    <div class="box-content-record">
+                      QuakeWorld votecoop mode error
+                      <span class="box-content-record-info">2 weeks ago in General Discussion</span>
+                      <span class="box-content-record-author">By Rasta</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">Latest blog posts</div>
+                <div class="py-1 px-2 box-header rounded-top">
+                  <i class="fas fa-book-open m-1"></i>
+                  Latest blog posts
+                </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
                   <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
                     Text
@@ -282,6 +318,33 @@ background-image: url('./assets/bg-footer.jpg');
 
 .box-content-body {
   margin-bottom: 10px;
+}
+
+.box-content-record {
+  background-image: url("./assets/bg-box-record.png"); // Using #8a8167 and "White plaster" filter
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ada281 #6b6450 #6b6450 #ada281;
+  padding: 10px;
+  color: #fffcda;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.box-content-record-info {
+  color: #f3eda9;
+  font-weight: normal;
+  font-size: 0.9em;
+  clear: both;
+  display: block;
+}
+
+.box-content-record-author {
+  color: #c2bc81;
+  font-weight: normal;
+  font-size: 0.9em;
+  clear: both;
+  display: block;
 }
 
 .box-content-footer {
