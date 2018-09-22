@@ -455,7 +455,7 @@ footer ul {
 .nav-item .nav-link {
   color: #f5f5f5;
 
-  @media (max-width: 768px) {
+  @media (max-width: 991.98px) {
     padding: 10px;
     border-style: solid none;
     border-width: 1px;
