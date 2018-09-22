@@ -56,16 +56,58 @@
         <div class="row m-0">
           <div class="col-md-9 m-0 p-0 pb-2 column-body">
             <div class="mt-2 ml-3 bg-light rounded-top rounded-bottom">
-              <div class="py-1 px-2 box-header rounded-top">Header</div>
+              <div class="py-1 px-2 box-header rounded-top">News</div>
               <div class="p-2 box-body rounded-bottom">
                 <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
-<br/><br/>
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam sodales, tellus nec efficitur ultrices, sem mi varius purus, vitae dictum urna nisi quis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis in est quis felis malesuada dapibus. Nam est nibh, egestas eget magna sit amet, congue euismod leo. Nulla porta metus vitae nunc volutpat euismod. Vestibulum pellentesque dignissim tincidunt. Mauris quis lacus tellus. Vestibulum accumsan tortor vel aliquam volutpat. In rhoncus sem et tempor vulputate. Cras mi urna, maximus vel suscipit id, consequat ut ligula.
-
-
+                  <h1>Lorem ipsum dolor sit amet</h1>
+                  <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
+                  <div class="box-content-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
+                    <br/><br/>
+                    <table class="table">
+                      <tr>
+                      <th>Player</th>
+                      <th>Kills</th>
+                      <th>Deaths</th>
+                      </tr>
+                      <tr>
+                        <td>Goljat</td>
+                        <td>54</td>
+                        <td>14</td>
+                      </tr>
+                      <tr>
+                        <td>Paradoks</td>
+                        <td>82</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>Hib</td>
+                        <td>93</td>
+                        <td>16</td>
+                      </tr>
+                      <tr>
+                        <td>Vana</td>
+                        <td>54</td>
+                        <td>33</td>
+                      </tr>
+                    </table>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam sodales, tellus nec efficitur ultrices, sem mi varius purus, vitae dictum urna nisi quis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis in est quis felis malesuada dapibus. Nam est nibh, egestas eget magna sit amet, congue euismod leo. Nulla porta metus vitae nunc volutpat euismod. Vestibulum pellentesque dignissim tincidunt. Mauris quis lacus tellus. Vestibulum accumsan tortor vel aliquam volutpat. In rhoncus sem et tempor vulputate. Cras mi urna, maximus vel suscipit id, consequat ut ligula.
+                  </div>
+                  <div class="box-content-footer">
+                    <a href="">7 comments</a>
+                  </div>
+                </div>
+                <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+                  <h1>Lorem ipsum dolor sit amet</h1>
+                  <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
+                  <div class="box-content-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum posuere elit et neque malesuada dapibus. Mauris a vehicula diam. Morbi pretium diam lectus, in efficitur purus vehicula at. Nullam tellus nisi, aliquam quis lorem sed, aliquam vehicula nunc. Nulla non purus tellus. In hac habitasse platea dictumst. Praesent id ante faucibus elit blandit pharetra vel auctor felis. Sed pretium consequat dignissim. Mauris efficitur magna lorem, eget molestie nulla tempor ut. Vestibulum ac luctus dui. Donec arcu ligula, finibus ut arcu eu, semper hendrerit diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec bibendum suscipit varius. Vivamus vulputate arcu eget nibh congue, in tempor diam vehicula. Nam ac neque sem. Sed in ipsum vel velit eleifend tristique.
+                    <br/><br/>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam sodales, tellus nec efficitur ultrices, sem mi varius purus, vitae dictum urna nisi quis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis in est quis felis malesuada dapibus. Nam est nibh, egestas eget magna sit amet, congue euismod leo. Nulla porta metus vitae nunc volutpat euismod. Vestibulum pellentesque dignissim tincidunt. Mauris quis lacus tellus. Vestibulum accumsan tortor vel aliquam volutpat. In rhoncus sem et tempor vulputate. Cras mi urna, maximus vel suscipit id, consequat ut ligula.
+                  </div>
+                  <div class="box-content-footer">
+                    <a href="">4 comments</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -213,9 +255,36 @@ background-image: url('./assets/bg-footer.jpg');
   border-width: 1px;
   border-color: rgb(143, 98, 56) rgb(51, 51, 51) rgb(51, 51, 51) rgb(143, 98, 56);
 }
+
+.box-body a {
+  color: #d14e0c;
+}
+
 .box-content {
   font-size: 1.2em;
+  margin-bottom: 10px;
 }
+
+.box-content h1 {
+  font-size: 1.5em;
+}
+
+.box-content-info {
+  clear: both;
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.box-content-body {
+  margin-bottom: 10px;
+}
+
+.box-content-footer {
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+
 .column-body {
   background-color: rgb(182, 59, 59);
   //background-image: url("./assets/bg-container.png");
@@ -253,6 +322,12 @@ footer ul {
   font-size: 0.8em;
 }
 
+.dropdown-menu {
+  background-image: url("./assets/bg-header-menu.png"); // Using #ad4c1c and "White plaster" filter
+  padding: 0;
+  margin: 0;
+}
+
 .navbar {
   background-image: url("./assets/bg-header-menu.png"); // Using #ad4c1c and "White plaster" filter
   border-style: solid none;
@@ -265,7 +340,7 @@ footer ul {
     border-right: 1px solid rgb(116, 74, 20);
 }
 
-.nav-item {
+.nav-item, {
   display: block;
   //border: 1px solid #000;
   margin: 0;
@@ -277,11 +352,25 @@ footer ul {
   border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
 }
 
+.dropdown-item {
+  display: block;
+  //border: 1px solid #000;
+  margin: 0;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: bold;
+  border-style: solid none;
+  border-width: 1px;
+  border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
+  color: #fff;
+}
+
 .nav-item .nav-link {
   color: #fff;
 }
 
-.nav-item:hover{
+.nav-item:hover, .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 </style>
