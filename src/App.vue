@@ -253,7 +253,9 @@
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-
+body {
+  background-image: url("./assets/bg.png");
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
