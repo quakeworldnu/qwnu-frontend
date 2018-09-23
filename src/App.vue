@@ -425,7 +425,7 @@ footer ul {
 }
 
 .navbar ul {
-    border-right: 1px solid rgb(116, 74, 20);
+    border-right: 1px solid #ce5b22;
 }
 
 .nav-item, {
@@ -437,7 +437,7 @@ footer ul {
   font-weight: bold;
   border-style: none solid;
   border-width: 1px;
-  border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
+  border-color: #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20) #ce5b22;
 }
 
 .dropdown-item {
@@ -467,7 +467,7 @@ footer ul {
 
 .nav-item:hover, .dropdown-item:hover {
     background-color: rgba(179, 115, 43, 0.5);
-    border-color: rgb(190, 123, 46) rgb(190, 123, 46) rgb(116, 74, 20) rgb(116, 74, 20);
+    border-color: rgb(190, 123, 46) rgb(116, 74, 20) rgb(116, 74, 20) rgb(190, 123, 46);
     color: #fff;
 }
 
