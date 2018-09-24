@@ -48,8 +48,13 @@
                 </ul>
                 <!--
                 <form class="form-inline">
-                  <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                  <input  class="form-control form-control-sm mr-sm-2"
+                          type="search"
+                          placeholder="Search"
+                          aria-label="Search" />
+                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+                    Search
+                  </button>
                 </form>
                 -->
               </div>
@@ -74,7 +79,7 @@
                     <i class="fas fa-comments mr-2"></i>
                     <a href="">7</a>
                     <div class="float-right">
-                      <i class="fas fa-pen mr-2"></i> 
+                      <i class="fas fa-pen mr-2"></i>
                       <i class="fas fa-trash"></i>
                     </div>
                   </div>
@@ -113,12 +118,17 @@
                     <!-- Login box -->
                     <form>
                       <div class="form-group mb-0">
-                        <input type="text" class="form-control form-control-sm mt-1" placeholder="username"/>
-                        <input type="password" class="form-control form-control-sm mt-1" placeholder="password"/>
-                        <button type="submit" class="btn btn-dark btn-sm bg-dark mt-2">Login</button>
+                        <input  type="text"
+                                class="form-control form-control-sm mt-1"
+                                placeholder="username"/>
+                        <input  type="password"
+                                class="form-control form-control-sm mt-1"
+                                placeholder="password"/>
+                        <button type="submit" class="btn btn-dark btn-sm bg-dark mt-2">
+                          Login
+                        </button>
                         <div class="mt-1">
-                          <a href="">Register</a> | 
-                          <a href="">Forgot password</a>
+                          <a href="">Register</a> | <a href="">Forgot password</a>
                         </div>
                       </div>
                     </form>
@@ -246,235 +256,5 @@
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-body {
-  background-image: url("./assets/bg.png");
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-
-.logo-container {
-  background: rgba(0,0,0,0.2);
-  border-radius: 1px;
-}
-
-.header-background {
-  background-image: url('./assets/bg-header.jpg');
-}
-
-.logo {
-  @media (max-width: 768px) { 
-    display: none;
-   }
-  
-}
-
-.box-header {
-  color: rgb(219, 175, 117);
-  font-size: 0.7em;
-  text-align: left;
-  text-transform: uppercase; 
-  background-image: url("./assets/bg-box-header.png"); // Using #45372d and "White Plaster" filter
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(112, 77, 44) rgb(51, 51, 51) rgb(51, 51, 51) rgb(112, 77, 44);
-}
-
-.box-body {
-  font-size: 0.7em;
-  background-image: url("./assets/bg-box-body.png"); // Using #614b3c and "White Plaster" filter
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(143, 98, 56) rgb(51, 51, 51) rgb(51, 51, 51) rgb(143, 98, 56);
-}
-
-.box-body a {
-  color: #d14e0c;
-}
-
-.box-content {
-  background-color: #f8f9fa;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.box-content h1 {
-  font-size: 1.5em;
-}
-
-.box-content-info {
-  clear: both;
-  font-size: 0.8em;
-  display: block;
-  margin-bottom: 1em;
-}
-
-.box-content-body {
-  margin-bottom: 10px;
-}
-
-.box-content-record {
-  background-image: url("./assets/bg-box-record.png"); // Using #8a8167 and "White plaster" filter
-  border-style: solid;
-  border-width: 1px;
-  border-color: #ada281 #6b6450 #6b6450 #ada281;
-  padding: 10px;
-  color: #fffcda;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
-.box-content-record-info {
-  color: #f3eda9;
-  font-weight: normal;
-  font-size: 0.9em;
-  clear: both;
-  display: block;
-}
-
-.box-content-record-author {
-  color: #c2bc81;
-  font-weight: normal;
-  font-size: 0.9em;
-  clear: both;
-  display: block;
-}
-
-.box-content-footer {
-  padding: 10px;
-  background-color: #e7e7e7;
-}
-
-.box-content h1 a {
-  color: inherit;
-}
-
-.column-body {
-  background-color: rgb(182, 59, 59);
-  background-image: url("./assets/bg-mid.gif");
-}
-
-footer {
-  background-image: url("./assets/bg-footer.jpg");
-  font-size: 0.8em;
-  padding: 1em;
-}
-
-footer .section {
-  border-left: 1px dotted grey;
-}
-
-footer .section-header {
-  color:#a17230;
-  text-transform: uppercase;
-  font-size: 0.9em;
-}
-
-footer a {
-  color: #888888;
-}
-
-footer a:hover {
-  color: #ccc;
-  text-decoration: underline;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-  font-size: 0.8em;
-}
-
-.dropdown-menu {
-  background-image: url("./assets/bg-header-menu.png"); // Using #ad4c1c and "White plaster" filter
-  padding: 0;
-  margin: 0;
-}
-
-.navbar {
-  background-image: url("./assets/bg-header-menu.png"); // Using #ad4c1c and "White plaster" filter
-  border-style: solid none;
-  border-width: 1px;
-  border-color: #ce5b22 #ce5b22 #000 #000;
-  padding: 0;
-  @media (max-width: 768px) {
-    border: none;
-  }
-}
-
-.navbar-toggler {
-  width: 100%;
-  border-style: solid solid solid solid;
-  border-width: 1px;
-  border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
-  color: #f5f5f5;
-}
-
-.navbar ul {
-    border-right: 1px solid #ce5b22;
-}
-
-.nav-item, {
-  display: block;
-  //border: 1px solid #000;
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: bold;
-  border-style: none solid;
-  border-width: 1px;
-  border-color: #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20) #ce5b22;
-}
-
-.dropdown-item {
-  display: block;
-  //border: 1px solid #000;
-  margin: 0;
-  padding: 0.5em 1em;
-  text-transform: uppercase;
-  font-size: 0.7em;
-  font-weight: bold;
-  border-style: solid none;
-  border-width: 1px;
-  border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
-  color: #f5f5f5;
-}
-
-.nav-item .nav-link {
-  color: #f5f5f5;
-
-  @media (max-width: 991.98px) {
-    padding: 10px;
-    border-style: solid none;
-    border-width: 1px;
-    border-color: #ce5b22 #ce5b22 rgb(116, 74, 20) rgb(116, 74, 20);
-  }
-}
-
-.nav-item:hover, .dropdown-item:hover {
-    background-color: rgba(179, 115, 43, 0.5);
-    border-color: rgb(190, 123, 46) rgb(116, 74, 20) rgb(116, 74, 20) rgb(190, 123, 46);
-    color: #fff;
-}
-
-.main-container {
-  @media (max-width: 768px) { 
-    margin-right: 1em;
-  }
-}
+@import "stylesheets/app.scss"
 </style>
