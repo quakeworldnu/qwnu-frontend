@@ -2,8 +2,8 @@
   <div id="app">
     <div class="container">
 
-        <div class="col-md-12 p-2 text-left logo-background">
-          <div class="container p-2 rounded" style="background: rgba(0,0,0,0.2)">
+        <div class="col-md-12 p-2 header-background">
+          <div class=" p-2 container logo-container">
             <div class="mb-2">
               <a href=""><img src="./assets/logo.gif" class="logo"/></a>
             </div>
@@ -61,8 +61,8 @@
           <div class="col-md-9 m-0 p-0 pt-2 column-body">
             <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
               <div class="py-1 px-2 box-header rounded-top">News</div>
-              <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+              <div class="p-2 pb-0 box-body rounded-bottom">
+                <div class="p-2 box-content rounded-top rounded-bottom">
                   <h1><a href="">Lorem ipsum dolor sit amet</a></h1>
                   <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
                   <div class="box-content-body">
@@ -79,7 +79,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+                <div class="p-2 box-content rounded-top rounded-bottom">
                   <h1><a href="">Lorem ipsum dolor sit amet</a></h1>
                   <span class="box-content-info">Åke Vader / 22nd September 2018, 15:50</span>
                   <div class="box-content-body">
@@ -98,14 +98,7 @@
                 </div>
               </div>
             </div>
-            <!--
-            <div class="col-md-12">
-              <div class="py-2 mt-2 bg-light">
-                <div>Header</div>
-                <div>Text</div>
-              </div>
-            </div>
-            -->
+
           </div>
           <div class="col-md-3 m-0 p-0 pt-2 column-body">
             <div class="col-md-12">
@@ -116,7 +109,7 @@
                   Login
                 </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+                  <div class="p-2 box-content rounded-top rounded-bottom">
                     <!-- Login box -->
                     <form>
                       <div class="form-group mb-0">
@@ -139,7 +132,7 @@
                   Streams
                 </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+                  <div class="p-2 box-content rounded-top rounded-bottom">
                     Text
                   </div>
                 </div>
@@ -187,7 +180,7 @@
                   Latest blog posts
                 </div>
                 <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content content bg-light rounded-top rounded-bottom">
+                  <div class="p-2 box-content rounded-top rounded-bottom">
                     Text
                   </div>
                 </div>
@@ -197,7 +190,7 @@
           </div>
         </div>
 
-        <footer class="footer row m-0">
+        <footer class="row m-0">
             <div class="col-md-2 section mx-auto my-auto text-center border-0">
               <img src="./assets/logo-bottom.png"/>
             </div>
@@ -263,6 +256,7 @@ body {
   text-align: left;
   color: #2c3e50;
 }
+
 #nav {
   padding: 30px;
   a {
@@ -273,10 +267,16 @@ body {
     }
   }
 }
-.logo-background {
-//background-image: url('./assets/bg-header.png');
-background-image: url('./assets/bg-footer.jpg');
+
+.logo-container {
+  background: rgba(0,0,0,0.2);
+  border-radius: 1px;
 }
+
+.header-background {
+  background-image: url('./assets/bg-footer.jpg');
+}
+
 .logo {
   @media (max-width: 768px) { 
     display: none;
@@ -294,6 +294,7 @@ background-image: url('./assets/bg-footer.jpg');
   border-width: 1px;
   border-color: rgb(112, 77, 44) rgb(51, 51, 51) rgb(51, 51, 51) rgb(112, 77, 44);
 }
+
 .box-body {
   font-size: 0.7em;
   background-image: url("./assets/bg-box-body.png"); // Using #614b3c and "White Plaster" filter
@@ -307,6 +308,7 @@ background-image: url('./assets/bg-footer.jpg');
 }
 
 .box-content {
+  background-color: #f8f9fa;
   font-size: 1.2em;
   margin-bottom: 10px;
 }
