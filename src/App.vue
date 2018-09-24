@@ -274,7 +274,7 @@ body {
 }
 
 .header-background {
-  background-image: url('./assets/bg-footer.jpg');
+  background-image: url('./assets/bg-header.jpg');
 }
 
 .logo {
@@ -366,8 +366,7 @@ body {
 
 .column-body {
   background-color: rgb(182, 59, 59);
-  //background-image: url("./assets/bg-container.png");
-  background-image: url("./assets/block-bgr-mid.gif");
+  background-image: url("./assets/bg-mid.gif");
 }
 
 footer {
