@@ -1,220 +1,210 @@
 <template>
-  <div id="app">
-    <div class="container">
-
-        <div class="col-md-12 p-2 header-background">
-          <div class=" p-2 container logo-container">
-            <div class="mb-2">
-              <a href=""><img src="./assets/logo.gif" class="logo"/></a>
-            </div>
-            <nav class="navbar navbar-expand-lg">
-              <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- <span class="navbar-toggler-icon"></span> -->
-                <i class="fa fa-bars float-left m-1"></i>
-                QuakeWorld.nu
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">News <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Blogs</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Forum</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Maps</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Game content
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Configs</a>
-                      <a class="dropdown-item" href="#">Graphics</a>
-                      <a class="dropdown-item" href="#">Maps</a>
+    <div id="app">
+        <div class="container">
+            <div class="col-md-12 p-2 header-background">
+                <div class=" p-2 container logo-container">
+                    <div class="mb-2">
+                    <a href=""><img src="./assets/logo.gif" class="logo"/></a>
                     </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Media</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Site</a>
-                  </li>
-                </ul>
-                <!--
-                <form class="form-inline">
-                  <input  class="form-control form-control-sm mr-sm-2"
-                          type="search"
-                          placeholder="Search"
-                          aria-label="Search" />
-                  <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
-                    Search
-                  </button>
-                </form>
-                -->
-              </div>
-            </nav>
-          </div>
-        </div>
-        
-        <div class="row m-0">
-          <div class="col-md-9 m-0 p-0 pt-2 column-body">
-            <router-view></router-view>
-          </div>
-          <div class="col-md-3 m-0 p-0 pt-2 column-body">
-            <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg">
+                    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                        <i class="fa fa-bars float-left m-1"></i>
+                        QuakeWorld.nu
+                    </button>
 
-              <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">
-                  <i class="fas fa-key m-1"></i>
-                  Login
-                </div>
-                <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content rounded-top rounded-bottom">
-                    <!-- Login box -->
-                    <form>
-                      <div class="form-group mb-0">
-                        <input  type="text"
-                                class="form-control form-control-sm mt-1"
-                                placeholder="username"/>
-                        <input  type="password"
-                                class="form-control form-control-sm mt-1"
-                                placeholder="password"/>
-                        <button type="submit" class="btn btn-dark btn-sm bg-dark mt-2">
-                          Login
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">News <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Maps</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Game content
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Configs</a>
+                            <a class="dropdown-item" href="#">Graphics</a>
+                            <a class="dropdown-item" href="#">Maps</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Site</a>
+                        </li>
+                        </ul>
+                        <!--
+                        <form class="form-inline">
+                        <input  class="form-control form-control-sm mr-sm-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search" />
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+                            Search
                         </button>
-                        <div class="mt-1">
-                          <a href="">Register</a> | <a href="">Forgot password</a>
+                        </form>
+                        -->
+                    </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="row m-0">
+            <div class="col-md-9 m-0 p-0 pt-2 column-body">
+                <router-view></router-view>
+            </div>
+            <div class="col-md-3 m-0 p-0 pt-2 column-body">
+                <div class="col-md-12">
+                    <logged-in-box v-if="$isLoggedIn"></logged-in-box>
+                    <login-box v-else></login-box>
+
+                    <div class="mb-2 rounded-top rounded-bottom">
+                        <div class="py-1 px-2 box-header rounded-top">
+                        <i class="fas fa-video m-1"></i>
+                        Streams
                         </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+                        <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
+                        <div class="p-2 box-content rounded-top rounded-bottom">
+                            Text
+                        </div>
+                        </div>
+                    </div>
 
-              <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">
-                  <i class="fas fa-video m-1"></i>
-                  Streams
-                </div>
-                <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content rounded-top rounded-bottom">
-                    Text
-                  </div>
-                </div>
-              </div>
+                    <div class="mb-2 rounded-top rounded-bottom">
+                        <div class="py-1 px-2 box-header rounded-top">
+                            <i class="fas fa-comments m-1"></i>
+                            Forum activity
+                        </div>
+                        <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
+                            <div class="mb-2">
+                                <div class="box-content-record">
+                                    Odd ezuake restrictions
+                                    <span class="box-content-record-info">2 hours ago in client talk</span>
+                                    <span class="box-content-record-author">By povohat</span>
+                                </div>
+                                <div class="box-content-record">
+                                    QW Duel Showdown 2018 - online duel tournament with prize...
+                                    <span class="box-content-record-info">2 days ago in General Discussion</span>
+                                    <span class="box-content-record-author">By lordlame</span>
+                                </div>
+                                <div class="box-content-record">
+                                    Deathmatch TV - Russia
+                                    <span class="box-content-record-info">2 days ago in LAN tournaments</span>
+                                    <span class="box-content-record-author">By Hooraytio</span>
+                                </div>
+                                <div class="box-content-record">
+                                    QW Duel Showdown 2018 - online duel tournament with prize...
+                                    <span class="box-content-record-info">1 week ago in General Discussion</span>
+                                    <span class="box-content-record-author">By Bps</span>
+                                </div>
+                                <div class="box-content-record">
+                                    QuakeWorld votecoop mode error
+                                    <span class="box-content-record-info">2 weeks ago in General Discussion</span>
+                                    <span class="box-content-record-author">By Rasta</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">
-                  <i class="fas fa-comments m-1"></i>
-                  Forum activity
+                <div class="mb-2 rounded-top rounded-bottom">
+                    <div class="py-1 px-2 box-header rounded-top">
+                        <i class="fas fa-book-open m-1"></i>
+                        Latest blog posts
+                    </div>
+                    <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
+                        <div class="p-2 box-content rounded-top rounded-bottom">
+                            Text
+                        </div>
+                    </div>
                 </div>
-                <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="mb-2">
-                    <div class="box-content-record">
-                      Odd ezuake restrictions
-                      <span class="box-content-record-info">2 hours ago in client talk</span>
-                      <span class="box-content-record-author">By povohat</span>
-                    </div>
-                    <div class="box-content-record">
-                      QW Duel Showdown 2018 - online duel tournament with prize...
-                      <span class="box-content-record-info">2 days ago in General Discussion</span>
-                      <span class="box-content-record-author">By lordlame</span>
-                    </div>
-                    <div class="box-content-record">
-                      Deathmatch TV - Russia
-                      <span class="box-content-record-info">2 days ago in LAN tournaments</span>
-                      <span class="box-content-record-author">By Hooraytio</span>
-                    </div>
-                    <div class="box-content-record">
-                      QW Duel Showdown 2018 - online duel tournament with prize...
-                      <span class="box-content-record-info">1 week ago in General Discussion</span>
-                      <span class="box-content-record-author">By Bps</span>
-                    </div>
-                    <div class="box-content-record">
-                      QuakeWorld votecoop mode error
-                      <span class="box-content-record-info">2 weeks ago in General Discussion</span>
-                      <span class="box-content-record-author">By Rasta</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="mb-2 rounded-top rounded-bottom">
-                <div class="py-1 px-2 box-header rounded-top">
-                  <i class="fas fa-book-open m-1"></i>
-                  Latest blog posts
                 </div>
-                <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                  <div class="p-2 box-content rounded-top rounded-bottom">
-                    Text
-                  </div>
-                </div>
-              </div>
-
             </div>
-          </div>
+            </div>
+
+            <footer class="row m-0">
+                <div class="col-md-2 section mx-auto my-auto text-center border-0">
+                    <img src="./assets/logo-bottom.png"/>
+                </div>
+                <div class="col-md-2 section">
+                    <span class="section-header">RSS Feeds</span>
+                    <ul>
+                        <li><a href="#home">News</a></li>
+                        <li><a href="#">Blogs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 section">
+                    <span class="section-header">Sections</span>
+                    <ul>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 section">
+                    <span class="section-header">Social Media</span>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">own3D.tv</a></li>
+                        <li><a href="#">IRC chat</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 section">
+                    <span class="section-header">Media</span>
+                    <ul>
+                        <li><a href="#">Images</a></li>
+                        <li><a href="#">Video</a></li>
+                        <li><a href="#">Game content</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 section">
+                    <span class="section-header">Information</span>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Site media</a></li>
+                        <li><a href="#">Staff & credits</a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
-
-        <footer class="row m-0">
-            <div class="col-md-2 section mx-auto my-auto text-center border-0">
-              <img src="./assets/logo-bottom.png"/>
-            </div>
-            <div class="col-md-2 section">
-              <span class="section-header">RSS Feeds</span>
-              <ul>
-                <li><a href="#home">News</a></li>
-                <li><a href="#">Blogs</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 section">
-              <span class="section-header">Sections</span>
-              <ul>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Guides</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Media</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 section">
-              <span class="section-header">Social Media</span>
-              <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">YouTube</a></li>
-                <li><a href="#">own3D.tv</a></li>
-                <li><a href="#">IRC chat</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 section">
-              <span class="section-header">Media</span>
-              <ul>
-                <li><a href="#">Images</a></li>
-                <li><a href="#">Video</a></li>
-                <li><a href="#">Game content</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 section">
-              <span class="section-header">Information</span>
-              <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Site media</a></li>
-                <li><a href="#">Staff & credits</a></li>
-              </ul>
-            </div>
-        </footer>
     </div>
-
-  </div>
 </template>
+<script>
+import { mapActions, mapGetters } from 'vuex';
+import LoginBox from './components/LoginBox';
+import LoggedInBox from './components/LoggedInBox';
+import store from './store.js';
 
+export default {
+    components: {
+        LoggedInBox,
+        LoginBox
+    },
+    computed: {
+        ...mapGetters({
+            $isLoggedIn: 'isLoggedIn',
+            $currentUser: 'user'
+        })
+    }
+}
+</script>
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "stylesheets/app.scss"

@@ -7,7 +7,7 @@ class ArticleService extends BaseService {
     super();
   }
     getArticles(page, pageSize) {
-      return this.get('articles?page='+ page)
+      return this.get('articles?page='+ page);
     }
 }
 

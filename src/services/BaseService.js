@@ -7,7 +7,7 @@ class BaseService {
     this.apiUrl = 'http://qwnu-backend.localhost/api/v1/';
   }
 
-  post(endpoint) {
+  post(endpoint, data = null) {
     return axios.post(this.apiUrl + endpoint, data);
   }
 
