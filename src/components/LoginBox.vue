@@ -30,7 +30,7 @@
                             @click.prevent="login()"
                         >Login</button>
                         <div class="mt-1">
-                            <a href="">Register</a>|
+                            <router-link to="/register">Register</router-link> |
                             <a href="">Forgot password</a>
                         </div>
                     </div>

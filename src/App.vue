@@ -17,7 +17,7 @@
                     <div class="collapse navbar-collapse" id="navbarColor01">
                         <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">News <span class="sr-only">(current)</span></a>
+                            <router-link class="nav-link" to="/">News</router-link>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Blogs</a>
