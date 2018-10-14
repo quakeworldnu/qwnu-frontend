@@ -8,9 +8,6 @@ class AuthService extends BaseService {
         var data = { username: username, password: password };
         return this.post("login", data);
     }
-    logout() {
-        localStorage.clear();
-    }
 }
 
 export default new AuthService();
