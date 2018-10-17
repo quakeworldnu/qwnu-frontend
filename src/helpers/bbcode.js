@@ -31,10 +31,8 @@ export const parseBbCode = (content) => {
         '<a href="$1" class="bb-url">$2</a>'                                                :   /\[url(?::\w+)?=(.*?)?\](.*?)\[\/url(?::\w+)?\]/gi,
 
         // [img]
-        /*
-        '/(?<!\\\\)\[img(?::\w+)?\](.*?)\[\/img(?::\w+)?\]/si'                                        => "<div style=\"padding-top:5px;\">".str_replace("\r", "", str_replace("\n", "", RenderHTML::FrameStart("", "", "", "")."<div style=\"padding:4px;\"><a href=\"\\1\"><img src=\"\\1\" alt=\"\\1\" class=\"bb-image\" /></a></div>".RenderHTML::FrameEnd()))."</div>",
-        '/(?<!\\\\)\[img(?::\w+)?=(.*?)x(.*?)\](.*?)\[\/img(?::\w+)?\]/si'                            => "<div style=\"padding-top:5px;\">".str_replace("\r", "", str_replace("\n", "", RenderHTML::FrameStart("", "", "", "")."<div style=\"padding:4px;\"><a href=\"\\3\"><img width=\"\\1\" height=\"\\2\" src=\"\\3\" alt=\"\\3\" class=\"bb-image\" /></a></div>".RenderHTML::FrameEnd()))."</div>",
-        */
+        '<div style="padding-top:5px;"><div style=padding:4px;><a href="$1"><img src="$1" alt="$1" class="bb-image"/></a></div></div>'                              :       /\[img(?::\w+)?\](.*?)\[\/img(?::\w+)?\]/gi,
+        '<div style="padding-top:5px;"><div style="padding:4px;"><a href="$3"><img width="$1" height="$2" src="$3" alt="$3" class="bb-image"/></a></div></div>'     :       /\[img(?::\w+)?=(.*?)x(.*?)\](.*?)\[\/img(?::\w+)?\]/gi,
 
         // [flag]
         '<span class="flag-icon flag-icon-$1"></span>'                                      :   /\[flag=(\w+?)\]/gi,
