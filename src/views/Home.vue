@@ -24,8 +24,8 @@
 
 <script>
 // @ is an alias to /src
-import ArticleService from "@/services/ArticleService"
-import XBBCODE from "@/lib/bbcode/xbbcode"
+import ArticleService from "@/services/ArticleService";
+import { parseBbCode } from "@/helpers/bbcode";
 
 export default {
     name: "home",
@@ -52,10 +52,7 @@ export default {
                     this.pageSize = response.data.per_page;
 
                     for (let i = 0; i < this.articles.length; i++) {
-                        let result = XBBCODE.process({
-                            text: this.articles[i].content
-                        })
-                        this.articles[i].content = result.html;
+                        this.articles[i].content = parseBbCode(this.articles[i].content);
                     }
                 })
                 .catch(error => {
