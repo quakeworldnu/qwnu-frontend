@@ -9,6 +9,9 @@ class ArticleService extends BaseService {
     getArticles(page, pageSize) {
       return this.get('articles?page='+ page);
     }
+    getArticle(id) {
+      return this.get('articles/'+ id);
+    }
 }
 
 export default new ArticleService();

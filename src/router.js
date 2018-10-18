@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Article from './views/Article.vue';
 import Home from './views/Home.vue';
 import Register from './views/Register.vue';
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: Register,
+    },
+    {
+      path: '/articles/:id',
+      name: 'articles',
+      component: Article,
     }
   ],
 });
