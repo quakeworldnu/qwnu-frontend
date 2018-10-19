@@ -70,17 +70,7 @@
                     <logged-in-box v-if="$isLoggedIn"></logged-in-box>
                     <login-box v-else></login-box>
 
-                    <div class="mb-2 rounded-top rounded-bottom">
-                        <div class="py-1 px-2 box-header rounded-top">
-                        <i class="fas fa-video m-1"></i>
-                        Streams
-                        </div>
-                        <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-                        <div class="p-2 box-content rounded-top rounded-bottom">
-                            Text
-                        </div>
-                        </div>
-                    </div>
+                    <stream-box></stream-box>
 
                     <div class="mb-2 rounded-top rounded-bottom">
                         <div class="py-1 px-2 box-header rounded-top">
@@ -190,12 +180,14 @@
 import { mapActions, mapGetters } from 'vuex';
 import LoginBox from './components/LoginBox';
 import LoggedInBox from './components/LoggedInBox';
+import StreamBox from './components/StreamBox';
 import store from './store.js';
 
 export default {
     components: {
         LoggedInBox,
-        LoginBox
+        LoginBox,
+        StreamBox
     },
     computed: {
         ...mapGetters({

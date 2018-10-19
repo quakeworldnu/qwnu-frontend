@@ -79,7 +79,11 @@ body {
   margin-bottom: 1em;
 }
 
-.box-content-body {
+.box-content-ingress {
+    font-weight: bold;
+}
+
+.box-content-body, .box-content-ingress {
   margin-bottom: 10px;
 }
 
@@ -110,6 +114,10 @@ body {
   display: block;
 }
 
+.box-content-record a {
+    color: inherit;
+}
+
 .box-content-footer {
   padding: 10px;
   background-color: #e7e7e7;
@@ -118,6 +126,8 @@ body {
 .box-content h1 a {
   color: inherit;
 }
+
+
 
 .column-body {
   background-color: rgb(182, 59, 59);
