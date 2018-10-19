@@ -31,6 +31,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Wiki</a>
                         </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/register">Register</router-link>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Game content
