@@ -6,6 +6,9 @@
         </div>
         <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
             <div class="p-2 box-content rounded-top rounded-bottom">
+                <p>
+                <router-link to="/profile/edit">Edit profile</router-link>
+                </p>
                 <button
                     type="submit"
                     class="btn btn-dark btn-sm bg-dark mt-2"

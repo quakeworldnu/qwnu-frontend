@@ -19,7 +19,7 @@ class BaseService {
     return axios.get(this.apiUrl + endpoint);
   }
 
-  patch(endpoint) {
+  patch(endpoint, data) {
     return axios.patch(this.apiUrl + endpoint, data);
   }
 }

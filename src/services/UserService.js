@@ -5,7 +5,15 @@ class UserService extends BaseService {
       super();
     }
     register(data) {
-        return this.post("register", data);
+        return this.post(`register`, data);
+    }
+
+    updateProfile(data) {
+        return this.patch(`users/updateprofile`, data);
+    }
+
+    getUser(id) {
+        return this.get(`users/${id}`);
     }
 }
 
