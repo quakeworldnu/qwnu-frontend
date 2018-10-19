@@ -184,7 +184,6 @@ import { mapActions, mapGetters } from 'vuex';
 import LoginBox from './components/LoginBox';
 import LoggedInBox from './components/LoggedInBox';
 import StreamBox from './components/StreamBox';
-import store from './store.js';
 
 export default {
     components: {
