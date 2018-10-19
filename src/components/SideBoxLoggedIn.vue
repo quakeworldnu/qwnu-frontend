@@ -25,7 +25,7 @@ import AuthService from '@/services/AuthService';
 import store from '@/store.js';
 
 export default {
-    name: "LoginBox",
+    name: "SideBoxLoggedIn",
     data: function() {
         return {
             username: null,

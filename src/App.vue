@@ -73,10 +73,10 @@
             </div>
             <div class="col-md-3 m-0 p-0 pt-2 column-body">
                 <div class="col-md-12">
-                    <logged-in-box v-if="$isLoggedIn"></logged-in-box>
-                    <login-box v-else></login-box>
+                    <side-box-logged-in v-if="$isLoggedIn"></side-box-logged-in>
+                    <side-box-login v-else></side-box-login>
 
-                    <stream-box></stream-box>
+                    <side-box-streams></side-box-streams>
 
                     <div class="mb-2 rounded-top rounded-bottom">
                         <div class="py-1 px-2 box-header rounded-top">
@@ -184,15 +184,15 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import LoginBox from './components/LoginBox';
-import LoggedInBox from './components/LoggedInBox';
-import StreamBox from './components/StreamBox';
+import SideBoxLogin from './components/SideBoxLogin';
+import SideBoxLoggedIn from './components/SideBoxLoggedIn';
+import SideBoxStreams from './components/SideBoxStreams';
 
 export default {
     components: {
-        LoggedInBox,
-        LoginBox,
-        StreamBox
+        SideBoxLoggedIn,
+        SideBoxLogin,
+        SideBoxStreams
     },
     computed: {
         ...mapGetters({

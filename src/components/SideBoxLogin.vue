@@ -45,7 +45,7 @@ import { mapActions, mapGetters } from 'vuex'
 import AuthService from "@/services/AuthService"
 
 export default {
-    name: "LoginBox",
+    name: "SideBoxLogin",
     props: {},
     data: function() {
         return {
