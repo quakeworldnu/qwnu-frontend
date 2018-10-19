@@ -1,4 +1,5 @@
 import AuthService from '@/services/AuthService';
+import UserService from '@/services/UserService';
 import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -13,7 +14,7 @@ export default new Vuex.Store({
     permissions: []
   },
   mutations: {
-    init_store(state) {
+    initStore(state) {
         if (localStorage.getItem('token')) {
             state.token = JSON.parse(localStorage.getItem('token'));
             axios.defaults.headers.common['Authorization'] = 'Bearer '+ state.token;
@@ -25,15 +26,15 @@ export default new Vuex.Store({
             state.permissions = JSON.parse(localStorage.getItem('permissions'));
         }
     },
-    auth_request(state) {
+    authRequest(state) {
         state.status = 'loading';
     },
-    auth_success(state, {token, user}) {
+    authSuccess(state, {token, user}) {
         state.status = 'success';
         state.token = token;
         state.user = user;
     },
-    auth_error(state){
+    authError(state){
         state.status = 'error';
     },
     logout(state){
@@ -42,13 +43,16 @@ export default new Vuex.Store({
         state.user = '';
         state.permissions = [];
     },
-    get_permissions_success(state, {permissions}) {
+    getPermissionsSuccess(state, {permissions}) {
         state.permissions = permissions;
+    },
+    updateProfileSuccess(state, {user}) {
+        state.user = user;
     }
   },
   actions: {
     login({commit, dispatch}, credentials) {
-        commit('auth_request');
+        commit('authRequest');
         return AuthService.login(credentials.username, credentials.password)
             .then(response => {
                 const token = response.data.token;
@@ -58,25 +62,32 @@ export default new Vuex.Store({
                 localStorage.setItem('token', JSON.stringify(token));
                 localStorage.setItem('user', JSON.stringify(user));
 
-                commit('auth_success', {token, user});
-                dispatch('get_my_permissions');
+                commit('authSuccess', {token, user});
+                dispatch('getMyPermissions');
             }).catch(error => {
-                commit('auth_error');
+                commit('authError');
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
             });
     },
     logout({commit}) {
+        // TODO: Send logout request to backend so we delete the token server-side
         commit('logout');
         localStorage.clear();
         delete axios.defaults.headers.common['Authorization'];
     },
-    get_my_permissions({commit}) {
-        console.log("fetching permissions...");
+    getMyPermissions({commit}) {
         return AuthService.getMyPermissions().then(response => {
             let permissions = response.data;
             localStorage.setItem('permissions', JSON.stringify(permissions));
-            commit('get_permissions_success', {permissions});
+            commit('getPermissionsSuccess', {permissions});
+        });
+    },
+    updateProfile({commit}, data) {
+        return UserService.updateProfile(data).then(response => {
+            let user = response.data;
+            localStorage.setItem('user', JSON.stringify(user));
+            commit('updateProfileSuccess', {user});
         });
     }
   },

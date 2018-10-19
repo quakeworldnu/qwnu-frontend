@@ -37,7 +37,7 @@
 
 <script>
 // @ is an alias to /src
-import { mapGetters } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 import UserService from "@/services/UserService"
 import { parseBbCode } from "@/helpers/bbcode"
 
@@ -52,6 +52,9 @@ export default {
         this.getUser()
     },
     methods: {
+        ...mapActions({
+            $updateProfile: "updateProfile"
+        }),
         getUser() {
             UserService.getUser(this.$currentUser.id)
                 .then(response => {
@@ -62,14 +65,12 @@ export default {
                 })
         },
         saveProfile() {
-            console.log("Saving profile...");
-            UserService.updateProfile(this.user)
+            this.$updateProfile(this.user)
                 .then(response => {
-                    // TODO: Update state
                     console.log("Success!");
                 })
                 .catch(error => {
-                    console.log("Felfelfel");
+                    console.log("Error: ", error);
                 });
         }
     },
