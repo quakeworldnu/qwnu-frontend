@@ -2,7 +2,7 @@
     <div v-if="article" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
         <div class="py-1 px-2 box-header rounded-top">Article</div>
         <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-2 box-content rounded-top rounded-bottom">
+            <div class="p-3 box-content rounded-top rounded-bottom">
                 <h1><router-link :to="{name: 'articles', params: {id: article.id}}">{{article.title}}</router-link></h1>
                 <span class="box-content-info">{{article.author.username}} / {{article.create_time}}</span>
                 <div class="box-content-ingress" v-html="article.content"></div>
