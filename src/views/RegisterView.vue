@@ -8,43 +8,48 @@
                     <p>
                     Fill in the form to register a QuakeWorld.nu user account.
                     </p>
-                    <p v-if="errors">
-                        {{errors.message}}
-                        <ul>
-                            <li v-for="error in errors.errors">
-                                {{error.toString()}}
-                            </li>
-                        </ul>
-                    </p>
-                    <form class="col-md-6">
-                    <input
-                        type="text"
-                        class="form-control form-control-sm mt-1"
-                        placeholder="username"
-                        v-model="user.username"
-                        required="true"
-                    >
-                    <input
-                        type="text"
-                        class="form-control form-control-sm mt-1"
-                        placeholder="email"
-                        v-model="user.email"
-                        required="true"
-                    >
-                    <input
-                        type="password"
-                        class="form-control form-control-sm mt-1"
-                        placeholder="password"
-                        v-model="user.password"
-                        required="true"
-                    >
-                    <button
-                        type="submit"
-                        class="btn btn-dark btn-sm bg-dark mt-2"
-                        @click.prevent="register()"
-                        v-text="loading ? 'loading...' : 'Register'"
-                        :disabled="loading"
-                    ></button>
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Username</label>
+                            <input
+                                type="text"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="username"
+                                v-model="user.username"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="errors.username">{{errors.username[0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">E-mail</label>
+                            <input
+                                type="text"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="email"
+                                v-model="user.email"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="errors.email">{{errors.email[0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Password</label>
+                            <input
+                                type="password"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="password"
+                                v-model="user.password"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="errors.password">{{errors.password[0]}}</small>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-dark btn-sm bg-dark mt-2"
+                            @click.prevent="register()"
+                            v-text="loading ? 'loading...' : 'Register'"
+                            :disabled="loading"
+                        ></button>
                     </form>
                 </div>
             </div>
@@ -62,7 +67,7 @@ export default {
         return {
             user: {},
             loading: false,
-            errors: null
+            errors: []
         }
     },
     mounted() {
@@ -71,10 +76,10 @@ export default {
         register() {
             this.loading = true;
             UserService.register(this.user).then(() => {
-                this.errors = null;
+                this.errors = [];
             })
             .catch((error) => {
-                this.errors = error.response.data;
+                this.errors = error.response.data.errors;
             })
             .finally(() => this.loading = false);
         }

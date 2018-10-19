@@ -14,10 +14,12 @@
                                 disabled="true"
                                 v-model="user.username"
                             >
+                            <small class="col-sm-4" v-if="errors.username">{{errors.username[0]}}</small>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">E-mail</label>
                             <input type="text" class="col-sm-6 form-control" v-model="user.email">
+                            <small class="col-sm-4" v-if="errors.email">{{errors.email[0]}}</small>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Password</label>
@@ -26,6 +28,7 @@
                                 class="col-sm-6 form-control"
                                 v-model="user.password"
                             >
+                            <small class="col-sm-4" v-if="errors.password">{{errors.password[0]}}</small>
                         </div>
                         <button class="btn btn-sm btn-dark" @click.prevent="saveProfile()">Save</button>
                     </form>
@@ -45,6 +48,7 @@ export default {
     name: "editProfile",
     data: function() {
         return {
+            errors: [],
             user: null
         }
     },
@@ -67,10 +71,10 @@ export default {
         saveProfile() {
             this.$updateProfile(this.user)
                 .then(response => {
-                    console.log("Success!");
+                    this.errors = [];
                 })
                 .catch(error => {
-                    console.log("Error: ", error);
+                    this.errors = error.response.data.errors;
                 });
         }
     },
