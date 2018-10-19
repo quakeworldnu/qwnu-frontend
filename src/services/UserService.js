@@ -9,7 +9,7 @@ class UserService extends BaseService {
     }
 
     updateProfile(data) {
-        return this.patch(`users/updateprofile`, data);
+        return this.patch(`my/profile`, data);
     }
 
     getUser(id) {
