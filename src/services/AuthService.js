@@ -12,6 +12,14 @@ class AuthService extends BaseService {
     getMyPermissions() {
         return this.get('my/permissions');
     }
+
+    sendPasswordResetRequest(data) {
+        return this.post('password-reset', data);
+    }
+
+    resetPassword(data) {
+        return this.put('password-reset', data);
+    }
 }
 
 export default new AuthService();

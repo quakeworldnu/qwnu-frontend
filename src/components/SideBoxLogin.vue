@@ -31,7 +31,7 @@
                         >Login</button>
                         <div class="mt-1">
                             <router-link to="/register">Register</router-link> |
-                            <a href="">Forgot password</a>
+                            <router-link to="/forgot-password">Forgot password</router-link>
                         </div>
                     </div>
                 </form>

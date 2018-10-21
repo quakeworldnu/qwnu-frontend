@@ -22,6 +22,10 @@ class BaseService {
   patch(endpoint, data) {
     return axios.patch(this.apiUrl + endpoint, data);
   }
+
+  put(endpoint, data) {
+    return axios.put(this.apiUrl + endpoint, data);
+  }
 }
 
 export default BaseService;

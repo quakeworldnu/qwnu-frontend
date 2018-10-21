@@ -3,17 +3,17 @@ import Router from 'vue-router';
 import store from './store.js';
 import ArticleView from './views/ArticleView.vue';
 import EditProfileView from './views/EditProfileView.vue';
+import ForgotPasswordView from './views/ForgotPasswordView.vue';
 import HomeView from './views/HomeView.vue';
+import PasswordResetView from './views/PasswordResetView';
 import RegisterView from './views/RegisterView.vue';
 
 Vue.use(Router);
-
 
 /*
 Perhaps support multiple guards?
 https://github.com/vuejs/vue-router/issues/721#issuecomment-252181948
 */
-
 function hasPermission(permission) {
     if (store.getters.permissions === null || store.getters.permissions === undefined) {
         return false;
@@ -56,6 +56,16 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: RegisterView,
+    },
+    {
+        path: '/forgot-password',
+        name: 'forgotPassword',
+        component: ForgotPasswordView,
+    },
+    {
+        path: '/password-reset',
+        name: 'passwordReset',
+        component: PasswordResetView,
     },
     {
       path: '/articles/:id',
