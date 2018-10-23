@@ -29,6 +29,17 @@
                             <small class="col-sm-4" v-if="error.list.email">{{error.list.email[0]}}</small>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Password</label>
+                            <input
+                                type="password"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="new password"
+                                v-model="user.password"
+                                required="false"
+                            >
+                            <small class="col-sm-4" v-if="error.list.password">{{error.list.password[0]}}</small>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Status</label>
                             <select v-model="user.status">
                                 <option value="-1">Banned</option>

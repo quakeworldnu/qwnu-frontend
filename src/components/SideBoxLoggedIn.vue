@@ -40,7 +40,7 @@ export default {
         }),
         logout() {
             this.$logout();
-            this.$router.push({ path: "/" })
+            this.$router.push({ path: "/" });
         },
         clearForm() {
             this.error = null;
