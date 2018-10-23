@@ -16,7 +16,7 @@ class BaseService {
   }
 
   delete(endpoint) {
-    return axios.get(this.apiUrl + endpoint);
+    return axios.delete(this.apiUrl + endpoint);
   }
 
   patch(endpoint, data) {

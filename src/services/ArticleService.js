@@ -6,7 +6,7 @@ class ArticleService extends BaseService {
   constructor() {
     super();
   }
-    getArticles(page, pageSize) {
+    getArticles(page) {
       return this.get('articles?page='+ page);
     }
     getArticle(id) {

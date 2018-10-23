@@ -4,6 +4,7 @@ class UserService extends BaseService {
     constructor() {
       super();
     }
+
     register(data) {
         return this.post(`register`, data);
     }
@@ -14,6 +15,19 @@ class UserService extends BaseService {
 
     getUser(id) {
         return this.get(`users/${id}`);
+    }
+
+    updateUser(id, data) {
+        return this.patch(`users/${id}`, data);
+    }
+
+    deleteUser(id) {
+        return this.delete(`users/${id}`);
+    }
+
+    getUsers(pagination) {
+        let p = pagination;
+        return this.get(`users?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 }
 

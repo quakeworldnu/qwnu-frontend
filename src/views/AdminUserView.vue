@@ -1,0 +1,116 @@
+<template>
+    <div v-if="user" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
+        <div class="py-1 px-2 box-header rounded-top">Administrate user</div>
+        <div class="p-2 pb-0 box-body rounded-bottom">
+            <div class="p-3 box-content rounded-top rounded-bottom">
+                <h1>{{user.username}}</h1>
+                <div class="box-content-body">
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Username</label>
+                            <input
+                                type="text"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="username"
+                                v-model="user.username"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="error.list.email">{{error.list.email[0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">E-mail</label>
+                            <input
+                                type="text"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="email"
+                                v-model="user.email"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="error.list.email">{{error.list.email[0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Status</label>
+                            <select v-model="user.status">
+                                <option value="-1">Banned</option>
+                                <option value="0">Inactive</option>
+                                <option value="1">Active</option>
+                            </select>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-dark btn-sm bg-dark mt-2"
+                            @click.prevent="saveUser()"
+                            v-text="loading ? 'loading...' : 'Send'"
+                            :disabled="loading"
+                        ></button>
+                    </form>
+                </div>
+                <div class="box-content-footer">&nbsp;
+                    <div class="float-right">
+                        <confirm-button
+                            icon="fa-trash"
+                            text="Really delete this user?"
+                            @confirm="deleteUser()"
+                        ></confirm-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import UserService from "@/services/UserService"
+
+export default {
+    name: "adminUser",
+    data: function() {
+        return {
+            loading: false,
+            user: null,
+            userId: null,
+            error: {
+                message: null,
+                list: []
+            },
+            showModal: false
+        }
+    },
+    mounted() {
+        this.userId = this.$route.params.id
+        this.getUser()
+    },
+    methods: {
+        getUser() {
+            UserService.getUser(this.userId)
+                .then(response => {
+                    this.user = response.data
+                })
+                .catch(error => {
+                    console.log("Error: Could not fetch user.", error)
+                })
+        },
+        saveUser() {
+            this.loading = true
+            UserService.updateUser(this.userId, this.user)
+                .then(response => {
+                    console.log("Success!")
+                })
+                .catch(error => {
+                    console.log("Could not update user")
+                })
+                .finally(() => (this.loading = false))
+        },
+        deleteUser() {
+            UserService.deleteUser(this.userId)
+                .then(response => {
+                    this.$router.push({ path: "/admin/users" })
+                })
+                .catch(error => {
+                    console.log(error)
+                    console.log("Could not delete user.")
+                })
+        }
+    }
+}
+</script>

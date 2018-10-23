@@ -9,9 +9,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     status: '',
-    token: localStorage.getItem('token') || '',
+    token: '',
     user: {},
-    permissions: []
+    permissions: [],
+    initiated: false
   },
   mutations: {
     initStore(state) {
@@ -25,6 +26,7 @@ export default new Vuex.Store({
         if (localStorage.getItem('permissions')) {
             state.permissions = JSON.parse(localStorage.getItem('permissions'));
         }
+        state.initiated = true;
     },
     authRequest(state) {
         state.status = 'loading';
