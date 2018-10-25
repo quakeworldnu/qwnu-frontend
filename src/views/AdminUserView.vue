@@ -37,7 +37,10 @@
                                 v-model="user.password"
                                 required="false"
                             >
-                            <small class="col-sm-4" v-if="error.list.password">{{error.list.password[0]}}</small>
+                            <small
+                                class="col-sm-4"
+                                v-if="error.list.password"
+                            >{{error.list.password[0]}}</small>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Status</label>
@@ -46,12 +49,22 @@
                                 <option value="0">Inactive</option>
                                 <option value="1">Active</option>
                             </select>
+                            <small
+                                class="col-sm-4"
+                                v-if="error.list.status"
+                            >{{error.list.status[0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Roles</label>
+                            <div v-for="role in roles" :key="role.id">
+                                <input type="checkbox" :value="role" v-model="user.roles"/> {{role.name}}
+                            </div>
                         </div>
                         <button
                             type="submit"
                             class="btn btn-dark btn-sm bg-dark mt-2"
                             @click.prevent="saveUser()"
-                            v-text="loading ? 'loading...' : 'Send'"
+                            v-text="loading ? 'loading...' : 'Save'"
                             :disabled="loading"
                         ></button>
                     </form>
@@ -71,6 +84,7 @@
 </template>
 
 <script>
+import AuthService from "@/services/AuthService"
 import UserService from "@/services/UserService"
 
 export default {
@@ -78,8 +92,11 @@ export default {
     data: function() {
         return {
             loading: false,
-            user: null,
+            user: {
+                roles: []
+            },
             userId: null,
+            roles: [],
             error: {
                 message: null,
                 list: []
@@ -90,6 +107,7 @@ export default {
     mounted() {
         this.userId = this.$route.params.id
         this.getUser()
+        this.getRoles()
     },
     methods: {
         getUser() {
@@ -103,6 +121,7 @@ export default {
         },
         saveUser() {
             this.loading = true
+
             UserService.updateUser(this.userId, this.user)
                 .then(response => {
                     console.log("Success!")
@@ -120,6 +139,16 @@ export default {
                 .catch(error => {
                     console.log(error)
                     console.log("Could not delete user.")
+                })
+        },
+        getRoles() {
+            AuthService.getRoles()
+                .then(response => {
+                    this.roles = response.data.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                    console.log("Could not fetch roles.")
                 })
         }
     }
