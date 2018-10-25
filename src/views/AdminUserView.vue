@@ -136,7 +136,6 @@ export default {
             UserService.getUser(this.userId)
                 .then(response => {
                     this.user = response.data
-                    console.log(this.user)
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch user.", error)
