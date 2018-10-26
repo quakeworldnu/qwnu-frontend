@@ -94,7 +94,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
-                            v-if="!isNew"
+                            v-if="!isNew && $can('delete_user')"
                             icon="fa-trash"
                             text="Really delete this user?"
                             @confirm="deleteUser()"
@@ -198,7 +198,7 @@ export default {
     },
     computed: {
         isNew() {
-            return this.user.id !== null;
+            return this.user.id === null;
         }
     }
 }

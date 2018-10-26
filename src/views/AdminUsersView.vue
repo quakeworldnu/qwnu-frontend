@@ -4,7 +4,7 @@
         <div class="p-2 pb-0 box-body rounded-bottom">
             <div class="p-3 box-content rounded-top rounded-bottom">
                 <div class="mb-2">
-                    <router-link to="/admin/user" tag="button" class="btn btn-sm btn-info">New user</router-link>
+                    <router-link :to="{name: 'adminCreateUser'}" v-if="$can('create_user')" tag="button" class="btn btn-sm btn-info">New user</router-link>
                 </div>
                 <table class="table">
                     <thead>
@@ -49,7 +49,7 @@
                             <td class="col-1">{{user.id}}</td>
                             <td class="col-3">
                                 <router-link
-                                    :to="{name: 'adminUser', params: {id: user.id}}"
+                                    :to="{name: 'adminEditUser', params: {id: user.id}}"
                                 >{{user.username}}</router-link>
                             </td>
                             <td class="col-3">{{user.createtime | formatUnixTimestamp}}</td>

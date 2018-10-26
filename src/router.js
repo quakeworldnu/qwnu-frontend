@@ -106,8 +106,15 @@ export default new Router({
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/user/:id?',
-            name: 'adminUser',
+            path: '/admin/user',
+            name: 'adminCreateUser',
+            component: AdminUserView,
+            meta: {permissionRequired: 'create_user'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/user/:id',
+            name: 'adminEditUser',
             component: AdminUserView,
             meta: {permissionRequired: 'edit_user'},
             beforeEnter: checkPermission
