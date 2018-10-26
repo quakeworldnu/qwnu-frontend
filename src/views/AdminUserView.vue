@@ -15,7 +15,7 @@
                                 v-model="user.username"
                                 required="true"
                             >
-                            <small class="col-sm-4" v-if="error.list.email">{{error.list.email[0]}}</small>
+                            <small class="col-sm-4" v-if="error.list.username">{{error.list.username[0]}}</small>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">E-mail</label>
@@ -94,6 +94,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
+                            v-if="!isNew"
                             icon="fa-trash"
                             text="Really delete this user?"
                             @confirm="deleteUser()"
@@ -117,7 +118,6 @@ export default {
             user: {
                 roles: []
             },
-            userId: null,
             roles: [],
             error: {
                 message: null,
@@ -127,13 +127,14 @@ export default {
         }
     },
     mounted() {
-        this.userId = this.$route.params.id
-        this.getUser()
+        if (this.$route.params.id) {
+            this.getUser()
+        }
         this.getRoles()
     },
     methods: {
         getUser() {
-            UserService.getUser(this.userId)
+            UserService.getUser(this.$route.params.id)
                 .then(response => {
                     this.user = response.data
                 })
@@ -144,17 +145,38 @@ export default {
         saveUser() {
             this.loading = true
 
-            UserService.updateUser(this.userId, this.user)
+            if (this.user.id) {
+                this.updateUser();
+            } else {
+                this.createUser();
+            }
+        },
+        updateUser() {
+            UserService.updateUser(this.user.id, this.user)
                 .then(response => {
                     console.log("Success!")
                 })
                 .catch(error => {
+                    this.error.message = error.response.data.message;
+                    this.error.list = error.response.data.errors;
                     console.log("Could not update user")
                 })
                 .finally(() => (this.loading = false))
         },
+        createUser() {
+            UserService.createUser(this.user)
+                .then(response => {
+                    console.log("Success!")
+                })
+                .catch(error => {
+                    this.error.message = error.response.data.message;
+                    this.error.list = error.response.data.errors;
+                    console.log("Could not create user")
+                })
+                .finally(() => (this.loading = false))
+        },
         deleteUser() {
-            UserService.deleteUser(this.userId)
+            UserService.deleteUser(this.user.id)
                 .then(response => {
                     this.$router.push({ path: "/admin/users" })
                 })
@@ -172,6 +194,11 @@ export default {
                     console.log(error);
                     console.log("Could not fetch roles.")
                 })
+        }
+    },
+    computed: {
+        isNew() {
+            return this.user.id !== null;
         }
     }
 }

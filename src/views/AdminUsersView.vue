@@ -3,6 +3,9 @@
         <div class="py-1 px-2 box-header rounded-top">Administrate users</div>
         <div class="p-2 pb-0 box-body rounded-bottom">
             <div class="p-3 box-content rounded-top rounded-bottom">
+                <div class="mb-2">
+                    <router-link to="/admin/user" tag="button" class="btn btn-sm btn-info">New user</router-link>
+                </div>
                 <table class="table">
                     <thead>
                         <tr class="d-flex">
