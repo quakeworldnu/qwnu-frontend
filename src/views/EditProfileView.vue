@@ -30,6 +30,111 @@
                             >
                             <small class="col-sm-4" v-if="errors.password">{{errors.password[0]}}</small>
                         </div>
+
+                        <h2>Profile</h2>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">First name</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.firstname">
+                            <small class="col-sm-4" v-if="errors['profile.firstname']">{{errors['profile.firstname'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Last name</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.lastname">
+                            <small class="col-sm-4" v-if="errors['profile.lastname']">{{errors['profile.lastname'][0]}}</small>
+                        </div>
+                        <!--
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Birthday</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.borthday">
+                            <small class="col-sm-4" v-if="errors['profile.birthday']">{{errors['profile.birthday'][0]}}</small>
+                        </div>
+                        -->
+                        <!-- Should be select!
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nationality</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.nationality">
+                            <small class="col-sm-4" v-if="errors['profile.nationality']">{{errors['profile.nationality'][0]}}</small>
+                        </div>
+                        -->
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Location</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.location">
+                            <small class="col-sm-4" v-if="errors['profile.location']">{{errors['profile.location'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Signature</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.signature">
+                            <small class="col-sm-4" v-if="errors['profile.signature']">{{errors['profile.signature'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Description</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.description">
+                            <small class="col-sm-4" v-if="errors['profile.description']">{{errors['profile.description'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Website</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.website">
+                            <small class="col-sm-4" v-if="errors['profile.website']">{{errors['profile.website'][0]}}</small>
+                        </div>
+
+                        <h2>Social media</h2>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Facebook</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.facebook">
+                            <small class="col-sm-4" v-if="errors['profile.facebook']">{{errors['profile.facebook'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Twitter</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.twitter">
+                            <small class="col-sm-4" v-if="errors['profile.twitter']">{{errors['profile.twitter'][0]}}</small>
+                        </div>
+
+                        <h2>Computer specs</h2>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">CPU</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.cpu">
+                            <small class="col-sm-4" v-if="errors['profile.cpu']">{{errors['profile.cpu'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">RAM</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.ram">
+                            <small class="col-sm-4" v-if="errors['profile.ram']">{{errors['profile.ram'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Monitor</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.monitor">
+                            <small class="col-sm-4" v-if="errors['profile.monitor']">{{errors['profile.monitor'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Graphics card</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.gfx">
+                            <small class="col-sm-4" v-if="errors['profile.gfx']">{{errors['profile.gfx'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Sound card</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.soundcard">
+                            <small class="col-sm-4" v-if="errors['profile.soundcard']">{{errors['profile.soundcard'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Mouse</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.mouse">
+                            <small class="col-sm-4" v-if="errors['profile.mouse']">{{errors['profile.mouse'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Mouse pad</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.mousepad">
+                            <small class="col-sm-4" v-if="errors['profile.mousepad']">{{errors['profile.mousepad'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Connection</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.connection">
+                            <small class="col-sm-4" v-if="errors['profile.connection']">{{errors['profile.connection'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Operating system</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.os">
+                            <small class="col-sm-4" v-if="errors['profile.os']">{{errors['profile.os'][0]}}</small>
+                        </div>
                         <button class="btn btn-sm btn-dark" @click.prevent="saveProfile()">Save</button>
                     </form>
                 </div>
@@ -39,7 +144,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import { mapActions, mapGetters } from "vuex"
 import UserService from "@/services/UserService"
 import { parseBbCode } from "@/helpers/bbcode"
@@ -48,8 +152,12 @@ export default {
     name: "editProfile",
     data: function() {
         return {
-            errors: [],
-            user: null
+            errors: {
+                profile: {}
+            },
+            user: {
+                profile: {}
+            }
         }
     },
     mounted() {
@@ -71,7 +179,9 @@ export default {
         saveProfile() {
             this.$updateProfile(this.user)
                 .then(response => {
-                    this.errors = [];
+                    this.errors = {
+                        profile: {}
+                    };
                 })
                 .catch(error => {
                     this.errors = error.response.data.errors;
