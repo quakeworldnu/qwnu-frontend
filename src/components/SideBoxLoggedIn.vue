@@ -23,7 +23,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import AuthService from '@/services/AuthService';
-import store from '@/store.js';
+import store from '@/store';
 
 export default {
     name: "SideBoxLoggedIn",

@@ -8,7 +8,7 @@
                 <div class="box-content-body" v-html="article.content"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
-                    <a href="">7</a>
+                    <a v-if="!$can('comment')" href="">7</a>
                     <div class="float-right">
                         <i class="fas fa-pen mr-2"></i>
                         <i class="fas fa-trash"></i>
@@ -23,9 +23,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ArticleService from "@/services/ArticleService";
-import { parseBbCode } from "@/helpers/bbcode";
+import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",

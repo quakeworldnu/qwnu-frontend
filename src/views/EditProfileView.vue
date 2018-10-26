@@ -146,7 +146,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex"
 import UserService from "@/services/UserService"
-import { parseBbCode } from "@/helpers/bbcode"
+import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
     name: "editProfile",

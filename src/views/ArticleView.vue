@@ -24,9 +24,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ArticleService from "@/services/ArticleService";
-import { parseBbCode } from "@/helpers/bbcode";
+import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",

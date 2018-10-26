@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from './store.js';
+import store from './store';
 import AdminUsersView from './views/AdminUsersView.vue';
 import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
