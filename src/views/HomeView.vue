@@ -8,15 +8,14 @@
                 <div class="box-content-body" v-html="article.content"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
-                    <a v-if="!$can('comment')" href="">7</a>
+                    <a href="">7</a>
                     <div class="float-right">
-                        <i class="fas fa-pen mr-2"></i>
-                        <i class="fas fa-trash"></i>
+                        {{article.category.name}}
                     </div>
                 </div>
             </div>
             <div class="bg-light p-2 rounded">
-                <pagination :records="totalRecords" v-model="page" :per-page="pageSize" @paginate="onPageChange"></pagination>
+                <pagination :records="pagination.totalRecords" v-model="page" :per-page="pagination.pageSize" @paginate="onPageChange"></pagination>
             </div>
         </div>
     </div>
@@ -31,9 +30,13 @@ export default {
     data: function() {
         return {
             articles: [],
-            page: 1,
-            pageSize: 1,
-            totalRecords: 1
+            pagination: {
+                page: 1,
+                sort: "create_time",
+                order: "desc",
+                pageSize: 1,
+                totalRecords: 0
+            }
         }
     },
     mounted() {
@@ -44,11 +47,11 @@ export default {
             this.getArticles();
         },
         getArticles() {
-            ArticleService.getArticles(this.page, this.pageSize)
+            ArticleService.getArticles(this.pagination)
                 .then(response => {
                     this.articles = response.data.data;
-                    this.totalRecords = response.data.total;
-                    this.pageSize = response.data.per_page;
+                    this.pagination.totalRecords = response.data.total;
+                    this.pagination.pageSize = response.data.per_page;
 
                     for (let i = 0; i < this.articles.length; i++) {
                         this.articles[i].content = parseBbCode(this.articles[i].content);

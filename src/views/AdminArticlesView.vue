@@ -1,11 +1,11 @@
 <template>
     <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate users</div>
+        <div class="py-1 px-2 box-header rounded-top">Administrate articles</div>
         <div class="p-2 pb-0 box-body rounded-bottom">
             <div class="p-3 box-content rounded-top rounded-bottom">
                 <div class="mb-2">
-                    <router-link :to="{name: 'adminCreateUser'}" v-if="$can('create_user')" tag="button" class="btn btn-sm btn-info">
-                        New user
+                    <router-link :to="{name: 'adminCreateArticle'}" v-if="$can('create_article')" tag="button" class="btn btn-sm btn-info">
+                        New article
                     </router-link>
                 </div>
                 <table class="table">
@@ -15,48 +15,48 @@
                                 <sort-button
                                     field="id"
                                     :pagination="pagination"
-                                    @changed="getUsers()"
+                                    @changed="getArticles()"
                                 >ID</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
-                                    field="username"
+                                    field="title"
                                     :pagination="pagination"
-                                    @changed="getUsers()"
-                                >Username</sort-button>
+                                    @changed="getArticles()"
+                                >Title</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
-                                    field="createtime"
+                                    field="create_time"
                                     :pagination="pagination"
-                                    @changed="getUsers()"
-                                >Registration date</sort-button>
+                                    @changed="getArticles()"
+                                >Date</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
-                                    field="lastvisit"
+                                    field="author.username"
                                     :pagination="pagination"
-                                    @changed="getUsers()"
-                                >Last visit</sort-button>
+                                    @changed="getArticles()"
+                                >Author</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
                                     field="status"
                                     :pagination="pagination"
-                                    @changed="getUsers()"
+                                    @changed="getArticles()"
                                 >Status</sort-button>
                             </th>
                         </tr>
-                        <tr v-for="user in users" :key="user.id" class="d-flex">
-                            <td class="col-1">{{user.id}}</td>
+                        <tr v-for="article in articles" :key="article.id" class="d-flex">
+                            <td class="col-1">{{article.id}}</td>
                             <td class="col-3">
-                                <router-link
-                                    :to="{name: 'adminEditUser', params: {id: user.id}}"
-                                >{{user.username}}</router-link>
+                                <router-link :to="{name: 'adminEditArticle', params: {id: article.id}}">
+                                    {{article.title}}
+                                </router-link>
                             </td>
-                            <td class="col-3">{{user.createtime | formatUnixTimestamp}}</td>
-                            <td class="col-3">{{user.lastvisit | formatUnixTimestamp}}</td>
-                            <td class="col-2">{{getStatus(user.status)}}</td>
+                            <td class="col-3">{{article.create_time | formatUnixTimestamp}}</td>
+                            <td class="col-3">{{article.author.username}}</td>
+                            <td class="col-2">{{getStatus(article.status)}}</td>
                         </tr>
                     </thead>
                 </table>
@@ -74,16 +74,16 @@
 </template>
 
 <script>
-import UserService from "@/services/UserService"
+import ArticleService from "@/services/ArticleService"
 
 export default {
-    name: "adminUsers",
+    name: "adminArticles",
     data: function() {
         return {
-            users: [],
+            articles: [],
             pagination: {
                 page: 1,
-                sort: "id",
+                sort: "create_time",
                 order: "desc",
                 pageSize: 1,
                 totalRecords: 0
@@ -91,30 +91,30 @@ export default {
         }
     },
     mounted() {
-        this.getUsers()
+        this.getArticles()
     },
     methods: {
         onPageChange() {
-            this.getUsers()
+            this.getArticles()
         },
-        getUsers() {
-            UserService.getUsers(this.pagination)
+        getArticles() {
+            ArticleService.getArticles(this.pagination)
                 .then(response => {
-                    this.users = response.data.data
+                    this.articles = response.data.data
                     this.pagination.totalRecords = response.data.total
                     this.pagination.pageSize = response.data.per_page
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch users.", error)
+                    console.log("Error: Could not fetch articles.", error)
                 })
         },
         getStatus(status) {
-            if (status === -1) {
-                return "Banned"
-            } else if (status === 0) {
-                return "Inactive"
+            if (status === 0) {
+                return "Deleted"
             } else if (status === 1) {
-                return "Active"
+                return "Draft"
+            } else if (status === 2) {
+                return "Published"
             } else {
                 return "Invalid value?"
             }

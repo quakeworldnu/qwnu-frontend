@@ -8,7 +8,8 @@
             <div class="p-2 box-content rounded-top rounded-bottom">
                 <p>
                     <router-link to="/profile/edit" v-if="$can('edit_user_profile')">Edit profile</router-link><br/>
-                    <router-link to="/admin/users"  v-if="$can('list_users')">Admin users</router-link>
+                    <router-link to="/admin/users"  v-if="$can('list_users')">Admin users</router-link><br/>
+                    <router-link to="/admin/articles"  v-if="$can('list_articles')">Admin articles</router-link>
                 </p>
                 <button
                     type="submit"

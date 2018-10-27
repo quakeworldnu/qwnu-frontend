@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
+import AdminArticlesView from './views/AdminArticlesView.vue';
+import AdminArticleView from './views/AdminArticleView.vue';
 import AdminUsersView from './views/AdminUsersView.vue';
 import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
@@ -92,10 +94,31 @@ export default new Router({
             component: ArticleView
         },
         {
+            path: '/admin/article',
+            name: 'adminCreateArticle',
+            component: AdminArticleView,
+            meta: {permissionRequired: 'create_article'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/article/:id',
+            name: 'adminEditArticle',
+            component: AdminArticleView,
+            meta: {permissionRequired: 'edit_article'},
+            beforeEnter: checkPermission
+        },
+        {
             path: '/profile/edit',
             name: 'editProfile',
             component: EditProfileView,
             meta: {permissionRequired: 'edit_user_profile'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/articles',
+            name: 'adminArticles',
+            component: AdminArticlesView,
+            meta: {permissionRequired: 'list_articles'},
             beforeEnter: checkPermission
         },
         {

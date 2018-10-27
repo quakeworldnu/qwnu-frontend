@@ -122,8 +122,7 @@ export default {
             error: {
                 message: null,
                 list: []
-            },
-            showModal: false
+            }
         }
     },
     mounted() {
