@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="bg-light p-2 rounded">
-                <pagination :records="pagination.totalRecords" v-model="page" :per-page="pagination.pageSize" @paginate="onPageChange"></pagination>
+                <pagination :records="pagination.totalRecords" v-model="pagination.page" :per-page="pagination.pageSize" @paginate="onPageChange"></pagination>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@ export default {
             this.getArticles();
         },
         getArticles() {
-            ArticleService.getArticles(this.pagination)
+            ArticleService.getPublishedArticles(this.pagination)
                 .then(response => {
                     this.articles = response.data.data;
                     this.pagination.totalRecords = response.data.total;

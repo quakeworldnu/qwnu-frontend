@@ -12,6 +12,11 @@ class ArticleService extends BaseService {
         return this.get(`articles?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 
+    getPublishedArticles(pagination) {
+        let p = pagination
+        return this.get(`articles/published?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    }
+
     getArticle(id) {
         return this.get(`articles/${id}`);
     }
@@ -22,6 +27,10 @@ class ArticleService extends BaseService {
 
     createArticle(data) {
         return this.post(`articles`, data);
+    }
+
+    updateArticle(id, data) {
+        return this.patch(`articles/${id}`, data);
     }
 }
 
