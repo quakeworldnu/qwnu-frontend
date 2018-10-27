@@ -11,8 +11,9 @@
                     <i class="fas fa-comments mr-2"></i>
                     <a href="">7</a>
                     <div class="float-right">
-                        <i class="fas fa-pen mr-2"></i>
-                        <i class="fas fa-trash"></i>
+                        <router-link :to="{name: 'adminEditArticle', params: {id: article.id}}" v-if="$can('edit_article')" title="Edit article">
+                            <i class="fas fa-pen mr-2"></i>
+                        </router-link>
                     </div>
                 </div>
             </div>
