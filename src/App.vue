@@ -154,11 +154,9 @@
                 <div class="col-md-2 section">
                     <span class="section-header">Social Media</span>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">YouTube</a></li>
-                        <li><a href="#">own3D.tv</a></li>
-                        <li><a href="#">IRC chat</a></li>
+                        <li><a href="https://discord.quake.world">Discord chat</a></li>
+                        <li><a href="https://www.facebook.com/quakeworld">Facebook</a></li>
+                        <li><a href="https://twitter.com/qw_tips">Twitter</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 section">
