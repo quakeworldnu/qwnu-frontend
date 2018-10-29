@@ -4,12 +4,12 @@
         <div class="p-2 pb-0 box-body rounded-bottom">
             <div class="p-3 box-content rounded-top rounded-bottom">
                 <h1><router-link :to="{name: 'articles', params: {id: article.id}}">{{article.title}}</router-link></h1>
-                <span class="box-content-info">{{article.author.username}} / {{article.create_time}}</span>
+                <span class="box-content-info">{{article.author.username}} / {{article.create_time | formatUnixTimestamp}}</span>
                 <div class="box-content-ingress" v-html="article.content"></div>
                 <div class="box-content-body" v-html="article.body"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
-                    <a href="">7</a>
+                    {{article.comments_count}}
                     <div class="float-right">
                         <router-link :to="{name: 'adminEditArticle', params: {id: article.id}}" v-if="$can('edit_article')" title="Edit article">
                             <i class="fas fa-pen mr-2"></i>
@@ -17,8 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-light p-2 rounded">
-                Comments?
+            <comment-list type="article" :id="article.id"></comment-list>
             </div>
         </div>
     </div>
@@ -26,10 +25,14 @@
 
 <script>
 import ArticleService from "@/services/ArticleService";
+import CommentList from '@/components/CommentList';
 import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",
+    components: {
+        CommentList
+    },
     data: function() {
         return {
             article: null,

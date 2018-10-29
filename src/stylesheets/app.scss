@@ -131,7 +131,9 @@ body {
   color: inherit;
 }
 
-
+.pagination {
+    overflow: scroll-x;
+}
 
 .column-body {
   background-color: rgb(182, 59, 59);

@@ -7,7 +7,7 @@
                 <div class="box-content-body">
                     <form>
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Username</label>
+                            <label class="col-sm-2 col-form-label">Title</label>
                             <input
                                 type="text"
                                 class="col-sm-4 form-control form-control-sm"
@@ -147,7 +147,7 @@ export default {
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update user")
+                    console.log("Could not update article.")
                 })
                 .finally(() => (this.loading = false))
         },
@@ -159,7 +159,7 @@ export default {
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create article")
+                    console.log("Could not create article.")
                 })
                 .finally(() => (this.loading = false))
         },

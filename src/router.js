@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import store from './store';
 import AdminArticlesView from './views/AdminArticlesView.vue';
 import AdminArticleView from './views/AdminArticleView.vue';
+import AdminCommentsView from './views/AdminCommentsView.vue';
+import AdminCommentView from './views/AdminCommentView.vue';
 import AdminUsersView from './views/AdminUsersView.vue';
 import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
@@ -140,6 +142,20 @@ export default new Router({
             name: 'adminEditUser',
             component: AdminUserView,
             meta: {permissionRequired: 'edit_user'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/comments',
+            name: 'adminComments',
+            component: AdminCommentsView,
+            meta: {permissionRequired: 'list_comments'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/comment/:id',
+            name: 'adminEditComment',
+            component: AdminCommentView,
+            meta: {permissionRequired: 'edit_comment'},
             beforeEnter: checkPermission
         },
     ],

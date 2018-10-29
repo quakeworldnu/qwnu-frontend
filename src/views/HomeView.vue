@@ -8,7 +8,7 @@
                 <div class="box-content-body" v-html="article.content"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
-                    <a href="">7</a>
+                    <router-link :to="{name: 'articles', params: {id: article.id}}">{{article.comments_count}}</router-link>
                     <div class="float-right">
                         {{article.category.name}}
                     </div>
