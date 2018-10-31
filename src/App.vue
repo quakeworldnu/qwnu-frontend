@@ -135,10 +135,9 @@
                     <img src="./assets/logo-bottom.png"/>
                 </div>
                 <div class="col-md-2 section">
-                    <span class="section-header">RSS Feeds</span>
+                    <span class="section-header">Get the game</span>
                     <ul>
-                        <li><a href="#home">News</a></li>
-                        <li><a href="#">Blogs</a></li>
+                        <li><a href="http://www.nquake.com">nQuake</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 section">
