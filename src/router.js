@@ -5,6 +5,10 @@ import AdminArticlesView from './views/AdminArticlesView.vue';
 import AdminArticleView from './views/AdminArticleView.vue';
 import AdminCommentsView from './views/AdminCommentsView.vue';
 import AdminCommentView from './views/AdminCommentView.vue';
+import AdminForumCategoriesView from './views/AdminForumCategoriesView.vue';
+import AdminForumCategoryView from './views/AdminForumCategoryView.vue';
+import AdminForumsView from './views/AdminForumsView.vue';
+import AdminForumView from './views/AdminForumView.vue';
 import AdminUsersView from './views/AdminUsersView.vue';
 import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
@@ -156,6 +160,48 @@ export default new Router({
             name: 'adminEditComment',
             component: AdminCommentView,
             meta: {permissionRequired: 'edit_comment'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forum-categories',
+            name: 'adminForumCategories',
+            component: AdminForumCategoriesView,
+            meta: {permissionRequired: 'list_forum_categories'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forum-category',
+            name: 'adminCreateForumCategory',
+            component: AdminForumCategoryView,
+            meta: {permissionRequired: 'create_forum_category'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forum-category/:id',
+            name: 'adminEditForumCategory',
+            component: AdminForumCategoryView,
+            meta: {permissionRequired: 'edit_forum_category'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forums',
+            name: 'adminForums',
+            component: AdminForumsView,
+            meta: {permissionRequired: 'list_forums'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forum',
+            name: 'adminCreateForum',
+            component: AdminForumView,
+            meta: {permissionRequired: 'create_forum'},
+            beforeEnter: checkPermission
+        },
+        {
+            path: '/admin/forum/:id',
+            name: 'adminEditForum',
+            component: AdminForumView,
+            meta: {permissionRequired: 'edit_forum'},
             beforeEnter: checkPermission
         },
     ],
