@@ -59,6 +59,17 @@
                             <small class="col-sm-4" v-if="error.list.position">{{error.list.position[0]}}</small>
                         </div>
 
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Is private</label>
+                            <input
+                                type="checkbox"
+                                class="col-sm-4 form-control form-control-sm"
+                                v-model="forum.is_private"
+                                required="true"
+                            >
+                            <small class="col-sm-4" v-if="error.list.is_private">{{error.list.is_private[0]}}</small>
+                        </div>
+
                         <button
                             type="submit"
                             class="btn btn-dark btn-sm bg-dark mt-2"
