@@ -1,7 +1,11 @@
 <template>
   <div class="p-2 box-content rounded">
+    <h2>Comment</h2>
     <div class="mb-2 rounded">
-      <form>
+      <p v-if="!$isLoggedIn">
+          You must be logged in to make comments.
+      </p>
+      <form v-if="$isLoggedIn">
         <div class="form-group">
           <p v-if="error.message">Error: {{error.message}}</p>
         </div>
@@ -29,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import CommentService from "@/services/CommentService"
 
 export default {
@@ -95,7 +100,11 @@ export default {
                 .finally(() => (this.loading = false))
         }
     },
-    computed: {}
+    computed: {
+        ...mapGetters({
+            $isLoggedIn: 'isLoggedIn'
+        })
+    }
 }
 </script>
 

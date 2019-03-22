@@ -10,6 +10,9 @@
           </div>
           <div class="comment-content" v-html="bbCode(comment.content)"></div>
         </div>
+        <div v-if="comments.length === 0">
+            No comments yet.
+        </div>
         <div class="bg-light p-2 rounded">
           <pagination
             v-model="pagination.page"
