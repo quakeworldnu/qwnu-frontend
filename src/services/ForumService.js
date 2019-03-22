@@ -7,6 +7,15 @@ class ForumService extends BaseService {
         super();
     }
 
+    getForumTopicsByForum(id, pagination) {
+        let p = pagination
+        return this.get(`forums/${id}/topics?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    }
+
+    getForumTopic(id) {
+        return this.get(`forum-topics/${id}`);
+    }
+
     getForums(pagination) {
         let p = pagination
         return this.get(`forums?page=${p.page}&sort=${p.sort}&order=${p.order}`);
@@ -34,6 +43,15 @@ class ForumService extends BaseService {
             return this.get(`forum-categories?page=${p.page}&sort=${p.sort}&order=${p.order}`);
         } else {
             return this.get(`forum-categories?page=1&sort=name&order=ASC`);
+        }
+    }
+
+    getPublicForumCategories(pagination = false) {
+        if (pagination) {
+            let p = pagination;
+            return this.get(`forum-categories/public?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        } else {
+            return this.get(`forum-categories/public?page=1&sort=position&order=ASC`);
         }
     }
 

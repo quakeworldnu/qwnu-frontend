@@ -23,7 +23,7 @@
                             <a class="nav-link" href="#">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Forum</a>
+                            <a class="nav-link" href="/forums">Forum</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Maps</a>

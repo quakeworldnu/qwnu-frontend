@@ -14,6 +14,9 @@ import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
 import EditProfileView from './views/EditProfileView.vue';
 import ForgotPasswordView from './views/ForgotPasswordView.vue';
+import ForumsView from './views/ForumsView.vue';
+import ForumTopicView from './views/ForumTopicView.vue';
+import ForumView from './views/ForumView.vue';
 import HomeView from './views/HomeView.vue';
 import PasswordResetView from './views/PasswordResetView';
 import RegisterView from './views/RegisterView.vue';
@@ -98,6 +101,21 @@ export default new Router({
             path: '/articles/:id',
             name: 'articles',
             component: ArticleView
+        },
+        {
+            path: '/forums',
+            name: 'forums',
+            component: ForumsView
+        },
+        {
+            path: '/forums/:id',
+            name: 'forum',
+            component: ForumView
+        },
+        {
+            path: '/forum-topics/:id',
+            name: 'forumTopic',
+            component: ForumTopicView
         },
         {
             path: '/admin/article',

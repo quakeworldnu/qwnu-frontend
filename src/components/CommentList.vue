@@ -1,27 +1,27 @@
 <template>
-    <div>
-        <div class="p-3 box-content rounded">
-            <div class="mb-2 rounded">
-                <h2>Comments</h2>
-                <div v-for="comment in comments" :key="comment.id">
-                    <div class="comment-date">
-                        {{comment.create_time | formatUnixTimestamp}}
-                        by {{comment.author.username}}
-                    </div>
-                    <div class="comment-content" v-html="bbCode(comment.content)"></div>
-                </div>
-                <div class="bg-light p-2 rounded">
-                    <pagination
-                        v-model="pagination.page"
-                        :records="pagination.totalRecords"
-                        :per-page="pagination.pageSize"
-                        @paginate="onPageChange"
-                    ></pagination>
-                </div>
-            </div>
+  <div>
+    <div class="p-3 box-content rounded">
+      <div class="mb-2 rounded">
+        <h2 v-if="header">{{header}}</h2>
+        <div v-for="comment in comments" :key="comment.id">
+          <div class="comment-date">
+            {{comment.create_time | formatUnixTimestamp}}
+            by {{comment.author.username}}
+          </div>
+          <div class="comment-content" v-html="bbCode(comment.content)"></div>
         </div>
-        <comment-form :type="type" :id="id" @saved="getComments()"></comment-form>
+        <div class="bg-light p-2 rounded">
+          <pagination
+            v-model="pagination.page"
+            :records="pagination.totalRecords"
+            :per-page="pagination.pageSize"
+            @paginate="onPageChange"
+          ></pagination>
+        </div>
+      </div>
     </div>
+    <comment-form :type="type" :id="id" @saved="getComments()"></comment-form>
+  </div>
 </template>
 
 <script>
@@ -48,6 +48,10 @@ export default {
                 // The value must match one of these strings
                 return ["article", "forum", "blog"].indexOf(value) !== -1
             }
+        },
+        header: {
+            type: String,
+            required: false
         }
     },
     mounted() {
@@ -63,7 +67,7 @@ export default {
             pagination: {
                 page: 1,
                 sort: "create_time",
-                order: "desc",
+                order: "asc",
                 pageSize: 1,
                 totalRecords: 0
             },
@@ -77,8 +81,25 @@ export default {
         onPageChange() {
             this.getComments()
         },
+        getAction() {
+            let action
+            if (this.type === "article") {
+                action = CommentService.getCommentsByArticle(
+                    this.id,
+                    this.pagination
+                )
+            } else if (this.type === "forum") {
+                action = CommentService.getCommentsByForumTopic(
+                    this.id,
+                    this.pagination
+                )
+            }
+            return action
+        },
         getComments() {
-            CommentService.getCommentsByArticle(this.id, this.pagination)
+            let action = this.getAction()
+
+            action
                 .then(response => {
                     this.comments = response.data.data
                     this.pagination.totalRecords = response.data.total

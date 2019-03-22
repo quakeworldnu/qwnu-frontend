@@ -18,12 +18,19 @@
                                     @changed="getForumCategories()"
                                 >ID</sort-button>
                             </th>
-                            <th class="col-9">
+                            <th class="col-7">
                                 <sort-button
                                     field="name"
                                     :pagination="pagination"
                                     @changed="getForumCategories()"
                                 >Name</sort-button>
+                            </th>
+                            <th class="col-2">
+                                <sort-button
+                                    field="is_private"
+                                    :pagination="pagination"
+                                    @changed="getForumCategories()"
+                                >Private</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
@@ -35,11 +42,12 @@
                         </tr>
                         <tr v-for="forumCategory in forumCategories" :key="forumCategory.id" class="d-flex">
                             <td class="col-1">{{forumCategory.id}}</td>
-                            <td class="col-9">
+                            <td class="col-7">
                                 <router-link :to="{name: 'adminEditForumCategory', params: {id: forumCategory.id}}">
                                     {{forumCategory.name}}
                                 </router-link>
                             </td>
+                            <td class="col-2">{{forumCategory.is_private}}</td>
                             <td class="col-2">{{forumCategory.position}}</td>
                         </tr>
                     </thead>
