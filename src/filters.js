@@ -3,6 +3,6 @@ import Vue from 'vue';
 
 Vue.filter('formatUnixTimestamp', function(value) {
   if (value) {
-    return moment.unix(value).format('YYYY-MM-DD hh:mm')
+    return moment.unix(value).format('YYYY-MM-DD HH:mm')
   }
 });
