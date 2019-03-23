@@ -60,6 +60,11 @@ export default {
     mounted() {
         this.getComments()
     },
+    watch: {
+        commentedPostProps(value) {
+            this.getComments()
+        }
+    },
     data: function() {
         return {
             comments: [],
@@ -114,7 +119,11 @@ export default {
                 .finally(() => (this.loading = false))
         }
     },
-    computed: {}
+    computed: {
+        commentedPostProps() {
+            return [this.type, this.id];
+        }
+    }
 }
 </script>
 

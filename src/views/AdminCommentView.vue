@@ -95,6 +95,9 @@ import CommentService from "@/services/CommentService"
 
 export default {
     name: "adminComment",
+    props: {
+        id: null
+    },
     data: function() {
         return {
             loading: false,
@@ -109,13 +112,13 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.params.id) {
+        if (this.id) {
             this.getComment()
         }
     },
     methods: {
         getComment() {
-            CommentService.getComment(this.$route.params.id)
+            CommentService.getComment(this.id)
                 .then(response => {
                     this.comment = response.data
                 })

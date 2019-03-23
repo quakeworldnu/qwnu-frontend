@@ -1,11 +1,10 @@
 <template>
-  <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-    <div class="py-1 px-2 box-header rounded-top" v-if="forumTopic">{{forumTopic.name}}</div>
+  <div v-if="forumTopic" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
+    <div class="py-1 px-2 box-header rounded-top">{{forumTopic.name}}</div>
     <div class="p-2 pb-0 box-body rounded-bottom">
-      <div class="p-1 rounded-top rounded-bottom table-responsive" v-if="forumTopic">
+      <div class="p-1 rounded-top rounded-bottom table-responsive">
         <comment-list type="forum" :id="forumTopic.id"></comment-list>
       </div>
-
     </div>
   </div>
 </template>
@@ -21,17 +20,24 @@ export default {
     components: {
         CommentList
     },
+    props: {
+        id: null
+    },
     data: function() {
         return {
             forumTopic: null
         }
     },
     mounted() {
-        this.getForumTopic(this.$route.params.id)
+        this.getForumTopic(this.id)
+    },
+    watch: {
+        id(value) {
+            // Need this watcher in case we click a link to the same page but different forum topic...
+            this.getForumTopic(value)
+        }
     },
     methods: {
-        onPageChange() {
-        },
         getForumTopic(forumTopicId) {
             ForumService.getForumTopic(forumTopicId)
                 .then(response => {
@@ -44,6 +50,7 @@ export default {
     }
 }
 </script>
+
 <style scoped lang="scss">
 table {
     //background-image: url("../assets/forum-list-bg.png"); // Using #f0edc9 and "White plaster" filter

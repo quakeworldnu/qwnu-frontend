@@ -4,7 +4,7 @@
     <div class="p-2 pb-0 box-body rounded-bottom">
       <div class="p-3 box-content rounded-top rounded-bottom">
         <h1>
-          <router-link :to="{name: 'articles', params: {id: article.id}}">{{article.title}}</router-link>
+          <router-link :to="{name: 'article', params: {id: article.id}}">{{article.title}}</router-link>
         </h1>
         <span
           class="box-content-info"
@@ -36,23 +36,30 @@ import CommentList from "@/components/CommentList"
 import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
-    name: "home",
+    name: "ArticleView",
     components: {
         CommentList
     },
+    props: {
+        id: null
+    },
     data: function() {
         return {
-            article: null,
-            articleId: null
+            article: null
         }
     },
     mounted() {
-        this.articleId = this.$route.params.id
         this.getArticle()
+    },
+    watch: {
+        id() {
+            // Need this watcher in case we click a link to the same page but different article...
+            this.getArticle();
+        }
     },
     methods: {
         getArticle() {
-            ArticleService.getArticle(this.articleId)
+            ArticleService.getArticle(this.id)
                 .then(response => {
                     this.article = response.data
                     this.article.content = parseBbCode(this.article.content)

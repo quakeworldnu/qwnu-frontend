@@ -75,6 +75,9 @@ import ForumService from "@/services/ForumService"
 
 export default {
     name: "adminForumCategory",
+    props: {
+        id: null
+    },
     data: function() {
         return {
             loading: false,
@@ -87,13 +90,13 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.params.id) {
+        if (this.id) {
             this.getForumCategory()
         }
     },
     methods: {
         getForumCategory() {
-            ForumService.getForumCategory(this.$route.params.id)
+            ForumService.getForumCategory(this.id)
                 .then(response => {
                     this.forumCategory = response.data
                 })

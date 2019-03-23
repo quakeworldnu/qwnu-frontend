@@ -104,6 +104,9 @@ import ForumService from "@/services/ForumService"
 
 export default {
     name: "adminForum",
+    props: {
+        id: null
+    },
     data: function() {
         return {
             loading: false,
@@ -117,14 +120,14 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.params.id) {
+        if (this.id) {
             this.getForum()
         }
         this.getForumCategories();
     },
     methods: {
         getForum() {
-            ForumService.getForum(this.$route.params.id)
+            ForumService.getForum(this.id)
                 .then(response => {
                     this.forum = response.data
                 })

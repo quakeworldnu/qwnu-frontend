@@ -99,8 +99,9 @@ export default new Router({
         },
         {
             path: '/articles/:id',
-            name: 'articles',
-            component: ArticleView
+            name: 'article',
+            component: ArticleView,
+            props: true
         },
         {
             path: '/forums',
@@ -110,12 +111,14 @@ export default new Router({
         {
             path: '/forums/:id',
             name: 'forum',
-            component: ForumView
+            component: ForumView,
+            props: true
         },
         {
             path: '/forum-topics/:id',
             name: 'forumTopic',
-            component: ForumTopicView
+            component: ForumTopicView,
+            props: true
         },
         {
             path: '/admin/article',
@@ -128,6 +131,7 @@ export default new Router({
             path: '/admin/article/:id',
             name: 'adminEditArticle',
             component: AdminArticleView,
+            props: true,
             meta: {permissionRequired: 'edit_article'},
             beforeEnter: checkPermission
         },
@@ -163,6 +167,7 @@ export default new Router({
             path: '/admin/user/:id',
             name: 'adminEditUser',
             component: AdminUserView,
+            props: true,
             meta: {permissionRequired: 'edit_user'},
             beforeEnter: checkPermission
         },
@@ -177,6 +182,7 @@ export default new Router({
             path: '/admin/comment/:id',
             name: 'adminEditComment',
             component: AdminCommentView,
+            props: true,
             meta: {permissionRequired: 'edit_comment'},
             beforeEnter: checkPermission
         },
@@ -198,6 +204,7 @@ export default new Router({
             path: '/admin/forum-category/:id',
             name: 'adminEditForumCategory',
             component: AdminForumCategoryView,
+            props: true,
             meta: {permissionRequired: 'edit_forum_category'},
             beforeEnter: checkPermission
         },
@@ -219,6 +226,7 @@ export default new Router({
             path: '/admin/forum/:id',
             name: 'adminEditForum',
             component: AdminForumView,
+            props: true,
             meta: {permissionRequired: 'edit_forum'},
             beforeEnter: checkPermission
         },

@@ -112,6 +112,9 @@ import UserService from "@/services/UserService"
 
 export default {
     name: "adminUser",
+    props: {
+        id: null
+    },
     data: function() {
         return {
             loading: false,
@@ -126,14 +129,14 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.params.id) {
+        if (this.id) {
             this.getUser()
         }
         this.getRoles()
     },
     methods: {
         getUser() {
-            UserService.getUser(this.$route.params.id)
+            UserService.getUser(this.id)
                 .then(response => {
                     this.user = response.data
                 })

@@ -102,6 +102,9 @@ import CategoryService from "@/services/CategoryService"
 
 export default {
     name: "adminArticle",
+    props: {
+        id: null
+    },
     data: function() {
         return {
             loading: false,
@@ -115,14 +118,14 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.params.id) {
+        if (this.id) {
             this.getArticle()
         }
         this.getCategories();
     },
     methods: {
         getArticle() {
-            ArticleService.getArticle(this.$route.params.id)
+            ArticleService.getArticle(this.id)
                 .then(response => {
                     this.article = response.data
                 })

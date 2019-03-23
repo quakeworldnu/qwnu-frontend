@@ -7,7 +7,7 @@
     <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
       <div class="mb-2">
         <div v-for="comment in comments" :key="comment.id" class="box-content-record">
-          {{getTitle(comment)}}
+          <router-link :to="link(comment)">{{getTitle(comment)}}</router-link>
           <span
             class="box-content-record-info"
           >{{comment.create_time | formatUnixTimestamp }} in {{comment.type}}</span>
@@ -45,12 +45,33 @@ export default {
         },
         getTitle(comment) {
             let title = ""
-            if (comment.type === "forum") {
-                title = comment.commentable.name
-            } else if (comment.type === "news") {
-                title = comment.commentable.title
+            switch (comment.type) {
+                case "forum":
+                    title = comment.commentable.name
+                    break
+                case "news":
+                    title = comment.commentable.title
+                    break
             }
             return title
+        },
+        link(comment) {
+            let link = null
+            switch (comment.type) {
+                case "forum":
+                    link = {
+                        name: "forumTopic",
+                        params: { id: comment.post_id }
+                    }
+                    break
+                case "news":
+                    link = {
+                        name: "article",
+                        params: { id: comment.post_id }
+                    }
+                    break
+            }
+            return link
         }
     },
     computed: {}
