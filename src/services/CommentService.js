@@ -37,6 +37,10 @@ class CommentService extends BaseService {
         return this.get(`comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 
+    getLatestComments() {
+        return this.get(`comments/latest`);
+    }
+
     updateComment(id, data) {
         return this.patch(`comments/${id}`, data);
     }
