@@ -2,7 +2,6 @@
 import store from '@/store'
 
 export default {
-    name: 'hasPermission',
     methods: {
         $can(permission) {
             if (permission === null || permission === undefined) {
