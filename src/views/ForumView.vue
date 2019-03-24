@@ -1,6 +1,9 @@
 <template>
   <div v-if="forum" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-    <div class="py-1 px-2 box-header rounded-top">Forum: {{forum.name}}</div>
+    <div class="py-1 px-2 box-header rounded-top">
+      <router-link :to="{name: 'forums'}">Forums</router-link>
+      / {{forum.name}}
+    </div>
     <div class="p-2 pb-0 box-body rounded-bottom">
       <div class="p-1 rounded-top rounded-bottom table-responsive">
         <table class="table" v-if="forumTopics.length > 0">

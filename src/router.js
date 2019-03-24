@@ -18,6 +18,8 @@ import ForumsView from './views/ForumsView.vue';
 import ForumTopicView from './views/ForumTopicView.vue';
 import ForumView from './views/ForumView.vue';
 import HomeView from './views/HomeView.vue';
+import MapsView from './views/MapsView.vue';
+import MapView from './views/MapView.vue';
 import PasswordResetView from './views/PasswordResetView';
 import RegisterView from './views/RegisterView.vue';
 
@@ -118,6 +120,17 @@ export default new Router({
             path: '/forum-topics/:id',
             name: 'forumTopic',
             component: ForumTopicView,
+            props: true
+        },
+        {
+            path: '/maps',
+            name: 'maps',
+            component: MapsView
+        },
+        {
+            path: '/maps/:id',
+            name: 'map',
+            component: MapView,
             props: true
         },
         {

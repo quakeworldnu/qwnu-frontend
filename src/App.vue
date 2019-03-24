@@ -26,7 +26,7 @@
                             <a class="nav-link" href="/forums">Forum</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Maps</a>
+                            <a class="nav-link" href="/maps">Maps</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Wiki</a>
