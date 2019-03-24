@@ -1,8 +1,8 @@
 <template>
-    <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate articles</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom table-responsive">
+    <div class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Administrate articles</div>
+        <div class="box-body">
+            <div class="box-content table-responsive mb-2">
                 <div class="mb-2">
                     <router-link :to="{name: 'adminCreateArticle'}" v-if="$can('create_article')" tag="button" class="btn btn-sm btn-info">
                         New article

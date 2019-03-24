@@ -33,21 +33,24 @@ body {
 }
 
 .logo {
-  @media (max-width: 768px) { 
+  @media (max-width: 768px) {
     display: none;
     }
-  
+
 }
 
 .box-header {
+  padding: ($spacer * .25) ($spacer * .5);
   color: rgb(219, 175, 117);
   font-size: 0.7em;
   text-align: left;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   background-image: url("./assets/bg-box-header.png"); // Using #45372d and "White Plaster" filter
   border-style: solid;
   border-width: 1px;
   border-color: rgb(112, 77, 44) rgb(51, 51, 51) rgb(51, 51, 51) rgb(112, 77, 44);
+  border-top-left-radius: 0.25rem !important;
+  border-top-right-radius: 0.25rem !important;
 }
 
 .box-header a {
@@ -55,11 +58,14 @@ body {
 }
 
 .box-body {
+  padding: $spacer * .5;
   font-size: 0.7em;
   background-image: url("./assets/bg-box-body.png"); // Using #614b3c and "White Plaster" filter
   border-style: solid;
   border-width: 1px;
   border-color: rgb(143, 98, 56) rgb(51, 51, 51) rgb(51, 51, 51) rgb(143, 98, 56);
+  border-bottom-right-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
 }
 
 .box-body a {
@@ -67,9 +73,10 @@ body {
 }
 
 .box-content {
+  padding: $spacer;
   background-color: #f8f9fa;
   font-size: 1.2em;
-  margin-bottom: 10px;
+  border-radius: 0.25rem !important;
 }
 
 .box-content h1 {
@@ -142,6 +149,9 @@ body {
 .column-body {
   background-color: rgb(182, 59, 59);
   background-image: url("./assets/bg-mid.gif");
+  margin: 0;
+  padding: 0;
+  padding-top: $spacer * .5;
 }
 
 footer {
@@ -248,7 +258,7 @@ footer ul {
 }
 
 .main-container {
-  @media (max-width: 768px) { 
+  @media (max-width: 768px) {
     margin-right: 1em;
   }
 }

@@ -1,11 +1,11 @@
 <template>
-  <div class="mb-2 rounded-top rounded-bottom">
-    <div class="py-1 px-2 box-header rounded-top">
+  <div class="mb-2 rounded">
+    <div class="box-header">
       <i class="fas fa-comments m-1"></i>
       Activity
     </div>
-    <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-      <div class="mb-2">
+    <div class="box-body">
+      <div>
         <div v-for="comment in comments" :key="comment.id" class="box-content-record">
           <router-link :to="link(comment)">{{getTitle(comment)}}</router-link>
           <span

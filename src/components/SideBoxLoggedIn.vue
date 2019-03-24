@@ -1,11 +1,11 @@
 <template>
-    <div class="mb-2 rounded-top rounded-bottom">
-        <div class="py-1 px-2 box-header rounded-top">
+    <div class="mb-2 rounded">
+        <div class="box-header">
             <i class="fas fa-key m-1"></i>
             Logged in as {{$currentUser.username}}
         </div>
-        <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-            <div class="p-2 box-content rounded-top rounded-bottom">
+        <div class="box-body">
+            <div class="m-0 box-content">
                 <p>
                     <router-link to="/profile/edit" v-if="$can('edit_user_profile')">Edit profile</router-link><br/>
                     <router-link to="/admin/users" v-if="$can('list_users')">Admin users</router-link><br/>

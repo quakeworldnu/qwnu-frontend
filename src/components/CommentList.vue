@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="p-3 box-content rounded">
+    <div class="box-content mb-2">
       <div class="mb-2 rounded">
         <h2 v-if="header">{{header}}</h2>
         <div v-for="comment in comments" :key="comment.id">

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 box-content rounded">
+  <div class="box-content">
     <div class="mb-2 rounded">
       <h2>Comment</h2>
       <p v-if="!$isLoggedIn">

@@ -1,11 +1,11 @@
 <template>
-    <div class="mb-2 rounded-top rounded-bottom">
-        <div class="py-1 px-2 box-header rounded-top">
+    <div class="mb-2 rounded">
+        <div class="box-header">
             <i class="fas fa-key m-1"></i>
             Login
         </div>
-        <div class="pt-2 pr-2 pl-2 pb-0 box-body rounded-bottom">
-            <div class="p-2 box-content rounded-top rounded-bottom">
+        <div class="box-body">
+            <div class="m-0 box-content">
                 <!-- Login box -->
                 <form>
                     <div class="form-group mb-0">

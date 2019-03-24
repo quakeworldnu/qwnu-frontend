@@ -1,8 +1,8 @@
 <template>
-  <div v-if="article" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-    <div class="py-1 px-2 box-header rounded-top">Article</div>
-    <div class="p-2 pb-0 box-body rounded-bottom">
-      <div class="p-3 box-content rounded-top rounded-bottom">
+  <div v-if="article" class="ml-3 mb-2 rounded main-container">
+    <div class="box-header">Article</div>
+    <div class="box-body">
+      <div class="box-content">
         <h1>
           <router-link :to="{name: 'article', params: {id: article.id}}">{{article.title}}</router-link>
         </h1>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <comment-list header="Comments" type="article" :id="article.id"></comment-list>
+      <comment-list class="mt-2" header="Comments" type="article" :id="article.id"></comment-list>
     </div>
   </div>
 </template>

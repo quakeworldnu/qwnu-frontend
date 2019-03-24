@@ -1,47 +1,46 @@
 <template>
     <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Maps</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-1 rounded-top rounded-bottom table-responsive">
-                <table class="table">
-                    <tr>
-                        <th style="width: 60px;">
-                            <sort-button
-                                field="name"
-                                :pagination="pagination"
-                                @changed="onPageChange()"
-                            >Name</sort-button>
-                        </th>
-                        <th>
-                            <sort-button
-                                field="description"
-                                :pagination="pagination"
-                                @changed="onPageChange()"
-                            >Description</sort-button>
-                        </th>
-                        <th style="width: 80px;">
-                            <sort-button
-                                field="mod"
-                                :pagination="pagination"
-                                @changed="onPageChange()"
-                            >Type</sort-button>
-                        </th>
-                    </tr>
-                    <tr v-for="map in maps" :key="map.id">
-                        <td>
-                            <router-link :to="{name: 'map', params: { id: map.id}}">{{map.name}}</router-link>
-                        </td>
-                        <td>{{map.description}}</td>
-                        <td>{{map.mod}}</td>
-                    </tr>
-                </table>
-            </div>
+        <div class="box-header">Maps</div>
+        <div class="box-body">
+            <table class="table">
+                <tr>
+                    <th style="width: 60px;">
+                        <sort-button
+                            field="name"
+                            :pagination="pagination"
+                            @changed="onPageChange()"
+                        >Name</sort-button>
+                    </th>
+                    <th>
+                        <sort-button
+                            field="description"
+                            :pagination="pagination"
+                            @changed="onPageChange()"
+                        >Description</sort-button>
+                    </th>
+                    <th style="width: 80px;">
+                        <sort-button
+                            field="mod"
+                            :pagination="pagination"
+                            @changed="onPageChange()"
+                        >Type</sort-button>
+                    </th>
+                </tr>
+                <tr v-for="map in maps" :key="map.id">
+                    <td>
+                        <router-link :to="{name: 'map', params: { id: map.id}}">{{map.name}}</router-link>
+                    </td>
+                    <td>{{map.description}}</td>
+                    <td>{{map.mod}}</td>
+                </tr>
+            </table>
+
             <div class="bg-light p-2 rounded">
                 <pagination
                     v-model="pagination.page"
                     :records="pagination.totalRecords"
                     :per-page="pagination.pageSize"
-                    @paginate="onPageChange"
+                    @paginate="onPageChange()"
                 ></pagination>
             </div>
         </div>

@@ -1,8 +1,8 @@
 <template>
-    <div v-if="article" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate article</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom">
+    <div v-if="article" class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Administrate article</div>
+        <div class="box-body">
+            <div class="box-content">
                 <h1>{{article.title}}</h1>
                 <div class="box-content-body">
                     <form>
@@ -17,7 +17,7 @@
                             >
                             <small class="col-sm-4" v-if="error.list.title">{{error.list.title[0]}}</small>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Content (Ingress)</label>
                             <textarea
@@ -58,7 +58,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category</label>
                             <select v-model="article.category_id">
-                                <option 
+                                <option
                                     v-for="category in categories"
                                     :key="category.id"
                                     :value="category.id"

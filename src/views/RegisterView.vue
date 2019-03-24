@@ -1,8 +1,8 @@
 <template>
-    <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Register</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom">
+    <div class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Register</div>
+        <div class="box-body">
+            <div class="box-content">
                 <h1>Welcome to QuakeWorld.nu</h1>
                 <div class="box-content-body">
                     <p>
@@ -47,7 +47,7 @@
                             type="submit"
                             class="btn btn-dark btn-sm bg-dark mt-2"
                             @click.prevent="register()"
-                            v-text="loading ? 'loading...' : 'Register'"
+                            v-text="loading ? 'Loading...' : 'Register'"
                             :disabled="loading"
                         ></button>
                     </form>

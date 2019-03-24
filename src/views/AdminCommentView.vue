@@ -1,8 +1,8 @@
 <template>
-    <div v-if="comment" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate comment</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom">
+    <div v-if="comment" class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Administrate comment</div>
+        <div class="box-body">
+            <div class="box-content">
                 <div class="box-content-body">
                     <form>
                         <div class="form-group row">
@@ -43,7 +43,7 @@
                             >
                             <small class="col-sm-4" v-if="error.list.update_time">{{error.list.update_time[0]}}</small>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Content</label>
                             <textarea

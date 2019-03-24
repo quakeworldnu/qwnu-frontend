@@ -1,8 +1,8 @@
 <template>
-    <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">News</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div v-for="article in articles" :key="article.id" class="p-3 box-content rounded-top rounded-bottom">
+    <div class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">News</div>
+        <div class="box-body">
+            <div v-for="article in articles" :key="article.id" class="box-content mb-2">
                 <h1><router-link :to="{name: 'article', params: {id: article.id}}">{{article.title}}</router-link></h1>
                 <span class="box-content-info">{{article.author.username}} / {{article.create_time | formatUnixTimestamp}}</span>
                 <div class="box-content-body" v-html="article.content"></div>

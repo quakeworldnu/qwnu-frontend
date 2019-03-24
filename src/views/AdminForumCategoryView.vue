@@ -1,8 +1,8 @@
 <template>
-    <div v-if="forumCategory" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate forum category</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom">
+    <div v-if="forumCategory" class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Administrate forum category</div>
+        <div class="box-body">
+            <div class="box-content">
                 <h1>{{forumCategory.name}}</h1>
                 <div class="box-content-body">
                     <form>

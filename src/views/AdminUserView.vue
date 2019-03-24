@@ -1,8 +1,8 @@
 <template>
-    <div v-if="user" class="ml-3 mb-2 rounded-top rounded-bottom main-container">
-        <div class="py-1 px-2 box-header rounded-top">Administrate user</div>
-        <div class="p-2 pb-0 box-body rounded-bottom">
-            <div class="p-3 box-content rounded-top rounded-bottom">
+    <div v-if="user" class="ml-3 mb-2 rounded main-container">
+        <div class="box-header">Administrate user</div>
+        <div class="box-body">
+            <div class="box-content">
                 <h1>{{user.username}}</h1>
                 <div class="box-content-body">
                     <form>
@@ -86,7 +86,7 @@
                             type="submit"
                             class="btn btn-dark btn-sm bg-dark mt-2"
                             @click.prevent="saveUser()"
-                            v-text="loading ? 'loading...' : 'Save'"
+                            v-text="loading ? 'Loading...' : 'Save'"
                             :disabled="loading"
                         ></button>
                     </form>
