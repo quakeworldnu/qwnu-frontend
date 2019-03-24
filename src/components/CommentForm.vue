@@ -1,7 +1,7 @@
 <template>
-  <div class="p-2 box-content rounded">
-    <h2>Comment</h2>
+  <div class="p-3 box-content rounded">
     <div class="mb-2 rounded">
+      <h2>Comment</h2>
       <p v-if="!$isLoggedIn">
           You must be logged in to make comments.
       </p>
