@@ -1,6 +1,10 @@
 <template>
     <div v-if="forumTopic" class="ml-3 mb-2 rounded main-container">
-        <div class="box-header">{{forumTopic.name}}</div>
+        <div class="box-header">
+            <router-link :to="{name: 'forums'}">Forum</router-link> <i class="fa fa-chevron-right mx-1"></i>
+            <router-link :to="{name: 'forum', params: {id: forumTopic.forum.id}}">{{forumTopic.forum.name}}</router-link> <i class="fa fa-chevron-right mx-1"></i>
+            {{forumTopic.name}}
+        </div>
         <div class="box-body">
             <comment-list type="forum" :id="forumTopic.id"></comment-list>
         </div>

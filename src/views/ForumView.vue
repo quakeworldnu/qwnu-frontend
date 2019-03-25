@@ -1,8 +1,8 @@
 <template>
     <div v-if="forum" class="ml-3 mb-2 rounded main-container">
         <div class="box-header">
-            <router-link :to="{name: 'forums'}">Forums</router-link>
-            / {{forum.name}}
+            <router-link :to="{name: 'forums'}">Forum</router-link> <i class="fa fa-chevron-right mx-1"></i>
+            {{forum.name}}
         </div>
         <div class="box-body">
             <table class="table" v-if="forumTopics.length > 0">
