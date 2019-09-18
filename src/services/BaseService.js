@@ -4,7 +4,7 @@ import axios from 'axios';
 class BaseService {
 
   constructor() {
-    this.apiUrl = 'http://qwnu-backend.localhost/api/v1/';
+    this.apiUrl = process.env.VUE_APP_BACKEND_URL;
   }
 
   post(endpoint, data = null) {
