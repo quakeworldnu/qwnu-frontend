@@ -4,7 +4,7 @@ import axios from 'axios';
 class BaseService {
 
   constructor() {
-    this.apiUrl = process.env.VUE_APP_BACKEND_URL;
+    this.apiUrl = process.env.VUE_APP_BACKEND_API_URL;
   }
 
   post(endpoint, data = null) {

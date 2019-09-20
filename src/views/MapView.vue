@@ -231,7 +231,7 @@ export default {
                 });
         },
         screenshotPath(path) {
-            return process.env.VUE_APP_BACKEND_URL + "/" + path;
+            return process.env.VUE_APP_BACKEND_ROOT_URL + "/" + path;
         }
     },
     watch: {
