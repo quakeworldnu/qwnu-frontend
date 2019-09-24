@@ -263,3 +263,9 @@ footer ul {
 .pointer-cursor {
     cursor: pointer;
 }
+
+li.VuePagination__pagination-item:not(.VuePagination__pagination-item-prev-page):not(.VuePagination__pagination-item-prev-chunk):not(.VuePagination__pagination-item-next-page):not(.VuePagination__pagination-item-next-chunk) {
+  @media (max-width: 992px) {
+     display: none;
+  }
+}
