@@ -1,7 +1,7 @@
 <template>
   <div class="mb-2 rounded">
     <div class="box-header">
-      <i class="fas fa-comments m-1"></i>
+      <i class="fas fa-comments"></i>
       Activity
     </div>
     <div class="box-body">

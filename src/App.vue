@@ -97,7 +97,7 @@
 
                         <div class="mb-2 rounded">
                             <div class="box-header">
-                                <i class="fas fa-book-open m-1"></i>
+                                <i class="fas fa-book-open"></i>
                                 Latest blog posts
                             </div>
                             <div class="box-body">

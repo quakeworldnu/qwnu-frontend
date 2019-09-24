@@ -51,7 +51,11 @@ body {
 }
 
 .box-header a {
-    color: inherit;
+  color: inherit;
+}
+
+.box-header .fas {
+  margin: 0 .3em;
 }
 
 .box-body {
