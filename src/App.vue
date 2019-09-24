@@ -5,7 +5,7 @@
                 <div class="p-2 container logo-container">
                     <div class="mb-2">
                         <router-link to="/">
-                            <img src="./assets/qwnu-headerlogo.png" class="logo">
+                            <img src="./assets/qwnu-headerlogo.svg" class="logo">
                         </router-link>
                     </div>
                     <nav class="navbar navbar-expand-lg">
