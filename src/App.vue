@@ -4,9 +4,9 @@
             <div class="col-md-12 p-2 header-background">
                 <div class="p-2 container logo-container">
                     <div class="mb-2">
-                        <a href>
+                        <router-link to="/">
                             <img src="./assets/qwnu-headerlogo.png" class="logo">
-                        </a>
+                        </router-link>
                     </div>
                     <nav class="navbar navbar-expand-lg">
                         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
