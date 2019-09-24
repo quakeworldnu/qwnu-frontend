@@ -42,7 +42,7 @@ export const parseBbCode = (content) => {
         '<div class="bb-quote-header">$1 wrote:</div><div class="bb-quote">$2</div>'        :   /\[quote?=(?:&quot;|"|\')?(.*?)["\']?(?:&quot;|"|\')?\](.|[\s\S]*?)\[\/quote\]/gi,
 
         // [wiki]
-        '<a href="http://wiki.quakeworld.nu/$1" title="Link to $1 wiki article">$2</a>'     :   /\[wiki=(.+?)\](.+?)\[\/wiki\]/gi,
+        '<a href="https://wiki.quakeworld.nu/wiki/$1" title="Link to $1 wiki article">$2</a>'     :   /\[wiki=(.+?)\](.+?)\[\/wiki\]/gi,
 
         // [list]
         '<li class="bb-listitem">$1</li>'                                                   :   /\[\*\](.*?)(?:\s*)(?=\[\*\]|(?:\s*)?\[\/?list\])/gi,
