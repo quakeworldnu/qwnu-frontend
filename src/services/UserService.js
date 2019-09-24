@@ -5,6 +5,10 @@ class UserService extends BaseService {
       super();
     }
 
+    activateUser(email, token) {
+        return this.post(`users/activate`, {'email': email, 'token': token});
+    }
+
     register(data) {
         return this.post(`register`, data);
     }
