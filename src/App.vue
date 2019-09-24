@@ -1,74 +1,73 @@
 <template>
     <div id="app">
         <div class="container">
-            <div class="col-md-12 p-2 header-background">
-                <div class="p-2 container logo-container">
-                    <div class="mb-2">
-                        <router-link to="/">
-                            <img src="./assets/qwnu-headerlogo.svg" class="logo">
-                        </router-link>
-                    </div>
-                    <nav class="navbar navbar-expand-lg">
-                        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-toggle="collapse"
-                            data-target="#navbarColor01"
-                            aria-controls="navbarColor01"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <!-- <span class="navbar-toggler-icon"></span> -->
-                            <i class="fa fa-bars float-left m-1"></i>
-                            QuakeWorld.nu
-                        </button>
+            <div class="col-md-12 pt-2 px-3 header-background">
+                <div>
+                    <router-link to="/">
+                        <img src="./assets/qwnu-headerlogo.svg" class="logo">
+                    </router-link>
+                </div>
+                <nav class="navbar navbar-expand-lg">
+                    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarColor01"
+                        aria-controls="navbarColor01"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                        <i class="fa fa-bars float-left m-1"></i>
+                        QuakeWorld.nu
+                    </button>
 
-                        <div class="collapse navbar-collapse" id="navbarColor01">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <router-link class="nav-link" to="/">News</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/blogs">Blogs</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/forums">Forum</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/configs">Configs</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/maps">Maps</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="https://wiki.quakeworld.nu">Wiki</a>
-                                </li>
-                                <!-- <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="navbarDropdownMenuLink"
-                                        data-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                    >Game content</a>
-                                    <div
-                                        class="dropdown-menu"
-                                        aria-labelledby="navbarDropdownMenuLink"
-                                    >
-                                        <a class="dropdown-item" href="#">Configs</a>
-                                        <a class="dropdown-item" href="#">Graphics</a>
-                                    </div>
-                                </li> -->
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/about">About</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" to="/register">Register</router-link>
-                                </li>
-                            </ul>
-                            <!--
+                    <div class="collapse navbar-collapse" id="navbarColor01">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <router-link class="nav-link" to="/">News</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/blogs">Blogs</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/forums">Forum</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/configs">Configs</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/maps">Maps</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://wiki.quakeworld.nu">Wiki</a>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="navbarDropdownMenuLink"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >Game content</a>
+                                <div
+                                    class="dropdown-menu"
+                                    aria-labelledby="navbarDropdownMenuLink"
+                                >
+                                    <a class="dropdown-item" href="#">Configs</a>
+                                    <a class="dropdown-item" href="#">Graphics</a>
+                                </div>
+                            </li> -->
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/about">About</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/register">Register</router-link>
+                            </li>
+                        </ul>
+                        <!--
                         <form class="form-inline">
                         <input  class="form-control form-control-sm mr-sm-2"
                                 type="search"
@@ -78,10 +77,9 @@
                             Search
                         </button>
                         </form>
-                            -->
-                        </div>
-                    </nav>
-                </div>
+                        -->
+                    </div>
+                </nav>
             </div>
 
             <div class="row m-0">
