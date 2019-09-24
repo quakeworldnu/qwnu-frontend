@@ -31,8 +31,8 @@ export const parseBbCode = (content) => {
         '<a href="$1" class="bb-url">$2</a>'                                                :   /\[url=(.*?)?\](.*?)\[\/url\]/gi,
 
         // [img]
-        '<div style="padding-top:5px;"><div style=padding:4px;><a href="$1"><img src="$1" alt="$1" class="bb-image"/></a></div></div>'                              :       /\[img\](.*?)\[\/img\]/gi,
-        '<div style="padding-top:5px;"><div style="padding:4px;"><a href="$3"><img width="$1" height="$2" src="$3" alt="$3" class="bb-image"/></a></div></div>'     :       /\[img=(.*?)x(.*?)\](.*?)\[\/img\]/gi,
+        '<div class="bb-image-container"><a href="$1"><img src="$1" alt="$1" class="bb-image"/></a></div>'                            :       /\[img\](.*?)\[\/img\]/gi,
+        '<div class="bb-image-container"><a href="$3"><img width="$1" height="$2" src="$3" alt="$3" class="bb-image"/></a></div>'     :       /\[img=(.*?)x(.*?)\](.*?)\[\/img\]/gi,
 
         // [flag]
         '<span class="flag-icon flag-icon-$1"></span>'                                      :   /\[flag=(\w+?)\]/gi,
