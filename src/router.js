@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
+import AboutView from './views/AboutView.vue';
 import AdminArticlesView from './views/AdminArticlesView.vue';
 import AdminArticleView from './views/AdminArticleView.vue';
 import AdminCommentsView from './views/AdminCommentsView.vue';
@@ -84,6 +85,11 @@ export default new Router({
             path: '/',
             name: 'home',
             component: HomeView,
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: AboutView
         },
         {
             path: '/register',

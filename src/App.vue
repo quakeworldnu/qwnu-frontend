@@ -30,21 +30,21 @@
                                     <router-link class="nav-link" to="/">News</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Blogs</a>
+                                    <router-link class="nav-link" to="/blogs">Blogs</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/forums">Forum</a>
+                                    <router-link class="nav-link" to="/forums">Forum</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/maps">Maps</a>
+                                    <router-link class="nav-link" to="/configs">Configs</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Wiki</a>
+                                    <router-link class="nav-link" to="/maps">Maps</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <router-link class="nav-link" to="/register">Register</router-link>
+                                    <a class="nav-link" href="https://wiki.quakeworld.nu">Wiki</a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <!-- <li class="nav-item dropdown">
                                     <a
                                         class="nav-link dropdown-toggle"
                                         href="#"
@@ -59,14 +59,13 @@
                                     >
                                         <a class="dropdown-item" href="#">Configs</a>
                                         <a class="dropdown-item" href="#">Graphics</a>
-                                        <a class="dropdown-item" href="#">Maps</a>
                                     </div>
+                                </li> -->
+                                <li class="nav-item">
+                                    <router-link class="nav-link" to="/about">About</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Media</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Site</a>
+                                    <router-link class="nav-link" to="/register">Register</router-link>
                                 </li>
                             </ul>
                             <!--
@@ -127,19 +126,16 @@
                     <span class="section-header">Sections</span>
                     <ul>
                         <li>
-                            <a href="#">News</a>
+                            <router-link to="/">News</router-link>
                         </li>
                         <li>
-                            <a href="#">Blogs</a>
+                            <router-link to="/blogs">Blogs</router-link>
                         </li>
                         <li>
-                            <a href="#">Guides</a>
+                            <router-link to="/forums">Forum</router-link>
                         </li>
                         <li>
-                            <a href="#">Forum</a>
-                        </li>
-                        <li>
-                            <a href="#">Media</a>
+                            <router-link to="/maps">Maps</router-link>
                         </li>
                     </ul>
                 </div>
@@ -175,16 +171,7 @@
                     <span class="section-header">Information</span>
                     <ul>
                         <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                        <li>
-                            <a href="#">Site media</a>
-                        </li>
-                        <li>
-                            <a href="#">Staff & credits</a>
+                            <router-link to="/about">About</router-link>
                         </li>
                     </ul>
                 </div>
