@@ -33,10 +33,11 @@ body {
 }
 
 .logo {
+  margin: 1em;
+
   @media (max-width: 768px) {
     display: none;
     }
-
 }
 
 .box-header {

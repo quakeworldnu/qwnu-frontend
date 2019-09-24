@@ -5,7 +5,7 @@
                 <div class="p-2 container logo-container">
                     <div class="mb-2">
                         <a href>
-                            <img src="./assets/logo.gif" class="logo">
+                            <img src="./assets/qwnu-headerlogo.png" class="logo">
                         </a>
                     </div>
                     <nav class="navbar navbar-expand-lg">
