@@ -11,7 +11,7 @@
           <span
             class="box-content-record-info"
           >{{comment.create_time | formatUnixTimestamp }} in {{comment.type}}</span>
-          <span class="box-content-record-author">By {{comment.author.username}}</span>
+          <span class="box-content-record-author">{{comment.author.username}}</span>
         </div>
       </div>
     </div>

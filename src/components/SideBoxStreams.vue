@@ -10,7 +10,7 @@
                 <div class="box-content-record">
                     <a :href="getStreamUrl(stream.user.display_name)">{{stream.title}}</a>
                     <span class="box-content-record-info">{{stream.viewer_count}} viewers</span>
-                    <span class="box-content-record-author">By {{stream.user.display_name}}</span>
+                    <span class="box-content-record-author">{{stream.user.display_name}}</span>
                 </div>
             </div>
             <div v-if="error" class="box-content-record">{{error}}</div>
