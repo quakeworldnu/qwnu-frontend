@@ -12,6 +12,11 @@ class MapService extends BaseService {
         return this.get(`maps?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 
+    getMapsBySearch(keyword, pagination) {
+        let p = pagination
+        return this.get(`maps/search?keyword=${keyword}&page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    }
+
     getMap(id) {
         return this.get(`maps/${id}`);
     }

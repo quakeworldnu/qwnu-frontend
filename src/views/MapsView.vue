@@ -2,6 +2,12 @@
     <div class="ml-3 mb-2 rounded-top rounded-bottom main-container">
         <div class="box-header">Maps</div>
         <div class="box-body">
+            <div class="bg-light p-2 mb-2 rounded">
+                <form>
+                    <input type="text" class="form-control" placeholder="Search name / description" :value="keyword" @input="update"/>
+                </form>
+            </div>
+
             <table class="table">
                 <tr>
                     <th style="width: 60px;">
@@ -49,6 +55,7 @@
 
 <script>
 import MapService from "@/services/MapService";
+import lodash from 'lodash';
 
 export default {
     name: "Maps",
@@ -61,7 +68,8 @@ export default {
                 order: this.$route.query.order || "desc",
                 pageSize: 1,
                 totalRecords: 0
-            }
+            },
+            keyword: this.$route.query.keyword || ""
         };
     },
     mounted() {
@@ -70,16 +78,31 @@ export default {
     watch: {
         pagination: {
             handler(val) {
-                this.getMaps();
+                if (this.keyword === '') {
+                    this.getMaps();
+                } else {
+                    // We end up here if we have searched and change page
+                    this.getSearchedMaps();
+                }
             },
             deep: true
+        },
+        keyword(after, before) {
+            this.pagination.page = 1;
+            this.getSearchedMaps();
         }
     },
     methods: {
+        update: _.debounce(function (e) {
+        this.keyword = e.target.value
+        }, 1000),
         onPageChange() {
+            let query = this.pagination;
+            query.keyword = this.keyword;
+
             this.$router.push({
                 name: "maps",
-                query: this.pagination
+                query: query
             });
         },
         getMaps() {
@@ -91,6 +114,17 @@ export default {
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch maps.", error);
+                });
+        },
+        getSearchedMaps() {
+            MapService.getMapsBySearch(this.keyword, this.pagination)
+                .then(response => {
+                    this.maps = response.data.data;
+                    this.pagination.totalRecords = response.data.total;
+                    this.pagination.pageSize = response.data.per_page;
+                })
+                .catch(error => {
+                    console.log("Error: Could not fetch searched maps.", error);
                 });
         }
     }
