@@ -3,7 +3,7 @@ git config --global push.default matching
 git remote add deploy ssh://qwnu-frontend@$IP:$PORT$DEPLOY_DIR
 git push deploy master
 
-ssh qwnu-frontend@$IP -p $PORT <<EOF
+ssh -n qwnu-frontend@$IP -p $PORT <<EOF
     cd $DEPLOY_DIR
     yarn build
 EOF
