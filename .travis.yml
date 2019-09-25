@@ -1,0 +1,8 @@
+dist: trusty
+language: node_js
+node_js:
+- "stable"
+before_script:
+- yarn install
+script:
+- yarn build
