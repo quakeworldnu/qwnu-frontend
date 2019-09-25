@@ -1,4 +1,6 @@
 dist: bionic
+addons:
+  ssh_known_hosts: qw2.quakeworld.nu
 language: node_js
 node_js:
 - stable
