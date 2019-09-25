@@ -5,7 +5,7 @@ language: node_js
 node_js:
 - stable
 before_script:
-- yarn install
+- yarn install --frozen-lockfile
 script:
 - yarn build
 before_install:

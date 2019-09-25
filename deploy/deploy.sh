@@ -5,6 +5,6 @@ git push deploy master
 
 ssh -n qwnu-frontend@$IP -p $PORT <<EOF
     cd $DEPLOY_DIR
-    yarn install
+    yarn install --frozen-lockfile
     yarn build
 EOF
