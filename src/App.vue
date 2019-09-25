@@ -20,7 +20,6 @@
                     >
                         <!-- <span class="navbar-toggler-icon"></span> -->
                         <i class="fa fa-bars float-left m-1"></i>
-                        QuakeWorld.nu
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarColor01">
