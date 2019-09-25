@@ -6,4 +6,4 @@ git push deploy master
 ssh qwnu-frontend@$IP -p $PORT <<EOF
     cd $DEPLOY_DIR
     yarn build
-EOF > /dev/null 2>&1
+EOF
