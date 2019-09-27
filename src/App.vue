@@ -126,7 +126,7 @@
                             <router-link to="/">News</router-link>
                         </li>
                         <li>
-                            <router-link to="/blogs">Blogs</router-link>
+                            <router-link to="/blog-posts">Blogs</router-link>
                         </li>
                         <li>
                             <router-link to="/forums">Forum</router-link>
