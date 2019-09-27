@@ -50,7 +50,7 @@ export default {
             required: true,
             validator: function(value) {
                 // The value must match one of these strings
-                return ["article", "forum", "blog"].indexOf(value) !== -1
+                return ["article", "forum", "blogPost"].indexOf(value) !== -1
             }
         }
     },
@@ -69,6 +69,11 @@ export default {
             let action
             if (this.type === "article") {
                 action = CommentService.createCommentOnArticle(
+                    this.id,
+                    this.comment
+                )
+            } else if (this.type === "blogPost") {
+                action = CommentService.createCommentOnBlogPost(
                     this.id,
                     this.comment
                 )

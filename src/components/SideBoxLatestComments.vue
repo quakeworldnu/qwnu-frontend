@@ -46,6 +46,9 @@ export default {
         getTitle(comment) {
             let title = ""
             switch (comment.type) {
+                case "blog":
+                    title = comment.commentable.title
+                    break
                 case "forum":
                     title = comment.commentable.name
                     break
@@ -58,6 +61,12 @@ export default {
         link(comment) {
             let link = null
             switch (comment.type) {
+                case "blog":
+                    link = {
+                        name: "blogPost",
+                        params: { id: comment.post_id }
+                    }
+                    break
                 case "forum":
                     link = {
                         name: "forumTopic",

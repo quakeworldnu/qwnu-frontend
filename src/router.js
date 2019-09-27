@@ -13,6 +13,8 @@ import AdminForumView from './views/AdminForumView.vue';
 import AdminUsersView from './views/AdminUsersView.vue';
 import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
+import BlogPostsView from './views/BlogPostsView.vue';
+import BlogPostView from './views/BlogPostView.vue';
 import EditProfileView from './views/EditProfileView.vue';
 import ForgotPasswordView from './views/ForgotPasswordView.vue';
 import ForumsView from './views/ForumsView.vue';
@@ -85,6 +87,17 @@ export default new Router({
             path: '/',
             name: 'home',
             component: HomeView,
+        },
+        {
+            path: '/blog-post/:id',
+            name: 'blogPost',
+            component: BlogPostView,
+            props: true
+        },
+        {
+            path: '/blog-posts',
+            name: 'blogPosts',
+            component: BlogPostsView,
         },
         {
             path: '/about',

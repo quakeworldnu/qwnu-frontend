@@ -10,6 +10,10 @@ class CommentService extends BaseService {
         return this.post(`articles/${id}/comments`, data);
     }
 
+    createCommentOnBlogPost(id, data) {
+        return this.post(`blog-posts/${id}/comments`, data);
+    }
+
     createCommentOnForumTopic(id, data) {
         return this.post(`forum-topics/${id}/comments`, data);
     }
@@ -21,6 +25,11 @@ class CommentService extends BaseService {
     getCommentsByArticle(id, pagination) {
         let p = pagination;
         return this.get(`articles/${id}/comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    }
+
+    getCommentsByBlogPost(id, pagination) {
+        let p = pagination;
+        return this.get(`blog-posts/${id}/comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 
     getCommentsByForumTopic(id, pagination) {

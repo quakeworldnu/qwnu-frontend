@@ -28,7 +28,7 @@
                                 <router-link class="nav-link" to="/">News</router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link class="nav-link" to="/blogs">Blogs</router-link>
+                                <router-link class="nav-link" to="/blog-posts">Blogs</router-link>
                             </li>
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/forums">Forum</router-link>

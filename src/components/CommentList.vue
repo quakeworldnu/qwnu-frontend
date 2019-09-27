@@ -49,7 +49,7 @@ export default {
             required: true,
             validator: function(value) {
                 // The value must match one of these strings
-                return ["article", "forum", "blog"].indexOf(value) !== -1
+                return ["article", "forum", "blogPost"].indexOf(value) !== -1
             }
         },
         header: {
@@ -93,6 +93,11 @@ export default {
             let action
             if (this.type === "article") {
                 action = CommentService.getCommentsByArticle(
+                    this.id,
+                    this.pagination
+                )
+            } else if (this.type === "blogPost") {
+                action = CommentService.getCommentsByBlogPost(
                     this.id,
                     this.pagination
                 )
