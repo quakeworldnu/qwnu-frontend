@@ -73,51 +73,34 @@ export default {
         };
     },
     mounted() {
-        this.getMaps();
-    },
-    watch: {
-        pagination: {
-            handler(val) {
-                if (this.keyword === '') {
-                    this.getMaps();
-                } else {
-                    // We end up here if we have searched and change page
-                    this.getSearchedMaps();
-                }
-            },
-            deep: true
-        },
-        keyword(after, before) {
-            this.pagination.page = 1;
-            this.getSearchedMaps();
-        }
+        this.getSearchedMaps();
     },
     methods: {
         update: _.debounce(function (e) {
-        this.keyword = e.target.value
+            this.pagination.page = 1;
+            let query = this.pagination;
+            query.keyword = e.target.value;
+            this.keyword = e.target.value;
+            this.getSearchedMaps().then(() => {
+                this.$router.push({
+                    name: "maps",
+                    query: query
+                });
+            });
         }, 1000),
         onPageChange() {
             let query = this.pagination;
             query.keyword = this.keyword;
+
+            this.getSearchedMaps();
 
             this.$router.push({
                 name: "maps",
                 query: query
             });
         },
-        getMaps() {
-            MapService.getMaps(this.pagination)
-                .then(response => {
-                    this.maps = response.data.data;
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
-                })
-                .catch(error => {
-                    console.log("Error: Could not fetch maps.", error);
-                });
-        },
         getSearchedMaps() {
-            MapService.getMapsBySearch(this.keyword, this.pagination)
+            return MapService.getMapsBySearch(this.keyword, this.pagination)
                 .then(response => {
                     this.maps = response.data.data;
                     this.pagination.totalRecords = response.data.total;
