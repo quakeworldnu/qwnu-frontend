@@ -99,6 +99,26 @@ body {
   margin-bottom: 10px;
 }
 
+.box-content-body .row {
+  @media (max-width: 768px) {
+    margin: 0;
+  }
+}
+
+.box-content-body .col-form-label {
+  @media (max-width: 768px) {
+    padding: 0;
+    margin: 10px 0 5px 0;
+  }
+}
+
+.box-content-body small {
+  @media (max-width: 768px) {
+    padding: 0;
+    margin: 10px 0 5px 10px;
+  }
+}
+
 .box-content-record {
   background-image: url("./assets/bg-box-record.png"); // Using #8a8167 and "White plaster" filter
   border-style: solid;
