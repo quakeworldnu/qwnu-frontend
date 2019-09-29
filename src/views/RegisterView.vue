@@ -6,7 +6,10 @@
                 <h1>Welcome to QuakeWorld.nu</h1>
                 <div class="box-content-body">
                     <p>
-                    Fill in the form to register a QuakeWorld.nu user account.
+                        Fill in the form to register a QuakeWorld.nu user account.
+                    </p>
+                    <p>
+                        After registration a confirmation E-mail will be sent to the specified address.
                     </p>
                     <form>
                         <div class="form-group row">
