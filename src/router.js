@@ -26,6 +26,7 @@ import MapView from './views/MapView.vue';
 import PasswordResetView from './views/PasswordResetView';
 import RegisterView from './views/RegisterView.vue';
 import UserActivationView from './views/UserActivationView.vue';
+import UserView from './views/UserView.vue';
 
 Vue.use(Router);
 
@@ -151,6 +152,12 @@ export default new Router({
             path: '/maps/:id',
             name: 'map',
             component: MapView,
+            props: true
+        },
+        {
+            path: '/users/:id',
+            name: 'user',
+            component: UserView,
             props: true
         },
         {
