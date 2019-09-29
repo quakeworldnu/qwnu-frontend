@@ -8,10 +8,10 @@
                     <h1>About Quake and QuakeWorld</h1>
                     <p>
                         Quake is a first-person shooter video game and was released by id Software in 1996.
-                        It was the first game in the popular Quake series of video games.
+                        It was the first game in the popular <b>Quake</b> series of video games.
                     </p>
                     <p>
-                        To improve the quality of online play, id Software released QuakeWorld on December 17, 1996,
+                        To improve the quality of online play, id Software released <b>QuakeWorld</b> on December 17, 1996,
                         a build of Quake that featured significantly revamped network code.
                     </p>
                     <p>
