@@ -6,9 +6,10 @@
         <h1>
           <router-link :to="{name: 'blogPost', params: {id: blogPost.id}}">{{blogPost.title}}</router-link>
         </h1>
-        <span
-          class="box-content-info"
-        >{{blogPost.author.username}} / {{blogPost.create_time | formatUnixTimestamp}}</span>
+        <span class="box-content-info">
+            <router-link :to="{name: 'user', params: {id: blogPost.author.id}}">{{blogPost.author.username}}</router-link>
+            / {{blogPost.create_time | formatUnixTimestamp}}
+        </span>
         <div class="box-content-ingress" v-html="blogPost.content"></div>
         <div class="box-content-body" v-html="blogPost.body"></div>
         <div class="box-content-footer">

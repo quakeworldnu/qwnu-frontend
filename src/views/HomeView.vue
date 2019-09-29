@@ -4,7 +4,10 @@
         <div class="box-body">
             <div v-for="article in articles" :key="article.id" class="box-content mb-2">
                 <h1><router-link :to="{name: 'article', params: {id: article.id}}">{{article.title}}</router-link></h1>
-                <span class="box-content-info">{{article.author.username}} / {{article.create_time | formatUnixTimestamp}}</span>
+                <span class="box-content-info">
+                    <router-link :to="{name: 'user', params: {id: article.author.id}}">{{article.author.username}}</router-link> /
+                    {{article.create_time | formatUnixTimestamp}}
+                </span>
                 <div class="box-content-body" v-html="article.content"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>

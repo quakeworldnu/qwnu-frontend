@@ -89,6 +89,10 @@ body {
   font-size: 0.8em;
   display: block;
   margin-bottom: 1em;
+
+  a {
+    color: inherit;
+  }
 }
 
 .box-content-ingress {

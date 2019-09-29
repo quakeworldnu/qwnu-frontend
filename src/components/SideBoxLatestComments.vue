@@ -11,7 +11,11 @@
           <span
             class="box-content-record-info"
           >{{comment.create_time | formatUnixTimestamp }} in {{comment.type}}</span>
-          <span class="box-content-record-author">{{comment.author.username}}</span>
+          <span class="box-content-record-author">
+            <router-link :to="{name: 'user', params: {id: comment.author.id}}">
+                {{comment.author.username}}
+            </router-link>
+          </span>
         </div>
       </div>
     </div>
