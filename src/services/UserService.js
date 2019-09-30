@@ -37,6 +37,11 @@ class UserService extends BaseService {
         let p = pagination;
         return this.get(`users?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
+
+    getUsersBySearch(keyword, pagination) {
+        let p = pagination
+        return this.get(`users/search?keyword=${keyword}&page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    }
 }
 
 export default new UserService();
