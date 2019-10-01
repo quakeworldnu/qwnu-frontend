@@ -2,14 +2,20 @@
     <div class="ml-3 mb-2 rounded main-container">
         <div class="box-header">Register</div>
         <div class="box-body">
-            <div class="box-content">
-                <h1>Welcome to QuakeWorld.nu</h1>
+            <div v-if="success" class="box-content">
+                <h1>Welcome to QuakeWorld.nu!</h1>
+                <div v-if="success" class="box-content-body">
+                    <p>
+                        A confirmation E-mail has been sent to the specified address. Click the link in the E-mail
+                        to complete the registration and you will then be able to login.
+                    </p>
+                </div>
+            </div>
+            <div v-else class="box-content">
+                <h1>Register account</h1>
                 <div class="box-content-body">
                     <p>
                         Fill in the form to register a QuakeWorld.nu user account.
-                    </p>
-                    <p>
-                        After registration a confirmation E-mail will be sent to the specified address.
                     </p>
                     <form>
                         <div class="form-group row">
@@ -70,6 +76,7 @@ export default {
         return {
             user: {},
             loading: false,
+            success: false,
             errors: []
         }
     },
@@ -78,8 +85,11 @@ export default {
     methods: {
         register() {
             this.loading = true;
-            UserService.register(this.user).then(() => {
-                this.errors = [];
+            UserService.register(this.user).then(response => {
+                if (response.status === 201) {
+                    this.success = true;
+                    this.errors = [];
+                }
             })
             .catch((error) => {
                 this.errors = error.response.data.errors;
