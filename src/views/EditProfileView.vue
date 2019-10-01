@@ -126,6 +126,11 @@
                             <small class="col-sm-4" v-if="errors['profile.mousepad']">{{errors['profile.mousepad'][0]}}</small>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Headset</label>
+                            <input type="text" class="col-sm-6 form-control" v-model="user.profile.headset">
+                            <small class="col-sm-4" v-if="errors['profile.headset']">{{errors['profile.headset'][0]}}</small>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Connection</label>
                             <input type="text" class="col-sm-6 form-control" v-model="user.profile.connection">
                             <small class="col-sm-4" v-if="errors['profile.connection']">{{errors['profile.connection'][0]}}</small>
