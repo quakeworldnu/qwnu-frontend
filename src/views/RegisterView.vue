@@ -72,7 +72,7 @@ import UserService from "@/services/UserService"
 
 export default {
     name: "register",
-    data: function () {
+    data() {
         return {
             user: {},
             loading: false,

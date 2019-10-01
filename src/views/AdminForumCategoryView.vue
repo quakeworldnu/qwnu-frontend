@@ -78,7 +78,7 @@ export default {
     props: {
         id: null
     },
-    data: function() {
+    data() {
         return {
             loading: false,
             forumCategory: {

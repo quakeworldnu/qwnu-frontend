@@ -30,7 +30,7 @@ import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",
-    data: function() {
+    data() {
         return {
             articles: [],
             pagination: {

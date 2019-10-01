@@ -50,7 +50,7 @@ export default {
     props: {
         id: null
     },
-    data: function() {
+    data() {
         return {
             forum: null,
             forumTopics: [],

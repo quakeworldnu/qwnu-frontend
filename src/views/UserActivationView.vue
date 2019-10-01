@@ -30,7 +30,7 @@ export default {
         email: null,
         token: null
     },
-    data: function () {
+    data() {
         return {
             isSuccess: false
         }

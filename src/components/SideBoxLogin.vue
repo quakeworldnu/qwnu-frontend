@@ -47,7 +47,7 @@ import AuthService from "@/services/AuthService"
 export default {
     name: "SideBoxLogin",
     props: {},
-    data: function() {
+    data() {
         return {
             username: null,
             password: null,

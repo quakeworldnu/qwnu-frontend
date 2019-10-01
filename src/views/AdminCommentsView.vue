@@ -80,7 +80,7 @@ import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
     name: "adminComments",
-    data: function() {
+    data() {
         return {
             comments: [],
             pagination: {

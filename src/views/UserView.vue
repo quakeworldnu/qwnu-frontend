@@ -20,7 +20,7 @@ export default {
     props: {
         id: null
     },
-    data: function() {
+    data() {
         return {
             user: null
         };

@@ -59,7 +59,7 @@ import lodash from 'lodash';
 
 export default {
     name: "Maps",
-    data: function() {
+    data() {
         return {
             maps: [],
             pagination: {

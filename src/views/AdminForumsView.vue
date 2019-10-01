@@ -70,7 +70,7 @@ import ForumService from "@/services/ForumService"
 
 export default {
     name: "adminForums",
-    data: function() {
+    data() {
         return {
             forums: [],
             pagination: {

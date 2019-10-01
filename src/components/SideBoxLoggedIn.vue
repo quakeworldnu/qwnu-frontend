@@ -35,7 +35,7 @@ import store from '@/store';
 
 export default {
     name: "SideBoxLoggedIn",
-    data: function() {
+    data() {
         return {
             username: null,
             password: null,

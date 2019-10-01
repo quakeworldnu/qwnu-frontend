@@ -28,7 +28,7 @@ import CommentService from "@/services/CommentService"
 export default {
     name: "SideBoxLatestComments",
     props: {},
-    data: function() {
+    data() {
         return {
             error: null,
             comments: []

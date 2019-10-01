@@ -38,7 +38,7 @@ import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "forums",
-    data: function() {
+    data() {
         return {
             forumCategories: []
         };

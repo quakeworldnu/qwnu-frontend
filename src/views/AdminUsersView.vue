@@ -78,7 +78,7 @@ import UserService from "@/services/UserService"
 
 export default {
     name: "adminUsers",
-    data: function() {
+    data() {
         return {
             users: [],
             pagination: {

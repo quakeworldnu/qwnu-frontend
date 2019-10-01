@@ -54,7 +54,7 @@ export default {
             }
         }
     },
-    data: function() {
+    data() {
         return {
             comment: {},
             error: {

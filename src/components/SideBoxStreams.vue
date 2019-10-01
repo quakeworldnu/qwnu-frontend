@@ -28,7 +28,7 @@ import StreamService from "@/services/StreamService";
 export default {
     name: "SideBoxStreams",
     props: {},
-    data: function() {
+    data() {
         return {
             error: null,
             streams: []

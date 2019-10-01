@@ -72,7 +72,7 @@ import AuthService from "@/services/AuthService"
 
 export default {
     name: "register",
-    data: function () {
+    data() {
         return {
             loading: false,
             error: {

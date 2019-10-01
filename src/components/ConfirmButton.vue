@@ -17,7 +17,7 @@ export default {
         icon: String,
         text: String
     },
-    data: function() {
+    data() {
         return {
             showModal: false
         }
@@ -89,7 +89,7 @@ export default {
 
     /* Add animation (fade in the popup) */
     @-webkit-keyframes fadeIn {
-        from {opacity: 0;} 
+        from {opacity: 0;}
         to {opacity: 1;}
     }
 

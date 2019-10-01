@@ -78,7 +78,7 @@ import ArticleService from "@/services/ArticleService"
 
 export default {
     name: "adminArticles",
-    data: function() {
+    data() {
         return {
             articles: [],
             pagination: {

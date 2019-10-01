@@ -150,7 +150,7 @@ import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
     name: "editProfile",
-    data: function() {
+    data() {
         return {
             errors: {
                 profile: {}

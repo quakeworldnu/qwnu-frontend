@@ -68,7 +68,7 @@ import UserService from "@/services/UserService";
 
 export default {
     name: "Users",
-    data: function() {
+    data() {
         return {
             users: [],
             pagination: {

@@ -65,7 +65,7 @@ export default {
             this.getComments()
         }
     },
-    data: function() {
+    data() {
         return {
             comments: [],
             error: {
