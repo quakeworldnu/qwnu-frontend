@@ -61,9 +61,11 @@ export const parseBbCode = (content) => {
         '<br/>'                                                                             :   /\n/g,
     };
 
-    for (let key in regex) {
-        if (regex.hasOwnProperty(key)) {
-            content = content.replace(regex[key], key);
+    if (content) {
+        for (let key in regex) {
+            if (regex.hasOwnProperty(key)) {
+                content = content.replace(regex[key], key);
+            }
         }
     }
 
