@@ -53,6 +53,7 @@
                         <table class="table">
                             <tr><th>Mouse</th><td>{{user.profile.mouse}}</td></tr>
                             <tr><th>Mouse pad</th><td>{{user.profile.mousepad}}</td></tr>
+                            <tr><th>Keyboard</th><td>{{user.profile.keyboard}}</td></tr>
                             <tr><th>Headset</th><td>{{user.profile.headset}}</td></tr>
                             <tr><th>Sound card</th><td>{{user.profile.soundcard}}</td></tr>
                             <tr><th>Connection</th><td>{{user.profile.connection}}</td></tr>
