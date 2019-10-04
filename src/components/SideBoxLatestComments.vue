@@ -49,6 +49,12 @@ export default {
         },
         getTitle(comment) {
             let title = ""
+
+            // Shouldn't really happen unless we have malformed data from backend...
+            if (!comment.commentable) {
+                return title;
+            }
+
             switch (comment.type) {
                 case "blog":
                     title = comment.commentable.title
