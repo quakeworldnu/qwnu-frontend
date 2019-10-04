@@ -4,7 +4,7 @@
         <div class="box-body">
             <div class="bg-light p-2 mb-2 rounded">
                 <form>
-                    <input type="text" class="form-control" placeholder="Search name / description" :value="keyword" @input="update"/>
+                    <input type="text" class="form-control" :class="{'spinner-border': loading}" placeholder="Search name / description" :value="keyword" @input="update"/>
                 </form>
             </div>
 
@@ -61,6 +61,7 @@ export default {
     name: "Maps",
     data() {
         return {
+            loading: false,
             maps: [],
             pagination: {
                 page: parseInt(this.$route.query.page) || 1,
@@ -100,6 +101,7 @@ export default {
             });
         },
         getSearchedMaps() {
+            this.loading = true;
             return MapService.getMapsBySearch(this.keyword, this.pagination)
                 .then(response => {
                     this.maps = response.data.data;
@@ -108,7 +110,7 @@ export default {
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch searched maps.", error);
-                });
+                }).finally(() => this.loading = false);
         }
     }
 };
