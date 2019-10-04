@@ -7,7 +7,11 @@ class ForumService extends BaseService {
         super();
     }
 
-    getForumTopicsByForum(id, pagination) {
+    createForumTopicForForum(id, data) {
+        return this.post(`forums/${id}/topics`, data);
+    }
+
+    getForumTopicsForForum(id, pagination) {
         let p = pagination
         return this.get(`forums/${id}/topics?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }

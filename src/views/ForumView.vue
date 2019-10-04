@@ -5,6 +5,11 @@
             {{forum.name}}
         </div>
         <div class="box-body">
+            <div class="mb-2">
+                <router-link :to="{name: 'forumTopicCreate'}" tag="button" class="btn btn-sm btn-info">
+                    New topic
+                </router-link>
+            </div>
             <table class="table" v-if="forumTopics.length > 0">
                 <tr>
                     <th>Topic</th>
@@ -14,17 +19,21 @@
                 <tr v-for="forumTopic in forumTopics" :key="forumTopic.id">
                     <td>
                         <strong>
+                            <i v-if="forumTopic.sticky" class="fas fa-thumbtack mr-1" title="Stickied topic"></i>
                             <router-link
                                 :to="{name: 'forumTopic', params: { id: forumTopic.id}}"
-                            >{{forumTopic.name}}</router-link>
+                            >
+                            {{forumTopic.name}}
+                            </router-link>
                         </strong>
+                        <br/>
+                        {{forumTopic.comment.author.username}}
                         <br>
                     </td>
                     <td>{{forumTopic.num_posts}}</td>
                     <td>
-                        By {{forumTopic.last_author.username}}
-                        <br>
-                        {{forumTopic.create_time | formatUnixTimestamp}}
+                        {{forumTopic.last_post_time | formatUnixTimestamp('fromNow')}}<br/>
+                        {{forumTopic.last_author.username}}
                     </td>
                 </tr>
             </table>
@@ -81,7 +90,7 @@ export default {
                 });
         },
         getForumTopics(forumId) {
-            ForumService.getForumTopicsByForum(forumId, this.pagination)
+            ForumService.getForumTopicsForForum(forumId, this.pagination)
                 .then(response => {
                     this.pagination.totalRecords = response.data.total;
                     this.pagination.pageSize = response.data.per_page;

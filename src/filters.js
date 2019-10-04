@@ -3,6 +3,10 @@ import Vue from 'vue';
 
 Vue.filter('formatUnixTimestamp', function (value, format = 'YYYY-MM-DD HH:mm') {
   if (value) {
-    return moment.unix(value).format(format);
+    if (format === 'fromNow') {
+      return moment.unix(value).fromNow();
+    } else {
+      return moment.unix(value).format(format);
+    }
   }
 });

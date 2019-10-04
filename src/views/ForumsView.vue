@@ -22,9 +22,8 @@
                     <td>{{forum.num_topics}}</td>
                     <td>{{forum.num_posts}}</td>
                     <td>
-                        by {{forum.latest_updated_topic.last_author.username}}
-                        <br>
-                        {{forum.latest_updated_topic.create_time | formatUnixTimestamp}}
+                        {{forum.latest_updated_topic.last_post_time | formatUnixTimestamp('fromNow')}}<br>
+                        {{forum.latest_updated_topic.last_author.username}}
                     </td>
                 </tr>
             </table>

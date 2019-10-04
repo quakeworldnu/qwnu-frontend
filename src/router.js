@@ -18,6 +18,7 @@ import BlogPostView from './views/BlogPostView.vue';
 import EditProfileView from './views/EditProfileView.vue';
 import ForgotPasswordView from './views/ForgotPasswordView.vue';
 import ForumsView from './views/ForumsView.vue';
+import ForumTopicCreateView from './views/ForumTopicCreateView.vue';
 import ForumTopicView from './views/ForumTopicView.vue';
 import ForumView from './views/ForumView.vue';
 import HomeView from './views/HomeView.vue';
@@ -139,6 +140,12 @@ export default new Router({
             path: '/forums/:id',
             name: 'forum',
             component: ForumView,
+            props: true
+        },
+        {
+            path: '/forums/:id/new-topic',
+            name: 'forumTopicCreate',
+            component: ForumTopicCreateView,
             props: true
         },
         {
