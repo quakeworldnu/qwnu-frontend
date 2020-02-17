@@ -27,12 +27,14 @@
                             </router-link>
                         </strong>
                         <br/>
-                        {{forumTopic.comment.author.username}}
+                        <span v-if="forumTopic.comment">
+                            {{forumTopic.comment.author.username}}
+                        </span>
                         <br>
                     </td>
                     <td>{{forumTopic.num_posts}}</td>
                     <td>
-                        {{forumTopic.last_post_time | formatUnixTimestamp('fromNow')}}<br/>
+                        {{forumTopic.last_post_time | formatTimestamp('fromNow')}}<br/>
                         {{forumTopic.last_author.username}}
                     </td>
                 </tr>
@@ -53,6 +55,8 @@
 <script>
 import ForumService from "@/services/ForumService";
 import { parseBbCode } from "@/helpers/BbCode";
+import Pagination from "@/models/Pagination"
+import Sorting from "@/models/Sorting"
 
 export default {
     name: "forum",
@@ -63,13 +67,11 @@ export default {
         return {
             forum: null,
             forumTopics: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination(),
+            sorting: new Sorting({
                 sort: "create_time",
-                order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+                order: "desc"
+            })
         };
     },
     mounted() {
@@ -90,12 +92,10 @@ export default {
                 });
         },
         getForumTopics(forumId) {
-            ForumService.getForumTopicsForForum(forumId, this.pagination)
+            ForumService.getForumTopicsForForum(forumId, this.pagination, this.sorting)
                 .then(response => {
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
-
-                    this.forumTopics = response.data.data;
+                    this.forumTopics = response.forumTopics;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch forum topics.", error);

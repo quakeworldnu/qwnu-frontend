@@ -6,9 +6,9 @@
                 <h1><router-link :to="{name: 'blogPost', params: {id: blogPost.id}}">{{blogPost.title}}</router-link></h1>
                 <span class="box-content-info">
                     <router-link :to="{name: 'user', params: {id: blogPost.author.id}}">{{blogPost.author.username}}</router-link>
-                    / {{blogPost.create_time | formatUnixTimestamp}}
+                    / {{blogPost.create_time | formatTimestamp}}
                 </span>
-                <div class="box-content-body" v-html="blogPost.content"></div>
+                <div class="box-content-body" v-html="blogPost.contentBbCode()"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
                     <router-link :to="{name: 'blogPost', params: {id: blogPost.id}}">{{blogPost.comments_count}}</router-link>
@@ -25,21 +25,25 @@
 </template>
 
 <script>
+import BlogPost from "@/models/BlogPost";
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
 import BlogPostService from "@/services/BlogPostService";
-import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",
     data() {
         return {
             blogPosts: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination({
+                current_page: 1,
+                per_page: 1,
+                total: 0
+            }),
+            sorting: new Sorting({
                 sort: "create_time",
-                order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+                order: "desc"
+            })
         }
     },
     mounted() {
@@ -50,15 +54,10 @@ export default {
             this.getBlogPosts();
         },
         getBlogPosts() {
-            BlogPostService.getPublishedBlogPosts(this.pagination)
+            BlogPostService.getPublishedBlogPosts(this.pagination, this.sorting)
                 .then(response => {
-                    this.blogPosts = response.data.data;
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
-
-                    for (let i = 0; i < this.blogPosts.length; i++) {
-                        this.blogPosts[i].content = parseBbCode(this.blogPosts[i].content);
-                    }
+                    this.blogPosts = response.blogPosts;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch blog posts.", error);

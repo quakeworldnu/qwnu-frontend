@@ -22,8 +22,10 @@
                     <td>{{forum.num_topics}}</td>
                     <td>{{forum.num_posts}}</td>
                     <td>
-                        {{forum.latest_updated_topic.last_post_time | formatUnixTimestamp('fromNow')}}<br>
-                        {{forum.latest_updated_topic.last_author.username}}
+                        <span v-if="forum.latest_updated_topic">
+                            {{forum.latest_updated_topic.last_post_time | formatTimestamp('fromNow')}}<br>
+                            {{forum.latest_updated_topic.last_author.username}}
+                        </span>
                     </td>
                 </tr>
             </table>
@@ -33,13 +35,19 @@
 
 <script>
 import ForumService from "@/services/ForumService";
+import Sorting from "@/models/Sorting";
 import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "forums",
     data() {
         return {
-            forumCategories: []
+            forumCategories: [],
+            pagination: false,
+            sorting: new Sorting({
+                sort: "position",
+                order: "asc"
+            }),
         };
     },
     mounted() {
@@ -50,9 +58,9 @@ export default {
             this.getForumCategories();
         },
         getForumCategories() {
-            ForumService.getPublicForumCategories(this.pagination)
+            ForumService.getPublicForumCategories(this.pagination, this.sorting)
                 .then(response => {
-                    this.forumCategories = response.data.data;
+                    this.forumCategories = response.forumCategories;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch forums.", error);

@@ -13,14 +13,14 @@
                     <th>
                         <sort-button
                             field="username"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Username</sort-button>
                     </th>
                     <th>
                         <!-- <sort-button
                             field="profile.nation.iso"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         > -->
                         Nationality
@@ -29,14 +29,14 @@
                     <th>
                         <sort-button
                             field="createtime"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Registered</sort-button>
                     </th>
                     <th>
                         <sort-button
                             field="lastvisit"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Last visit</sort-button>
                     </th>
@@ -46,8 +46,8 @@
                         <router-link :to="{name: 'user', params: { id: user.id}}">{{user.username}}</router-link>
                     </td>
                     <td v-html="getFlag(user)"></td>
-                    <td>{{user.createtime | formatUnixTimestamp('YYYY-MM-DD')}}</td>
-                    <td>{{user.lastvisit | formatUnixTimestamp('YYYY-MM-DD')}}</td>
+                    <td>{{user.createtime | formatTimestamp('YYYY-MM-DD')}}</td>
+                    <td>{{user.lastvisit | formatTimestamp('YYYY-MM-DD')}}</td>
                 </tr>
             </table>
 
@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
 import UserService from "@/services/UserService";
 
 export default {
@@ -71,13 +73,13 @@ export default {
     data() {
         return {
             users: [],
-            pagination: {
-                page: parseInt(this.$route.query.page) || 1,
+            pagination: new Pagination({
+                page: parseInt(this.$route.query.page) || 1
+            }),
+            sorting: new Sorting({
                 sort: this.$route.query.sort || "createtime",
-                order: this.$route.query.order || "desc",
-                pageSize: 1,
-                totalRecords: 0
-            },
+                order: this.$route.query.order || "desc"
+            }),
             keyword: this.$route.query.keyword || ""
         };
     },
@@ -116,11 +118,10 @@ export default {
             }
         },
         getSearchedUsers() {
-            return UserService.getUsersBySearch(this.keyword, this.pagination)
+            return UserService.getUsersBySearch(this.keyword, this.pagination, this.sorting)
                 .then(response => {
-                    this.users = response.data.data;
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
+                    this.users = response.users;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch searched users.", error);

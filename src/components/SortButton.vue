@@ -13,19 +13,19 @@ export default {
             type: String,
             required: true
         },
-        pagination: {
+        sorting: {
             type: Object,
             required: true
         }
     },
     methods: {
         setOrder(order) {
-            this.pagination.order = order;
-            this.pagination.sort = this.field;
+            this.sorting.order = order;
+            this.sorting.sort = this.field;
             this.$emit('changed');
         },
         swapOrder() {
-            this.pagination.order === 'ASC' ? this.setOrder('DESC') : this.setOrder('ASC');
+            this.sorting.order === 'ASC' ? this.setOrder('DESC') : this.setOrder('ASC');
         }
     },
     computed: {

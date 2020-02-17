@@ -8,10 +8,10 @@
         </h1>
         <span class="box-content-info">
             <router-link :to="{name: 'user', params: {id: blogPost.author.id}}">{{blogPost.author.username}}</router-link>
-            / {{blogPost.create_time | formatUnixTimestamp}}
+            / {{blogPost.create_time | formatTimestamp}}
         </span>
-        <div class="box-content-ingress" v-html="blogPost.content"></div>
-        <div class="box-content-body" v-html="blogPost.body"></div>
+        <div class="box-content-ingress" v-html="blogPost.contentBbCode()"></div>
+        <div class="box-content-body" v-html="blogPost.bodyBbCode()"></div>
         <div class="box-content-footer">
           <i class="fas fa-comments mr-2"></i>
           {{blogPost.comments_count}}
@@ -34,7 +34,6 @@
 <script>
 import BlogPostService from "@/services/BlogPostService"
 import CommentList from "@/components/CommentList"
-import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
     name: "BlogPostView",
@@ -61,10 +60,8 @@ export default {
     methods: {
         getBlogPost() {
             BlogPostService.getBlogPost(this.id)
-                .then(response => {
-                    this.blogPost = response.data
-                    this.blogPost.content = parseBbCode(this.blogPost.content)
-                    this.blogPost.body = parseBbCode(this.blogPost.body)
+                .then(blogPost => {
+                    this.blogPost = blogPost;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch blog post.", error)

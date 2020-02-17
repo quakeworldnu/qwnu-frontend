@@ -14,28 +14,28 @@
                             <th class="col-1">
                                 <sort-button
                                     field="id"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getForums()"
                                 >ID</sort-button>
                             </th>
                             <th class="col-5">
                                 <sort-button
                                     field="name"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getForums()"
                                 >Name</sort-button>
                             </th>
                             <th class="col-4">
                                 <sort-button
                                     field="category"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getForums()"
                                 >Category</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
                                     field="position"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getForums()"
                                 >Position</sort-button>
                             </th>
@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import Pagination from "@/models/Pagination"
+import Sorting from "@/models/Sorting"
 import ForumService from "@/services/ForumService"
 
 export default {
@@ -73,13 +75,11 @@ export default {
     data() {
         return {
             forums: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination(),
+            sorting: new Sorting({
                 sort: "position",
-                order: "asc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+                order: "asc"
+            })
         }
     },
     mounted() {
@@ -90,11 +90,10 @@ export default {
             this.getForums()
         },
         getForums() {
-            ForumService.getForums(this.pagination)
+            ForumService.getForums(this.pagination, this.sorting)
                 .then(response => {
-                    this.forums = response.data.data
-                    this.pagination.totalRecords = response.data.total
-                    this.pagination.pageSize = response.data.per_page
+                    this.forums = response.forums
+                    this.pagination = response.pagination
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch forums.", error)

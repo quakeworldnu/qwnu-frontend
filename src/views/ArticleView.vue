@@ -8,10 +8,10 @@
         </h1>
         <span class="box-content-info">
           <router-link :to="{name: 'user', params: {id: article.author.id}}">{{article.author.username}}</router-link> /
-          {{article.create_time | formatUnixTimestamp}}
+          {{article.create_time | formatTimestamp}}
         </span>
-        <div class="box-content-ingress" v-html="article.content"></div>
-        <div class="box-content-body" v-html="article.body"></div>
+        <div class="box-content-ingress" v-html="article.contentBbCode()"></div>
+        <div class="box-content-body" v-html="article.bodyBbCode()"></div>
         <div class="box-content-footer">
           <i class="fas fa-comments mr-2"></i>
           {{article.comments_count}}
@@ -34,7 +34,7 @@
 <script>
 import ArticleService from "@/services/ArticleService"
 import CommentList from "@/components/CommentList"
-import { parseBbCode } from "@/helpers/BbCode"
+import Article from "@/models/Article"
 
 export default {
     name: "ArticleView",
@@ -61,10 +61,8 @@ export default {
     methods: {
         getArticle() {
             ArticleService.getArticle(this.id)
-                .then(response => {
-                    this.article = response.data
-                    this.article.content = parseBbCode(this.article.content)
-                    this.article.body = parseBbCode(this.article.body)
+                .then(article => {
+                    this.article = article;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch article.", error)

@@ -1,8 +1,10 @@
-
+import Forum from '@/models/Forum';
+import ForumCategory from '@/models/ForumCategory';
+import ForumTopic from '@/models/ForumTopic';
+import Pagination from '@/models/Pagination';
 import BaseService from './BaseService';
 
 class ForumService extends BaseService {
-
     constructor() {
         super();
     }
@@ -11,18 +13,32 @@ class ForumService extends BaseService {
         return this.post(`forums/${id}/topics`, data);
     }
 
-    getForumTopicsForForum(id, pagination) {
+    getForumTopicsForForum(id, pagination, sorting) {
         let p = pagination
-        return this.get(`forums/${id}/topics?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting
+        return this.get(`forums/${id}/topics?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let forumTopics = response.data.map(ft => new ForumTopic(ft))
+                        let pagination = new Pagination(response);
+                        return { forumTopics, pagination };
+                    });
     }
 
     getForumTopic(id) {
         return this.get(`forum-topics/${id}`);
     }
 
-    getForums(pagination) {
+    getForums(pagination, sorting) {
         let p = pagination
-        return this.get(`forums?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting
+        return this.get(`forums?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let forums = response.data.map(a => new Forum(a));
+                        let pagination = new Pagination(response);
+                        return { forums, pagination };
+                    });
     }
 
     getForum(id) {
@@ -41,22 +57,40 @@ class ForumService extends BaseService {
         return this.patch(`forums/${id}`, data);
     }
 
-    getForumCategories(pagination = false) {
+    getForumCategories(pagination = false, sorting) {
+        let s = sorting;
+        let action;
         if (pagination) {
             let p = pagination;
-            return this.get(`forum-categories?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+            action = this.get(`forum-categories?page=${p.page}&sort=${s.sort}&order=${s.order}`);
         } else {
-            return this.get(`forum-categories?page=1&sort=name&order=ASC`);
+            action = this.get(`forum-categories?page=1&sort=${s.sort}&order=${s.order}`);
         }
+
+        return action.then(response => response.data)
+                        .then(response => {
+                            let forumCategories = response.data.map(fc => new ForumCategory(fc));
+                            let pagination = new Pagination(response);
+                            return { forumCategories, pagination };
+                        });
     }
 
-    getPublicForumCategories(pagination = false) {
+    getPublicForumCategories(pagination = false, sorting) {
+        let s = sorting;
+        let action;
         if (pagination) {
             let p = pagination;
-            return this.get(`forum-categories/public?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+            action = this.get(`forum-categories/public?page=${p.page}&sort=${s.sort}&order=${s.order}`);
         } else {
-            return this.get(`forum-categories/public?page=1&sort=position&order=ASC`);
+            action = this.get(`forum-categories/public?page=1&sort=${s.sort}&order=${s.order}`);
         }
+
+        return action.then(response => response.data)
+            .then(response => {
+                let forumCategories = response.data.map(fc => new ForumCategory(fc));
+                let pagination = new Pagination(response);
+                return { forumCategories, pagination };
+            });
     }
 
     getForumCategory(id) {

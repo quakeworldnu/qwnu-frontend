@@ -5,7 +5,7 @@
         <h2 v-if="header">{{header}}</h2>
         <div v-for="comment in comments" :key="comment.id">
           <div class="comment-date">
-            {{comment.create_time | formatUnixTimestamp}}
+            {{comment.create_time | formatTimestamp}}
             by {{comment.author.username}}
           </div>
           <div class="comment-content" v-html="bbCode(comment.content)"></div>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import Pagination from "@/models/Pagination"
+import Sorting from "@/models/Sorting"
 import CommentForm from "@/components/CommentForm"
 import CommentService from "@/services/CommentService"
 import { parseBbCode } from "@/helpers/BbCode"
@@ -57,14 +59,6 @@ export default {
             required: false
         }
     },
-    mounted() {
-        this.getComments()
-    },
-    watch: {
-        commentedPostProps(value) {
-            this.getComments()
-        }
-    },
     data() {
         return {
             comments: [],
@@ -72,14 +66,20 @@ export default {
                 message: null,
                 list: []
             },
-            pagination: {
-                page: 1,
+            pagination: new Pagination(),
+            sorting: new Sorting({
                 sort: "create_time",
                 order: "asc",
-                pageSize: 1,
-                totalRecords: 0
-            },
+            }),
             loading: false
+        }
+    },
+    mounted() {
+        this.getComments()
+    },
+    watch: {
+        commentedPostProps(value) {
+            this.getComments()
         }
     },
     methods: {
@@ -94,17 +94,20 @@ export default {
             if (this.type === "article") {
                 action = CommentService.getCommentsByArticle(
                     this.id,
-                    this.pagination
+                    this.pagination,
+                    this.sorting
                 )
             } else if (this.type === "blogPost") {
                 action = CommentService.getCommentsByBlogPost(
                     this.id,
-                    this.pagination
+                    this.pagination,
+                    this.sorting
                 )
             } else if (this.type === "forum") {
                 action = CommentService.getCommentsByForumTopic(
                     this.id,
-                    this.pagination
+                    this.pagination,
+                    this.sorting
                 )
             }
             return action
@@ -114,9 +117,8 @@ export default {
 
             action
                 .then(response => {
-                    this.comments = response.data.data
-                    this.pagination.totalRecords = response.data.total
-                    this.pagination.pageSize = response.data.per_page
+                    this.comments = response.comments
+                    this.pagination = response.pagination
                 })
                 .catch(error => {
                     console.log(error)

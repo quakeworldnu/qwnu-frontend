@@ -22,12 +22,12 @@
                                 </tr>
                                 <tr>
                                     <th>Location</th><td>{{user.profile.location}}</td>
-                                    <th>Registered</th><td>{{user.createtime | formatUnixTimestamp('YYYY-MM-DD')}}</td>
+                                    <th>Registered</th><td>{{user.createtime | formatTimestamp('YYYY-MM-DD')}}</td>
                                     <th></th><td></td>
                                 </tr>
                                 <tr>
                                     <th>Nationality</th><td>{{user.profile.nation ? user.profile.nation.name : ''}}</td>
-                                    <th>Last visit</th><td>{{user.lastvisit | formatUnixTimestamp('YYYY-MM-DD')}}</td>
+                                    <th>Last visit</th><td>{{user.lastvisit | formatTimestamp('YYYY-MM-DD')}}</td>
                                     <th></th><td></td>
                                 </tr>
                             </table>
@@ -103,8 +103,8 @@ export default {
         },
         getUser() {
             UserService.getUser(this.id)
-                .then(response => {
-                    this.user = response.data;
+                .then(user => {
+                    this.user = user;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch user.", error);

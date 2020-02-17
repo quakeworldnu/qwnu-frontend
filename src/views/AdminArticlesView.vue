@@ -14,35 +14,35 @@
                             <th class="col-1">
                                 <sort-button
                                     field="id"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getArticles()"
                                 >ID</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="title"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getArticles()"
                                 >Title</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="create_time"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getArticles()"
                                 >Date</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="author.username"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getArticles()"
                                 >Author</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
                                     field="status"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getArticles()"
                                 >Status</sort-button>
                             </th>
@@ -54,9 +54,9 @@
                                     {{article.title}}
                                 </router-link>
                             </td>
-                            <td class="col-3">{{article.create_time | formatUnixTimestamp}}</td>
+                            <td class="col-3">{{article.create_time | formatTimestamp}}</td>
                             <td class="col-3">{{article.author.username}}</td>
-                            <td class="col-2">{{getStatus(article.status)}}</td>
+                            <td class="col-2">{{article.statusName()}}</td>
                         </tr>
                     </thead>
                 </table>
@@ -74,50 +74,42 @@
 </template>
 
 <script>
-import ArticleService from "@/services/ArticleService"
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
+import ArticleService from "@/services/ArticleService";
 
 export default {
     name: "adminArticles",
     data() {
         return {
             articles: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination({
+                current_page: 1,
+                per_page: 1,
+                total: 0
+            }),
+            sorting: new Sorting({
                 sort: "create_time",
-                order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+                order: "desc"
+            })
         }
     },
     mounted() {
-        this.getArticles()
+        this.getArticles();
     },
     methods: {
         onPageChange() {
-            this.getArticles()
+            this.getArticles();
         },
         getArticles() {
-            ArticleService.getArticles(this.pagination)
+            ArticleService.getArticles(this.pagination, this.sorting)
                 .then(response => {
-                    this.articles = response.data.data
-                    this.pagination.totalRecords = response.data.total
-                    this.pagination.pageSize = response.data.per_page
+                    this.articles = response.articles;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch articles.", error)
+                    console.log("Error: Could not fetch articles.", error);
                 })
-        },
-        getStatus(status) {
-            if (status === 0) {
-                return "Deleted"
-            } else if (status === 1) {
-                return "Draft"
-            } else if (status === 2) {
-                return "Published"
-            } else {
-                return "Invalid value?"
-            }
         }
     }
 }

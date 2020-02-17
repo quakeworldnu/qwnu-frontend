@@ -1,4 +1,6 @@
 
+import Article from '@/models/Article';
+import Pagination from '@/models/Pagination';
 import BaseService from './BaseService';
 
 class ArticleService extends BaseService {
@@ -7,18 +9,35 @@ class ArticleService extends BaseService {
         super();
     }
 
-    getArticles(pagination) {
-        let p = pagination
-        return this.get(`articles?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    getArticles(pagination, sorting) {
+        let p = pagination;
+        let s = sorting;
+        return this.get(`articles?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let articles = response.data.map(a => new Article(a));
+                        let pagination = new Pagination(response);
+
+                        return { articles, pagination };
+                    });
     }
 
-    getPublishedArticles(pagination) {
-        let p = pagination
-        return this.get(`articles/published?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    getPublishedArticles(pagination, sorting) {
+        let p = pagination;
+        let s = sorting;
+        return this.get(`articles/published?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                   .then(response => response.data)
+                   .then(response => {
+                       let articles = response.data.map(a => new Article(a));
+                       let pagination = new Pagination(response);
+
+                       return { articles, pagination };
+                   });
     }
 
     getArticle(id) {
-        return this.get(`articles/${id}`);
+        return this.get(`articles/${id}`)
+                   .then(response => new Article(response.data));
     }
 
     deleteArticle(id) {

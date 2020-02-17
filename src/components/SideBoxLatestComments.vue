@@ -10,7 +10,7 @@
           <router-link :to="link(comment)">{{getTitle(comment)}}</router-link>
           <span
             class="box-content-record-info"
-          >{{comment.create_time | formatUnixTimestamp('fromNow') }} in {{comment.type}}</span>
+          >{{comment.create_time | formatTimestamp('fromNow') }} in {{comment.type}}</span>
           <span class="box-content-record-author">
             <router-link :to="{name: 'user', params: {id: comment.author.id}}">
                 {{comment.author.username}}
@@ -41,7 +41,7 @@ export default {
         getComments() {
             CommentService.getLatestComments()
                 .then(response => {
-                    this.comments = response.data.data
+                    this.comments = response.comments
                 })
                 .catch(error => {
                     this.error = "Could not fetch latest comments."

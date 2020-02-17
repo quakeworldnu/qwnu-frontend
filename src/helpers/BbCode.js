@@ -71,3 +71,5 @@ export const parseBbCode = (content) => {
 
     return content;
 }
+
+export default parseBbCode;

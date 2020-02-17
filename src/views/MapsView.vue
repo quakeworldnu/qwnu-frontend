@@ -13,21 +13,21 @@
                     <th style="width: 60px;">
                         <sort-button
                             field="name"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Name</sort-button>
                     </th>
                     <th>
                         <sort-button
                             field="description"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Description</sort-button>
                     </th>
                     <th style="width: 80px;">
                         <sort-button
                             field="mod"
-                            :pagination="pagination"
+                            :sorting="sorting"
                             @changed="onPageChange()"
                         >Type</sort-button>
                     </th>
@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
 import MapService from "@/services/MapService";
 import lodash from 'lodash';
 
@@ -63,13 +65,15 @@ export default {
         return {
             loading: false,
             maps: [],
-            pagination: {
-                page: parseInt(this.$route.query.page) || 1,
+            pagination: new Pagination({
+                current_page: parseInt(this.$route.query.page) || 1,
+                per_page: 1,
+                total: 0
+            }),
+            sorting: new Sorting({
                 sort: this.$route.query.sort || "create_time",
                 order: this.$route.query.order || "desc",
-                pageSize: 1,
-                totalRecords: 0
-            },
+            }),
             keyword: this.$route.query.keyword || ""
         };
     },
@@ -98,15 +102,14 @@ export default {
             this.$router.push({
                 name: "maps",
                 query: query
-            });
+            }).catch(error => {});
         },
         getSearchedMaps() {
             this.loading = true;
-            return MapService.getMapsBySearch(this.keyword, this.pagination)
+            return MapService.getMapsBySearch(this.keyword, this.pagination, this.sorting)
                 .then(response => {
-                    this.maps = response.data.data;
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
+                    this.maps = response.maps;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch searched maps.", error);

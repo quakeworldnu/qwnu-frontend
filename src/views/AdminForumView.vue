@@ -101,6 +101,7 @@
 
 <script>
 import ForumService from "@/services/ForumService"
+import Sorting from "@/models/Sorting"
 
 export default {
     name: "adminForum",
@@ -116,7 +117,11 @@ export default {
                 message: null,
                 list: []
             },
-            forumCategories: []
+            forumCategories: [],
+            sorting: new Sorting({
+                sort: "name",
+                order: "asc"
+            })
         }
     },
     mounted() {
@@ -183,9 +188,9 @@ export default {
                 })
         },
         getForumCategories() {
-            ForumService.getForumCategories()
+            ForumService.getForumCategories(false, this.sorting)
                 .then(response => {
-                    this.forumCategories = response.data.data;
+                    this.forumCategories = response.forumCategories;
                 })
                 .catch(error => {
                     console.log(error);

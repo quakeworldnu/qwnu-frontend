@@ -1,7 +1,8 @@
+import Comment from '@/models/Comment';
+import Pagination from '@/models/Pagination';
 import BaseService from './BaseService';
 
 class CommentService extends BaseService {
-
     constructor() {
         super();
     }
@@ -22,32 +23,72 @@ class CommentService extends BaseService {
         return this.delete(`comments/${id}`);
     }
 
-    getCommentsByArticle(id, pagination) {
+    getCommentsByArticle(id, pagination, sorting) {
         let p = pagination;
-        return this.get(`articles/${id}/comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting;
+        return this.get(`articles/${id}/comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
     }
 
-    getCommentsByBlogPost(id, pagination) {
+    getCommentsByBlogPost(id, pagination, sorting) {
         let p = pagination;
-        return this.get(`blog-posts/${id}/comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting;
+        return this.get(`blog-posts/${id}/comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
     }
 
-    getCommentsByForumTopic(id, pagination) {
+    getCommentsByForumTopic(id, pagination, sorting) {
         let p = pagination;
-        return this.get(`forum-topics/${id}/comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting;
+        return this.get(`forum-topics/${id}/comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
     }
 
     getComment(id) {
-        return this.get(`comments/${id}`);
+        return this.get(`comments/${id}`)
+                    .then(response => new Comment(response.data));
     }
 
-    getComments(pagination) {
+    getComments(pagination, sorting) {
         let p = pagination;
-        return this.get(`comments?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting;
+        return this.get(`comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
     }
 
     getLatestComments() {
-        return this.get(`comments/latest`);
+        return this.get(`comments/latest`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
     }
 
     updateComment(id, data) {

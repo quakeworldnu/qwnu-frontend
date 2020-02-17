@@ -9,35 +9,35 @@
                             <th class="col-1">
                                 <sort-button
                                     field="id"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getComments()"
                                 >ID</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="create_time"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getComments()"
                                 >Date</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
                                     field="author.username"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getComments()"
                                 >Author</sort-button>
                             </th>
                             <th class="col-5">
                                 <sort-button
                                     field="type"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getComments()"
                                 >Type</sort-button>
                             </th>
                             <th class="col-1">
                                 <sort-button
                                     field="status"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getComments()"
                                 >Ok?</sort-button>
                             </th>
@@ -46,7 +46,7 @@
                     <tbody v-for="comment in comments" :key="comment.id">
                         <tr class="comment-row d-flex">
                             <td class="col-1">{{comment.id}}</td>
-                            <td class="col-3">{{comment.create_time | formatUnixTimestamp}}</td>
+                            <td class="col-3">{{comment.create_time | formatTimestamp}}</td>
                             <td class="col-2">{{comment.author.username}}</td>
                             <td class="col-5">{{comment.type}} / {{getCommentableTitle(comment)}}</td>
                             <td class="col-1">
@@ -76,6 +76,8 @@
 
 <script>
 import CommentService from "@/services/CommentService"
+import Pagination from "@/models/Pagination"
+import Sorting from "@/models/Sorting"
 import { parseBbCode } from "@/helpers/BbCode"
 
 export default {
@@ -83,13 +85,11 @@ export default {
     data() {
         return {
             comments: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination(),
+            sorting: new Sorting({
                 sort: "create_time",
-                order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+                order: "desc"
+            })
         }
     },
     mounted() {
@@ -103,17 +103,20 @@ export default {
             this.getComments()
         },
         getComments() {
-            CommentService.getComments(this.pagination)
+            CommentService.getComments(this.pagination, this.sorting)
                 .then(response => {
-                    this.comments = response.data.data
-                    this.pagination.totalRecords = response.data.total
-                    this.pagination.pageSize = response.data.per_page
+                    this.comments = response.comments
+                    this.pagination = response.pagination
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch comments.", error)
                 })
         },
         getCommentableTitle(comment) {
+            if (!comment.commentable) {
+                return "Undefined";
+            }
+
             var title;
             switch (comment.type) {
                 case "news":

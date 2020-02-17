@@ -14,35 +14,35 @@
                             <th class="col-1">
                                 <sort-button
                                     field="id"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getUsers()"
                                 >ID</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="username"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getUsers()"
                                 >Username</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="createtime"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getUsers()"
                                 >Registration date</sort-button>
                             </th>
                             <th class="col-3">
                                 <sort-button
                                     field="lastvisit"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getUsers()"
                                 >Last visit</sort-button>
                             </th>
                             <th class="col-2">
                                 <sort-button
                                     field="status"
-                                    :pagination="pagination"
+                                    :sorting="sorting"
                                     @changed="getUsers()"
                                 >Status</sort-button>
                             </th>
@@ -54,8 +54,8 @@
                                     :to="{name: 'adminEditUser', params: {id: user.id}}"
                                 >{{user.username}}</router-link>
                             </td>
-                            <td class="col-3">{{user.createtime | formatUnixTimestamp}}</td>
-                            <td class="col-3">{{user.lastvisit | formatUnixTimestamp}}</td>
+                            <td class="col-3">{{user.createtime | formatTimestamp}}</td>
+                            <td class="col-3">{{user.lastvisit | formatTimestamp}}</td>
                             <td class="col-2">{{getStatus(user.status)}}</td>
                         </tr>
                     </thead>
@@ -74,49 +74,52 @@
 </template>
 
 <script>
-import UserService from "@/services/UserService"
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
+import UserService from "@/services/UserService";
 
 export default {
     name: "adminUsers",
     data() {
         return {
             users: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination({
+                current_page: 1,
+                per_page: 1,
+                total: 0
+            }),
+            sorting: new Sorting({
                 sort: "id",
                 order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+            })
         }
     },
     mounted() {
-        this.getUsers()
+        this.getUsers();
     },
     methods: {
         onPageChange() {
-            this.getUsers()
+            this.getUsers();
         },
         getUsers() {
-            UserService.getUsers(this.pagination)
+            UserService.getUsers(this.pagination, this.sorting)
                 .then(response => {
-                    this.users = response.data.data
-                    this.pagination.totalRecords = response.data.total
-                    this.pagination.pageSize = response.data.per_page
+                    this.users = response.users;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch users.", error)
+                    console.log("Error: Could not fetch users.", error);
                 })
         },
         getStatus(status) {
             if (status === -1) {
-                return "Banned"
+                return "Banned";
             } else if (status === 0) {
-                return "Inactive"
+                return "Inactive";
             } else if (status === 1) {
-                return "Active"
+                return "Active";
             } else {
-                return "Invalid value?"
+                return "Invalid value?";
             }
         }
     }

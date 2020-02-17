@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Roles</label>
-                            <div v-for="role in roles" :key="role.id">
+                            <div v-for="role in roles" :key="role.id" class="mr-2">
                                 <input type="checkbox" :value="role" v-model="user.roles"/> {{role.name}}
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                 type="text"
                                 class="col-sm-4 form-control form-control-sm"
                                 placeholder="Created"
-                                :value="user.createtime | formatUnixTimestamp"
+                                :value="user.createtime | formatTimestamp"
                                 disabled="true"
                             >
                             <small class="col-sm-4" v-if="error.list.createtime">{{error.list.createtime[0]}}</small>
@@ -77,7 +77,7 @@
                                 type="text"
                                 class="col-sm-4 form-control form-control-sm"
                                 placeholder="Last visit"
-                                :value="user.lastvisit | formatUnixTimestamp"
+                                :value="user.lastvisit | formatTimestamp"
                                 disabled="true"
                             >
                             <small class="col-sm-4" v-if="error.list.lastvisit">{{error.list.lastvisit[0]}}</small>
@@ -137,8 +137,8 @@ export default {
     methods: {
         getUser() {
             UserService.getUser(this.id)
-                .then(response => {
-                    this.user = response.data
+                .then(user => {
+                    this.user = user
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch user.", error)

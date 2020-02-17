@@ -1,4 +1,6 @@
 
+import Map from '@/models/Map';
+import Pagination from '@/models/Pagination';
 import BaseService from './BaseService';
 
 class MapService extends BaseService {
@@ -8,13 +10,21 @@ class MapService extends BaseService {
     }
 
     getMaps(pagination) {
-        let p = pagination
+        let p = pagination;
         return this.get(`maps?page=${p.page}&sort=${p.sort}&order=${p.order}`);
     }
 
-    getMapsBySearch(keyword, pagination) {
-        let p = pagination
-        return this.get(`maps/search?keyword=${keyword}&page=${p.page}&sort=${p.sort}&order=${p.order}`);
+    getMapsBySearch(keyword, pagination, sorting) {
+        let p = pagination;
+        let s = sorting;
+        return this.get(`maps/search?keyword=${keyword}&page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let maps = response.data.map(m => new Map(m));
+                        let pagination = new Pagination(response);
+
+                        return { maps, pagination };
+                    });
     }
 
     getMap(id) {

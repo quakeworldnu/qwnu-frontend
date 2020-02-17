@@ -62,14 +62,15 @@
                                     v-for="category in categories"
                                     :key="category.id"
                                     :value="category.id"
+                                    :selected="article.category === category"
                                 >
                                     {{category.name}}
                                 </option>
                             </select>
                             <small
                                 class="col-sm-4"
-                                v-if="error.list.category"
-                            >{{error.list.status[0]}}</small>
+                                v-if="error.list.category_id"
+                            >{{error.list.category_id[0]}}</small>
                         </div>
 
                         <button
@@ -84,7 +85,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
-                            v-if="!isNew && $can('delete_article')"
+                            v-if="!article.isNew && $can('delete_article')"
                             icon="fa-trash"
                             text="Really delete this article?"
                             @confirm="deleteArticle()"
@@ -97,8 +98,9 @@
 </template>
 
 <script>
-import ArticleService from "@/services/ArticleService"
-import CategoryService from "@/services/CategoryService"
+import Article from "@/models/Article";
+import ArticleService from "@/services/ArticleService";
+import CategoryService from "@/services/CategoryService";
 
 export default {
     name: "adminArticle",
@@ -108,8 +110,7 @@ export default {
     data() {
         return {
             loading: false,
-            article: {
-            },
+            article: new Article({}),
             error: {
                 message: null,
                 list: []
@@ -119,77 +120,72 @@ export default {
     },
     mounted() {
         if (this.id) {
-            this.getArticle()
+            this.getArticle();
         }
         this.getCategories();
     },
     methods: {
         getArticle() {
             ArticleService.getArticle(this.id)
-                .then(response => {
-                    this.article = response.data
+                .then(article => {
+                    this.article = article;
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch article.", error)
+                    console.log("Error: Could not fetch article.", error);
                 })
         },
         saveArticle() {
             this.loading = true
 
-            if (this.article.id) {
-                this.updateArticle();
-            } else {
+            if (this.article.isNew) {
                 this.createArticle();
+            } else {
+                this.updateArticle();
             }
         },
         updateArticle() {
             ArticleService.updateArticle(this.article.id, this.article)
                 .then(response => {
-                    console.log("Success!")
+                    console.log("Success!");
                 })
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
                     console.log("Could not update article.")
                 })
-                .finally(() => (this.loading = false))
+                .finally(() => (this.loading = false));
         },
         createArticle() {
             ArticleService.createArticle(this.article)
                 .then(response => {
-                    console.log("Success!")
+                    console.log("Success!");
                 })
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create article.")
+                    console.log("Could not create article.");
                 })
                 .finally(() => (this.loading = false))
         },
         deleteArticle() {
             ArticleService.deleteArticle(this.article.id)
                 .then(response => {
-                    this.$router.push({ path: "/admin/articles" })
+                    this.$router.push({ path: "/admin/articles" });
                 })
                 .catch(error => {
-                    console.log(error)
-                    console.log("Could not delete article.")
+                    console.log(error);
+                    console.log("Could not delete article.");
                 })
         },
         getCategories() {
             CategoryService.getCategories()
-                .then(response => {
-                    this.categories = response.data;
+                .then(categories => {
+                    this.categories = categories;
                 })
                 .catch(error => {
                     console.log(error);
-                    console.log("Could not fetch categories.")
+                    console.log("Could not fetch categories.");
                 })
-        }
-    },
-    computed: {
-        isNew() {
-            return this.article.id === null;
         }
     }
 }

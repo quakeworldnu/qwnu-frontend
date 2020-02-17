@@ -1,3 +1,5 @@
+import Pagination from '@/models/Pagination';
+import User from '@/models/User';
 import BaseService from './BaseService';
 
 class UserService extends BaseService {
@@ -18,7 +20,9 @@ class UserService extends BaseService {
     }
 
     getUser(id) {
-        return this.get(`users/${id}`);
+        return this.get(`users/${id}`).then(
+            response => new User(response.data)
+        );
     }
 
     createUser(data) {
@@ -33,14 +37,30 @@ class UserService extends BaseService {
         return this.delete(`users/${id}`);
     }
 
-    getUsers(pagination) {
+    getUsers(pagination, sorting) {
         let p = pagination;
-        return this.get(`users?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting;
+        return this.get(`users?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let users = response.data.map(u => new User(u));
+                        let pagination = new Pagination(response);
+
+                        return { users, pagination };
+                    });
     }
 
-    getUsersBySearch(keyword, pagination) {
+    getUsersBySearch(keyword, pagination, sorting) {
         let p = pagination
-        return this.get(`users/search?keyword=${keyword}&page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        let s = sorting
+        return this.get(`users/search?keyword=${keyword}&page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let users = response.data.map(u => new User(u));
+                        let pagination = new Pagination(response);
+
+                        return { users, pagination };
+                    });
     }
 }
 

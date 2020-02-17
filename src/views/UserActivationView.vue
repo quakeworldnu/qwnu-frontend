@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import UserService from "@/services/UserService"
 
 export default {

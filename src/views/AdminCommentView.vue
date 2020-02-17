@@ -24,7 +24,7 @@
                                 type="text"
                                 class="col-sm-4 form-control form-control-sm"
                                 placeholder="Created date"
-                                v-model="comment.create_time"
+                                :value="comment.create_time | formatTimestamp"
                                 disabled="true"
                                 required="true"
                             >
@@ -37,7 +37,7 @@
                                 type="text"
                                 class="col-sm-4 form-control form-control-sm"
                                 placeholder="Created date"
-                                v-model="comment.update_time"
+                                :value="comment.update_time | formatTimestamp"
                                 disabled="true"
                                 required="true"
                             >
@@ -119,8 +119,8 @@ export default {
     methods: {
         getComment() {
             CommentService.getComment(this.id)
-                .then(response => {
-                    this.comment = response.data
+                .then(comment => {
+                    this.comment = comment
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch comment.", error)

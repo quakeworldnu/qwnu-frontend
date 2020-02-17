@@ -6,9 +6,9 @@
                 <h1><router-link :to="{name: 'article', params: {id: article.id}}">{{article.title}}</router-link></h1>
                 <span class="box-content-info">
                     <router-link :to="{name: 'user', params: {id: article.author.id}}">{{article.author.username}}</router-link> /
-                    {{article.create_time | formatUnixTimestamp}}
+                    {{article.create_time | formatTimestamp}}
                 </span>
-                <div class="box-content-body" v-html="article.content"></div>
+                <div class="box-content-body" v-html="article.contentBbCode()"></div>
                 <div class="box-content-footer">
                     <i class="fas fa-comments mr-2"></i>
                     <router-link :to="{name: 'article', params: {id: article.id}}">{{article.comments_count}}</router-link>
@@ -25,21 +25,25 @@
 </template>
 
 <script>
+import Article from "@/models/Article";
+import Pagination from "@/models/Pagination";
+import Sorting from "@/models/Sorting";
 import ArticleService from "@/services/ArticleService";
-import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "home",
     data() {
         return {
             articles: [],
-            pagination: {
-                page: 1,
+            pagination: new Pagination({
+                current_page: 1,
+                per_page: 1,
+                total: 0
+            }),
+            sorting: new Sorting({
                 sort: "create_time",
                 order: "desc",
-                pageSize: 1,
-                totalRecords: 0
-            }
+            })
         }
     },
     mounted() {
@@ -50,15 +54,10 @@ export default {
             this.getArticles();
         },
         getArticles() {
-            ArticleService.getPublishedArticles(this.pagination)
+            ArticleService.getPublishedArticles(this.pagination, this.sorting)
                 .then(response => {
-                    this.articles = response.data.data;
-                    this.pagination.totalRecords = response.data.total;
-                    this.pagination.pageSize = response.data.per_page;
-
-                    for (let i = 0; i < this.articles.length; i++) {
-                        this.articles[i].content = parseBbCode(this.articles[i].content);
-                    }
+                    this.articles = response.articles;
+                    this.pagination = response.pagination;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch articles.", error);
