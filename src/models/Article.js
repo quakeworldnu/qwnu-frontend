@@ -15,7 +15,7 @@ export class Article {
         title,
         create_time,
         update_time,
-        status
+        status = 2 // 2 = Published
     } = {}) {
         this.id = id;
         this.author = author ? new User(author) : null;

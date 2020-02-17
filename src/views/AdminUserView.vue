@@ -109,6 +109,7 @@
 <script>
 import AuthService from "@/services/AuthService"
 import UserService from "@/services/UserService"
+import User from "@/models/User"
 
 export default {
     name: "adminUser",
@@ -118,9 +119,7 @@ export default {
     data() {
         return {
             loading: false,
-            user: {
-                roles: []
-            },
+            user: new User(),
             roles: [],
             error: {
                 message: null,

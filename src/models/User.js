@@ -8,15 +8,15 @@ export class User {
         username,
         createtime,
         lastvisit,
-        status,
+        status = 1, // 1 = Active
         superuser,
         profile = {},
         roles = []
     } = {}) {
         this.id = id;
         this.username = username;
-        this.createtime = moment.unix(createtime);
-        this.lastvisit = moment.unix(lastvisit);
+        this.createtime = createtime ? moment.unix(createtime) : null;
+        this.lastvisit = lastvisit ? moment.unix(lastvisit) : null;
         this.status = status;
         this.superuser = superuser;
         this.profile = new Profile(profile);
