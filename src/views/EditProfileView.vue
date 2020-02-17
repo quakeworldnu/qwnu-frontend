@@ -180,7 +180,6 @@ export default {
         getUser() {
             UserService.getUser(this.$currentUser.id)
                 .then(user => {
-                    console.log(user);
                     this.user = user
                 })
                 .catch(error => {
