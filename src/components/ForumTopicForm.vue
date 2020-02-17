@@ -44,6 +44,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import ForumService from "@/services/ForumService"
+import ForumTopic from "@/models/ForumTopic"
 
 export default {
     name: "ForumTopicForm",
@@ -55,11 +56,7 @@ export default {
     },
     data() {
         return {
-            forumTopic: {
-                comment: {
-                    content: ''
-                }
-            },
+            forumTopic: new ForumTopic(),
             errors: [],
             loading: false
         }

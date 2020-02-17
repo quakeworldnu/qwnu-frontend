@@ -34,7 +34,6 @@
 <script>
 import ArticleService from "@/services/ArticleService"
 import CommentList from "@/components/CommentList"
-import Article from "@/models/Article"
 
 export default {
     name: "ArticleView",

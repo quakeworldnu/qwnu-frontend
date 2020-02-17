@@ -72,6 +72,7 @@
 
 <script>
 import ForumService from "@/services/ForumService"
+import ForumCategory from "@/models/ForumCategory"
 
 export default {
     name: "adminForumCategory",
@@ -81,8 +82,7 @@ export default {
     data() {
         return {
             loading: false,
-            forumCategory: {
-            },
+            forumCategory: new ForumCategory(),
             error: {
                 message: null,
                 list: []

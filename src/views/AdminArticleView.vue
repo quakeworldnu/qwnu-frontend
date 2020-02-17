@@ -110,7 +110,7 @@ export default {
     data() {
         return {
             loading: false,
-            article: new Article({}),
+            article: new Article(),
             error: {
                 message: null,
                 list: []

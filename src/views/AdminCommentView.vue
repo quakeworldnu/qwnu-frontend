@@ -101,9 +101,7 @@ export default {
     data() {
         return {
             loading: false,
-            comment: {
-                author: {}
-            },
+            comment: null,
             error: {
                 message: null,
                 list: []

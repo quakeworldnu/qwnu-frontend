@@ -157,6 +157,7 @@
 import { mapActions, mapGetters } from "vuex"
 import UserService from "@/services/UserService"
 import { parseBbCode } from "@/helpers/BbCode"
+import User from "@/models/User"
 
 export default {
     name: "editProfile",
@@ -165,9 +166,7 @@ export default {
             errors: {
                 profile: {}
             },
-            user: {
-                profile: {}
-            }
+            user: new User()
         }
     },
     mounted() {

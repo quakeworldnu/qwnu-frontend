@@ -102,6 +102,7 @@
 <script>
 import ForumService from "@/services/ForumService"
 import Sorting from "@/models/Sorting"
+import Forum from "@/models/Forum"
 
 export default {
     name: "adminForum",
@@ -111,8 +112,7 @@ export default {
     data() {
         return {
             loading: false,
-            forum: {
-            },
+            forum: new Forum(),
             error: {
                 message: null,
                 list: []

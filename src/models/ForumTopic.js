@@ -1,3 +1,4 @@
+import Comment from "@/models/Comment";
 import User from '@/models/User';
 import moment from 'moment';
 
@@ -16,6 +17,7 @@ export class ForumTopic {
         sticky,
         type,
         forum_id,
+        comment,
         comment_id,
         last_author
     } = {}) {
@@ -33,6 +35,7 @@ export class ForumTopic {
         this.type = type;
         this.forum_id = forum_id;
         this.comment_id = comment_id;
+        this.comment = new Comment(comment);
         this.last_author = new User(last_author);
     }
 }
