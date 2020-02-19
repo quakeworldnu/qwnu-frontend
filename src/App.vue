@@ -39,9 +39,6 @@
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/maps">Maps</router-link>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://wiki.quakeworld.nu">Wiki</a>
-                            </li>
                             <!-- <li class="nav-item dropdown">
                                 <a
                                     class="nav-link dropdown-toggle"
@@ -67,6 +64,9 @@
                             </li>
                             <li class="nav-item">
                                 <router-link class="nav-link" to="/register">Register</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://wiki.quakeworld.nu">Wiki <i class="fas fa-external-link-alt"/></a>
                             </li>
                         </ul>
                         <!--
