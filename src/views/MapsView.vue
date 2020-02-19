@@ -57,7 +57,7 @@
 import Pagination from "@/models/Pagination";
 import Sorting from "@/models/Sorting";
 import MapService from "@/services/MapService";
-import lodash from 'lodash';
+import _ from 'lodash';
 
 export default {
     name: "Maps",
@@ -66,9 +66,7 @@ export default {
             loading: false,
             maps: [],
             pagination: new Pagination({
-                current_page: parseInt(this.$route.query.page) || 1,
-                per_page: 1,
-                total: 0
+                current_page: parseInt(this.$route.query.page) || 1
             }),
             sorting: new Sorting({
                 sort: this.$route.query.sort || "create_time",
@@ -90,7 +88,7 @@ export default {
                 this.$router.push({
                     name: "maps",
                     query: query
-                });
+                }).catch(error => {});
             });
         }, 1000),
         onPageChange() {
