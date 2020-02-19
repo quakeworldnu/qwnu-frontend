@@ -67,6 +67,7 @@
 import Pagination from "@/models/Pagination";
 import Sorting from "@/models/Sorting";
 import UserService from "@/services/UserService";
+import _ from 'lodash';
 
 export default {
     name: "Users",
@@ -74,7 +75,7 @@ export default {
         return {
             users: [],
             pagination: new Pagination({
-                page: parseInt(this.$route.query.page) || 1
+                current_page: parseInt(this.$route.query.page) || 1
             }),
             sorting: new Sorting({
                 sort: this.$route.query.sort || "createtime",
@@ -96,7 +97,7 @@ export default {
                 this.$router.push({
                     name: "users",
                     query: query
-                });
+                }).catch(error => {});
             });
         }, 1000),
         onPageChange() {
@@ -108,7 +109,7 @@ export default {
             this.$router.push({
                 name: "users",
                 query: query
-            });
+            }).catch(error => {});
         },
         getFlag(user) {
             if (user.profile.nation) {
