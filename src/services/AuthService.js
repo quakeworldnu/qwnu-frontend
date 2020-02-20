@@ -1,3 +1,4 @@
+import Role from '@/models/Role';
 import BaseService from './BaseService';
 
 class AuthService extends BaseService {
@@ -14,7 +15,12 @@ class AuthService extends BaseService {
     }
 
     getRoles() {
-        return this.get('roles');
+        return this.get('roles')
+                    .then(response => response.data)
+                    .then(response => {
+                        let roles = response.data.map(r => new Role(r));
+                        return roles;
+                    });
     }
 
     sendPasswordResetRequest(data) {

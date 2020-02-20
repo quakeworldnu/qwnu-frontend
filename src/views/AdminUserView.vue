@@ -137,7 +137,7 @@ export default {
         getUser() {
             UserService.getUser(this.id)
                 .then(user => {
-                    this.user = user
+                    this.user = user;
                 })
                 .catch(error => {
                     console.log("Error: Could not fetch user.", error)
@@ -188,8 +188,8 @@ export default {
         },
         getRoles() {
             AuthService.getRoles()
-                .then(response => {
-                    this.roles = response.data.data;
+                .then(roles => {
+                    this.roles = roles;
                 })
                 .catch(error => {
                     console.log(error);
