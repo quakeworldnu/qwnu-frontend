@@ -59,6 +59,9 @@ export default {
                 case "blog":
                     title = comment.commentable.title
                     break
+                case "config":
+                    title = comment.commentable.title
+                    break
                 case "forum":
                     title = comment.commentable.name
                     break
@@ -74,6 +77,12 @@ export default {
                 case "blog":
                     link = {
                         name: "blogPost",
+                        params: { id: comment.post_id }
+                    }
+                    break
+                case "config":
+                    link = {
+                        name: "config",
                         params: { id: comment.post_id }
                     }
                     break

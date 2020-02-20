@@ -15,6 +15,9 @@ import AdminUserView from './views/AdminUserView.vue';
 import ArticleView from './views/ArticleView.vue';
 import BlogPostsView from './views/BlogPostsView.vue';
 import BlogPostView from './views/BlogPostView.vue';
+import ConfigsView from './views/ConfigsView.vue';
+import ConfigView from './views/ConfigView.vue';
+import EditConfigView from './views/EditConfigView.vue';
 import EditProfileView from './views/EditProfileView.vue';
 import ForgotPasswordView from './views/ForgotPasswordView.vue';
 import ForumsView from './views/ForumsView.vue';
@@ -83,214 +86,231 @@ function checkPermission(to, from, next) {
 }
 
 export default new Router({
-    mode: 'history',
+    mode: "history",
     base: process.env.BASE_URL,
     scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 }
+        return { x: 0, y: 0 };
     },
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: HomeView,
+            path: "/",
+            name: "home",
+            component: HomeView
         },
         {
-            path: '/blog-post/:id',
-            name: 'blogPost',
+            path: "/blog-post/:id",
+            name: "blogPost",
             component: BlogPostView,
             props: true
         },
         {
-            path: '/blog-posts',
-            name: 'blogPosts',
-            component: BlogPostsView,
+            path: "/blog-posts",
+            name: "blogPosts",
+            component: BlogPostsView
         },
         {
-            path: '/about',
-            name: 'about',
+            path: "/config/edit/:id?",
+            name: "editConfig",
+            component: EditConfigView,
+            props: true
+        },
+        {
+            path: "/config/:id",
+            name: "config",
+            component: ConfigView,
+            props: true
+        },
+        {
+            path: "/configs",
+            name: "configs",
+            component: ConfigsView
+        },
+        {
+            path: "/about",
+            name: "about",
             component: AboutView
         },
         {
-            path: '/register',
-            name: 'register',
-            component: RegisterView,
+            path: "/register",
+            name: "register",
+            component: RegisterView
         },
         {
-            path: '/forgot-password',
-            name: 'forgotPassword',
-            component: ForgotPasswordView,
+            path: "/forgot-password",
+            name: "forgotPassword",
+            component: ForgotPasswordView
         },
         {
-            path: '/password-reset',
-            name: 'passwordReset',
-            component: PasswordResetView,
+            path: "/password-reset",
+            name: "passwordReset",
+            component: PasswordResetView
         },
         {
-            path: '/articles/:id',
-            name: 'article',
+            path: "/articles/:id",
+            name: "article",
             component: ArticleView,
             props: true
         },
         {
-            path: '/forums',
-            name: 'forums',
+            path: "/forums",
+            name: "forums",
             component: ForumsView
         },
         {
-            path: '/forums/:id',
-            name: 'forum',
+            path: "/forums/:id",
+            name: "forum",
             component: ForumView,
             props: true
         },
         {
-            path: '/forums/:id/new-topic',
-            name: 'forumTopicCreate',
+            path: "/forums/:id/new-topic",
+            name: "forumTopicCreate",
             component: ForumTopicCreateView,
             props: true
         },
         {
-            path: '/forum-topics/:id',
-            name: 'forumTopic',
+            path: "/forum-topics/:id",
+            name: "forumTopic",
             component: ForumTopicView,
             props: true
         },
         {
-            path: '/maps',
-            name: 'maps',
+            path: "/maps",
+            name: "maps",
             component: MapsView
         },
         {
-            path: '/maps/:id',
-            name: 'map',
+            path: "/maps/:id",
+            name: "map",
             component: MapView,
             props: true
         },
         {
-            path: '/users',
-            name: 'users',
+            path: "/users",
+            name: "users",
             component: UsersView
         },
         {
-            path: '/users/:id',
-            name: 'user',
+            path: "/users/:id",
+            name: "user",
             component: UserView,
             props: true
         },
         {
-            path: '/users/activate/:email/:token',
-            name: 'user-activation',
+            path: "/users/activate/:email/:token",
+            name: "user-activation",
             component: UserActivationView,
             props: true
         },
         {
-            path: '/admin/article',
-            name: 'adminCreateArticle',
+            path: "/admin/article",
+            name: "adminCreateArticle",
             component: AdminArticleView,
-            meta: {permissionRequired: 'create_article'},
+            meta: { permissionRequired: "create_article" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/article/:id',
-            name: 'adminEditArticle',
+            path: "/admin/article/:id",
+            name: "adminEditArticle",
             component: AdminArticleView,
             props: true,
-            meta: {permissionRequired: 'edit_article'},
+            meta: { permissionRequired: "edit_article" },
             beforeEnter: checkPermission
         },
         {
-            path: '/profile/edit',
-            name: 'editProfile',
+            path: "/profile/edit",
+            name: "editProfile",
             component: EditProfileView,
-            meta: {permissionRequired: 'edit_user_profile'},
+            meta: { permissionRequired: "edit_user_profile" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/articles',
-            name: 'adminArticles',
+            path: "/admin/articles",
+            name: "adminArticles",
             component: AdminArticlesView,
-            meta: {permissionRequired: 'list_articles'},
+            meta: { permissionRequired: "list_articles" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/users',
-            name: 'adminUsers',
+            path: "/admin/users",
+            name: "adminUsers",
             component: AdminUsersView,
-            meta: {permissionRequired: 'list_users'},
+            meta: { permissionRequired: "list_users" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/user',
-            name: 'adminCreateUser',
+            path: "/admin/user",
+            name: "adminCreateUser",
             component: AdminUserView,
-            meta: {permissionRequired: 'create_user'},
+            meta: { permissionRequired: "create_user" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/user/:id',
-            name: 'adminEditUser',
+            path: "/admin/user/:id",
+            name: "adminEditUser",
             component: AdminUserView,
             props: true,
-            meta: {permissionRequired: 'edit_user'},
+            meta: { permissionRequired: "edit_user" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/comments',
-            name: 'adminComments',
+            path: "/admin/comments",
+            name: "adminComments",
             component: AdminCommentsView,
-            meta: {permissionRequired: 'list_comments'},
+            meta: { permissionRequired: "list_comments" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/comment/:id',
-            name: 'adminEditComment',
+            path: "/admin/comment/:id",
+            name: "adminEditComment",
             component: AdminCommentView,
             props: true,
-            meta: {permissionRequired: 'edit_comment'},
+            meta: { permissionRequired: "edit_comment" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forum-categories',
-            name: 'adminForumCategories',
+            path: "/admin/forum-categories",
+            name: "adminForumCategories",
             component: AdminForumCategoriesView,
-            meta: {permissionRequired: 'list_forum_categories'},
+            meta: { permissionRequired: "list_forum_categories" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forum-category',
-            name: 'adminCreateForumCategory',
+            path: "/admin/forum-category",
+            name: "adminCreateForumCategory",
             component: AdminForumCategoryView,
-            meta: {permissionRequired: 'create_forum_category'},
+            meta: { permissionRequired: "create_forum_category" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forum-category/:id',
-            name: 'adminEditForumCategory',
+            path: "/admin/forum-category/:id",
+            name: "adminEditForumCategory",
             component: AdminForumCategoryView,
             props: true,
-            meta: {permissionRequired: 'edit_forum_category'},
+            meta: { permissionRequired: "edit_forum_category" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forums',
-            name: 'adminForums',
+            path: "/admin/forums",
+            name: "adminForums",
             component: AdminForumsView,
-            meta: {permissionRequired: 'list_forums'},
+            meta: { permissionRequired: "list_forums" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forum',
-            name: 'adminCreateForum',
+            path: "/admin/forum",
+            name: "adminCreateForum",
             component: AdminForumView,
-            meta: {permissionRequired: 'create_forum'},
+            meta: { permissionRequired: "create_forum" },
             beforeEnter: checkPermission
         },
         {
-            path: '/admin/forum/:id',
-            name: 'adminEditForum',
+            path: "/admin/forum/:id",
+            name: "adminEditForum",
             component: AdminForumView,
             props: true,
-            meta: {permissionRequired: 'edit_forum'},
+            meta: { permissionRequired: "edit_forum" },
             beforeEnter: checkPermission
-        },
-    ],
+        }
+    ]
 });

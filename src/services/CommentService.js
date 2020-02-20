@@ -15,6 +15,10 @@ class CommentService extends BaseService {
         return this.post(`blog-posts/${id}/comments`, data);
     }
 
+    createCommentOnConfig(id, data) {
+        return this.post(`configs/${id}/comments`, data);
+    }
+
     createCommentOnForumTopic(id, data) {
         return this.post(`forum-topics/${id}/comments`, data);
     }
@@ -40,6 +44,19 @@ class CommentService extends BaseService {
         let p = pagination;
         let s = sorting;
         return this.get(`blog-posts/${id}/comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let comments = response.data.map(c => new Comment(c));
+                        let pagination = new Pagination(response);
+
+                        return { comments, pagination }
+                    });
+    }
+
+    getCommentsByConfig(id, pagination, sorting) {
+        let p = pagination;
+        let s = sorting;
+        return this.get(`configs/${id}/comments?page=${p.page}&sort=${s.sort}&order=${s.order}`)
                     .then(response => response.data)
                     .then(response => {
                         let comments = response.data.map(c => new Comment(c));

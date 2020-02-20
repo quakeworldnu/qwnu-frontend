@@ -50,7 +50,7 @@ export default {
             required: true,
             validator: function(value) {
                 // The value must match one of these strings
-                return ["article", "forum", "blogPost"].indexOf(value) !== -1
+                return ["article", "config", "forum", "blogPost"].indexOf(value) !== -1
             }
         }
     },
@@ -74,6 +74,11 @@ export default {
                 )
             } else if (this.type === "blogPost") {
                 action = CommentService.createCommentOnBlogPost(
+                    this.id,
+                    this.comment
+                )
+            } else if (this.type === "config") {
+                action = CommentService.createCommentOnConfig(
                     this.id,
                     this.comment
                 )

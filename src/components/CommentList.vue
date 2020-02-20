@@ -51,7 +51,7 @@ export default {
             required: true,
             validator: function(value) {
                 // The value must match one of these strings
-                return ["article", "forum", "blogPost"].indexOf(value) !== -1
+                return ["article", "config", "forum", "blogPost"].indexOf(value) !== -1
             }
         },
         header: {
@@ -99,6 +99,12 @@ export default {
                 )
             } else if (this.type === "blogPost") {
                 action = CommentService.getCommentsByBlogPost(
+                    this.id,
+                    this.pagination,
+                    this.sorting
+                )
+            } else if (this.type === "config") {
+                action = CommentService.getCommentsByConfig(
                     this.id,
                     this.pagination,
                     this.sorting
