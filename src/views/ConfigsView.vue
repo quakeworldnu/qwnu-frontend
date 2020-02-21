@@ -62,7 +62,7 @@
                         <user-name v-if="config.user" :user="config.user"></user-name>
                     </td>
                     <td class="p-0">
-                        <button type="button" class="btn btn-default btn-xs mb-0" @click="config.download()" title="Download config">
+                        <button type="button" class="btn btn-default btn-xs mb-0" @click="download(config)" title="Download config">
                             <i class="fas fa-download"></i>
                         </button>
                     </td>
@@ -139,6 +139,13 @@ export default {
                 .catch(error => {
                     console.log("Error: Could not fetch searched configs.", error);
                 });
+        },
+        download(config) {
+            // Additional detailed call to backend as we don't have the cfg field in list call
+            ConfigService.getConfig(config.id).then(config => {
+                config = config;
+                config.download();
+            });
         }
     }
 };
