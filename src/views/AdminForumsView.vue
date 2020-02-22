@@ -12,14 +12,14 @@
                     <table class="table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-1">
+                                <th class="col-2">
                                     <sort-button
                                         field="id"
                                         :sorting="sorting"
                                         @changed="getForums()"
                                     >ID</sort-button>
                                 </th>
-                                <th class="col-5">
+                                <th class="col-4">
                                     <sort-button
                                         field="name"
                                         :sorting="sorting"
@@ -42,8 +42,8 @@
                                 </th>
                             </tr>
                             <tr v-for="forum in forums" :key="forum.id" class="d-flex">
-                                <td class="col-1">{{forum.id}}</td>
-                                <td class="col-5">
+                                <td class="col-2">{{forum.id}}</td>
+                                <td class="col-4">
                                     <router-link :to="{name: 'adminEditForum', params: {id: forum.id}}">
                                         {{forum.name}}
                                     </router-link>

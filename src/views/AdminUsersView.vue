@@ -12,14 +12,14 @@
                     <table class="table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-1">
+                                <th class="col-2">
                                     <sort-button
                                         field="id"
                                         :sorting="sorting"
                                         @changed="getUsers()"
                                     >ID</sort-button>
                                 </th>
-                                <th class="col-3">
+                                <th class="col-2">
                                     <sort-button
                                         field="username"
                                         :sorting="sorting"
@@ -49,8 +49,8 @@
                                 </th>
                             </tr>
                             <tr v-for="user in users" :key="user.id" class="d-flex">
-                                <td class="col-1">{{user.id}}</td>
-                                <td class="col-3">
+                                <td class="col-2">{{user.id}}</td>
+                                <td class="col-2">
                                     <router-link
                                         :to="{name: 'adminEditUser', params: {id: user.id}}"
                                     >{{user.username}}</router-link>

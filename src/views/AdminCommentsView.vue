@@ -7,7 +7,7 @@
                     <table class="table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-1">
+                                <th class="col-2">
                                     <sort-button
                                         field="id"
                                         :sorting="sorting"
@@ -26,16 +26,18 @@
                                         field="author.username"
                                         :sorting="sorting"
                                         @changed="getComments()"
-                                    >Author</sort-button>
+                                    >
+                                    Author
+                                    </sort-button>
                                 </th>
-                                <th class="col-5">
+                                <th class="col-3">
                                     <sort-button
                                         field="type"
                                         :sorting="sorting"
                                         @changed="getComments()"
                                     >Type</sort-button>
                                 </th>
-                                <th class="col-1">
+                                <th class="col-2">
                                     <sort-button
                                         field="status"
                                         :sorting="sorting"
@@ -46,11 +48,11 @@
                         </thead>
                         <tbody v-for="comment in comments" :key="comment.id">
                             <tr class="comment-row d-flex">
-                                <td class="col-1">{{comment.id}}</td>
+                                <td class="col-2">{{comment.id}}</td>
                                 <td class="col-3">{{comment.create_time | formatTimestamp}}</td>
                                 <td class="col-2">{{comment.author.username}}</td>
-                                <td class="col-5">{{comment.type}} / {{getCommentableTitle(comment)}}</td>
-                                <td class="col-1">
+                                <td class="col-3">{{comment.type}} / {{getCommentableTitle(comment)}}</td>
+                                <td class="col-2">
                                     <router-link :to="{name: 'adminEditComment', params: {id: comment.id}}" v-if="$can('edit_comment')" title="Edit comment">
                                         <i class="fas fa-pen mr-2"></i>
                                     </router-link>

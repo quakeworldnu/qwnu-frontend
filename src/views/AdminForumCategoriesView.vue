@@ -12,21 +12,21 @@
                     <table class="table">
                         <thead>
                             <tr class="d-flex">
-                                <th class="col-1">
+                                <th class="col-2">
                                     <sort-button
                                         field="id"
                                         :sorting="sorting"
                                         @changed="getForumCategories()"
                                     >ID</sort-button>
                                 </th>
-                                <th class="col-7">
+                                <th class="col-5">
                                     <sort-button
                                         field="name"
                                         :sorting="sorting"
                                         @changed="getForumCategories()"
                                     >Name</sort-button>
                                 </th>
-                                <th class="col-2">
+                                <th class="col-3">
                                     <sort-button
                                         field="is_private"
                                         :sorting="sorting"
@@ -42,13 +42,13 @@
                                 </th>
                             </tr>
                             <tr v-for="forumCategory in forumCategories" :key="forumCategory.id" class="d-flex">
-                                <td class="col-1">{{forumCategory.id}}</td>
-                                <td class="col-7">
+                                <td class="col-2">{{forumCategory.id}}</td>
+                                <td class="col-5">
                                     <router-link :to="{name: 'adminEditForumCategory', params: {id: forumCategory.id}}">
                                         {{forumCategory.name}}
                                     </router-link>
                                 </td>
-                                <td class="col-2">{{forumCategory.is_private}}</td>
+                                <td class="col-3">{{forumCategory.is_private}}</td>
                                 <td class="col-2">{{forumCategory.position}}</td>
                             </tr>
                         </thead>

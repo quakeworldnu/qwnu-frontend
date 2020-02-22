@@ -301,3 +301,7 @@ li.VuePagination__pagination-item:not(.VuePagination__pagination-item-prev-page)
      display: none;
   }
 }
+
+th {
+     white-space: nowrap;
+}
