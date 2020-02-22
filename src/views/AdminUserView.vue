@@ -56,8 +56,10 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Roles</label>
-                            <div v-for="role in roles" :key="role.id" class="mr-2">
-                                <input type="checkbox" :value="role" v-model="user.roles"/> {{role.name}}
+                            <div class="col-sm-4 form-check">
+                                <div v-for="role in roles" :key="role.id">
+                                    <input type="checkbox" class="form-check-input" :value="role" v-model="user.roles"/> {{role.name}}
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">

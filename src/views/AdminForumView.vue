@@ -60,16 +60,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-sm-2">Private</div>
-                            <div class="col-sm-4">
-                                <div class="form-check">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check-input"
-                                        v-model="forum.is_private"
-                                        required="true"
-                                    >
-                                </div>
+                            <div class="col-sm-2 col-form-label">Private</div>
+                            <div class="col-sm-4 form-check">
+                                <input
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    v-model="forum.is_private"
+                                    required="true"
+                                > {{forum.is_private ? 'Yes' : 'No'}}
                             </div>
                             <small class="col-sm-4" v-if="error.list.is_private">{{error.list.is_private[0]}}</small>
                         </div>
