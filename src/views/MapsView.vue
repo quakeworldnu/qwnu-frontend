@@ -4,7 +4,7 @@
         <div class="box-body">
             <div class="bg-light p-2 mb-2 rounded">
                 <form>
-                    <input type="text" class="form-control" :class="{'spinner-border': loading}" placeholder="Search name / description" v-model="keyword" @keydown.enter.prevent="search()"/>
+                    <input type="text" class="form-control" placeholder="Search name / description" v-model="keyword" @keydown.enter.prevent="search()"/>
                 </form>
             </div>
 
