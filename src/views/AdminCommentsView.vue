@@ -22,13 +22,13 @@
                                     >Date</sort-button>
                                 </th>
                                 <th class="col-2">
-                                    <sort-button
+                                    <!-- <sort-button
                                         field="author.username"
                                         :sorting="sorting"
                                         @changed="getComments()"
-                                    >
+                                    > -->
                                     Author
-                                    </sort-button>
+                                    <!-- </sort-button> -->
                                 </th>
                                 <th class="col-3">
                                     <sort-button

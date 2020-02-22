@@ -27,11 +27,13 @@
                                     >Name</sort-button>
                                 </th>
                                 <th class="col-4">
-                                    <sort-button
+                                    <!-- <sort-button
                                         field="category"
                                         :sorting="sorting"
                                         @changed="getForums()"
-                                    >Category</sort-button>
+                                    > -->
+                                    Category
+                                    <!-- </sort-button> -->
                                 </th>
                                 <th class="col-2">
                                     <sort-button
