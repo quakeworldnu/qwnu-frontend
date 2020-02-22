@@ -15,7 +15,7 @@
         </span>
         <div class="box-content-ingress">{{config.description}}</div>
         <div class="box-content-body">
-          <pre style="padding: 0; margin: 0;"><textarea style="width: 100%; height: 600px; margin: 0;" v-model="config.cfg"></textarea></pre>
+          <pre style="padding: 0; margin: 0;"><textarea class="form-control form-control-sm" style="width: 100%; height: 600px; margin: 0;" v-model="config.cfg"></textarea></pre>
         </div>
         <div class="box-content-footer">
           <i class="fas fa-comments mr-2"></i>

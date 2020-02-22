@@ -44,7 +44,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Status</label>
-                            <select v-model="article.status">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="article.status">
                                 <option value="0">Deleted</option>
                                 <option value="1">Draft</option>
                                 <option value="2">Published</option>
@@ -57,7 +57,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category</label>
-                            <select v-model="article.category_id">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="article.category_id">
                                 <option
                                     v-for="category in categories"
                                     :key="category.id"

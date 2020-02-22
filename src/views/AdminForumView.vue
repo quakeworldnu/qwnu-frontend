@@ -32,7 +32,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Category</label>
-                            <select v-model="forum.cat_id">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="forum.cat_id">
                                 <option
                                     v-for="forumCategory in forumCategories"
                                     :key="forumCategory.id"
@@ -66,7 +66,6 @@
                                     <input
                                         type="checkbox"
                                         class="form-check-input"
-                                        placeholder="Position"
                                         v-model="forum.is_private"
                                         required="true"
                                     >

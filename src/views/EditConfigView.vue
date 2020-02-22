@@ -12,14 +12,12 @@
                             <label class="col-sm-2 col-form-label">File</label>
                             <input
                                 type="file"
-                                class="col-sm-4 form-control form-control-sm"
+                                class="col-sm-4 form-control-file form-control-sm"
                                 ref="file"
                                 id="file"
                                 v-on:change="handleFileSelection()"
                                 required="true"
-                                v-if="!config.cfg"
                             />
-                            <button v-if="config.cfg" type="button" @click="config.cfg = ''">Discard</button>
                             <small class="col-sm-4" v-if="error.list.file">{{
                                 error.list.file[0]
                             }}</small>
@@ -58,7 +56,7 @@
                             <label class="col-sm-2 col-form-label"
                                 >Engine</label
                             >
-                            <select v-model="config.engine">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="config.engine">
                                 <option
                                     v-for="(engine, index) in engineTypes"
                                     :key="index"
@@ -88,7 +86,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Mode</label>
-                            <select v-model="config.mode">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="config.mode">
                                 <option
                                     v-for="(mode, index) in modeTypes"
                                     :key="index"
@@ -146,7 +144,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Mod</label>
-                            <select v-model="config.modi">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="config.modi">
                                 <option
                                     v-for="(mod, index) in modTypes"
                                     :key="index"
@@ -161,7 +159,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Type</label>
-                            <select v-model="config.type">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="config.type">
                                 <option
                                     v-for="(type, index) in typeTypes"
                                     :key="index"
@@ -174,7 +172,7 @@
                             }}</small>
                         </div>
 
-                        <pre><textarea style="width: 100%; height: 600px; margin: 0;" v-model="config.cfg"></textarea></pre>
+                        <pre><textarea class="form-control form-control-sm" style="width: 100%; height: 600px; margin: 0;" v-model="config.cfg"></textarea></pre>
 
                         <button
                             type="submit"

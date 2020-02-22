@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Status</label>
-                            <select v-model="user.status">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="user.status">
                                 <option value="-1">Banned</option>
                                 <option value="0">Inactive</option>
                                 <option value="1">Active</option>

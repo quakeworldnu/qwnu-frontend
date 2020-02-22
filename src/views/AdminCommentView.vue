@@ -58,7 +58,7 @@
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Status</label>
-                            <select v-model="comment.status">
+                            <select class="col-sm-4 form-control form-control-sm" v-model="comment.status">
                                 <option value="1">Pending</option>
                                 <option value="2">Approved</option>
                                 <option value="3">Deleted</option>
