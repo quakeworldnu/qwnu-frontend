@@ -8,58 +8,60 @@
                         New user
                     </router-link>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr class="d-flex">
-                            <th class="col-1">
-                                <sort-button
-                                    field="id"
-                                    :sorting="sorting"
-                                    @changed="getUsers()"
-                                >ID</sort-button>
-                            </th>
-                            <th class="col-3">
-                                <sort-button
-                                    field="username"
-                                    :sorting="sorting"
-                                    @changed="getUsers()"
-                                >Username</sort-button>
-                            </th>
-                            <th class="col-3">
-                                <sort-button
-                                    field="createtime"
-                                    :sorting="sorting"
-                                    @changed="getUsers()"
-                                >Registration date</sort-button>
-                            </th>
-                            <th class="col-3">
-                                <sort-button
-                                    field="lastvisit"
-                                    :sorting="sorting"
-                                    @changed="getUsers()"
-                                >Last visit</sort-button>
-                            </th>
-                            <th class="col-2">
-                                <sort-button
-                                    field="status"
-                                    :sorting="sorting"
-                                    @changed="getUsers()"
-                                >Status</sort-button>
-                            </th>
-                        </tr>
-                        <tr v-for="user in users" :key="user.id" class="d-flex">
-                            <td class="col-1">{{user.id}}</td>
-                            <td class="col-3">
-                                <router-link
-                                    :to="{name: 'adminEditUser', params: {id: user.id}}"
-                                >{{user.username}}</router-link>
-                            </td>
-                            <td class="col-3">{{user.createtime | formatTimestamp}}</td>
-                            <td class="col-3">{{user.lastvisit | formatTimestamp}}</td>
-                            <td class="col-2">{{getStatus(user.status)}}</td>
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr class="d-flex">
+                                <th class="col-1">
+                                    <sort-button
+                                        field="id"
+                                        :sorting="sorting"
+                                        @changed="getUsers()"
+                                    >ID</sort-button>
+                                </th>
+                                <th class="col-3">
+                                    <sort-button
+                                        field="username"
+                                        :sorting="sorting"
+                                        @changed="getUsers()"
+                                    >Username</sort-button>
+                                </th>
+                                <th class="col-3">
+                                    <sort-button
+                                        field="createtime"
+                                        :sorting="sorting"
+                                        @changed="getUsers()"
+                                    >Registration date</sort-button>
+                                </th>
+                                <th class="col-3">
+                                    <sort-button
+                                        field="lastvisit"
+                                        :sorting="sorting"
+                                        @changed="getUsers()"
+                                    >Last visit</sort-button>
+                                </th>
+                                <th class="col-2">
+                                    <sort-button
+                                        field="status"
+                                        :sorting="sorting"
+                                        @changed="getUsers()"
+                                    >Status</sort-button>
+                                </th>
+                            </tr>
+                            <tr v-for="user in users" :key="user.id" class="d-flex">
+                                <td class="col-1">{{user.id}}</td>
+                                <td class="col-3">
+                                    <router-link
+                                        :to="{name: 'adminEditUser', params: {id: user.id}}"
+                                    >{{user.username}}</router-link>
+                                </td>
+                                <td class="col-3">{{user.createtime | formatTimestamp}}</td>
+                                <td class="col-3">{{user.lastvisit | formatTimestamp}}</td>
+                                <td class="col-2">{{getStatus(user.status)}}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
             <div class="bg-light p-2 rounded">
                 <pagination

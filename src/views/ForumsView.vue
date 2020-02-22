@@ -2,33 +2,35 @@
     <div class="ml-3 mb-2 rounded main-container">
         <div class="box-header">Forums</div>
         <div class="box-body">
-            <table v-for="forumCategory in forumCategories" :key="forumCategory.id" class="table">
-                <tr>
-                    <th>{{forumCategory.name}}</th>
-                    <th style="width: 120px;">Topics</th>
-                    <th style="width: 120px;">Posts</th>
-                    <th style="width: 200px;">Latest post</th>
-                </tr>
-                <tr v-for="forum in forumCategory.forums" :key="forum.id">
-                    <td>
-                        <strong>
-                            <router-link
-                                :to="{name: 'forum', params: { id: forum.id}}"
-                            >{{forum.name}}</router-link>
-                        </strong>
-                        <br>
-                        <span v-html="bbCode(forum.description)"></span>
-                    </td>
-                    <td>{{forum.num_topics}}</td>
-                    <td>{{forum.num_posts}}</td>
-                    <td>
-                        <span v-if="forum.latest_updated_topic">
-                            {{forum.latest_updated_topic.last_post_time | formatTimestamp('fromNow')}}<br>
-                            {{forum.latest_updated_topic.last_author.username}}
-                        </span>
-                    </td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table v-for="forumCategory in forumCategories" :key="forumCategory.id" class="table">
+                    <tr>
+                        <th>{{forumCategory.name}}</th>
+                        <th style="width: 120px;">Topics</th>
+                        <th style="width: 120px;">Posts</th>
+                        <th style="width: 200px;">Latest post</th>
+                    </tr>
+                    <tr v-for="forum in forumCategory.forums" :key="forum.id">
+                        <td>
+                            <strong>
+                                <router-link
+                                    :to="{name: 'forum', params: { id: forum.id}}"
+                                >{{forum.name}}</router-link>
+                            </strong>
+                            <br>
+                            <span v-html="bbCode(forum.description)"></span>
+                        </td>
+                        <td>{{forum.num_topics}}</td>
+                        <td>{{forum.num_posts}}</td>
+                        <td>
+                            <span v-if="forum.latest_updated_topic">
+                                {{forum.latest_updated_topic.last_post_time | formatTimestamp('fromNow')}}<br>
+                                {{forum.latest_updated_topic.last_author.username}}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>

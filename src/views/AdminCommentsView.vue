@@ -2,65 +2,67 @@
     <div class="ml-3 mb-2 rounded main-container">
         <div class="box-header">Administrate comments</div>
         <div class="box-body">
-            <div class="box-content table-responsive mb-2">
-                <table class="table">
-                    <thead>
-                        <tr class="d-flex">
-                            <th class="col-1">
-                                <sort-button
-                                    field="id"
-                                    :sorting="sorting"
-                                    @changed="getComments()"
-                                >ID</sort-button>
-                            </th>
-                            <th class="col-3">
-                                <sort-button
-                                    field="create_time"
-                                    :sorting="sorting"
-                                    @changed="getComments()"
-                                >Date</sort-button>
-                            </th>
-                            <th class="col-2">
-                                <sort-button
-                                    field="author.username"
-                                    :sorting="sorting"
-                                    @changed="getComments()"
-                                >Author</sort-button>
-                            </th>
-                            <th class="col-5">
-                                <sort-button
-                                    field="type"
-                                    :sorting="sorting"
-                                    @changed="getComments()"
-                                >Type</sort-button>
-                            </th>
-                            <th class="col-1">
-                                <sort-button
-                                    field="status"
-                                    :sorting="sorting"
-                                    @changed="getComments()"
-                                >Ok?</sort-button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody v-for="comment in comments" :key="comment.id">
-                        <tr class="comment-row d-flex">
-                            <td class="col-1">{{comment.id}}</td>
-                            <td class="col-3">{{comment.create_time | formatTimestamp}}</td>
-                            <td class="col-2">{{comment.author.username}}</td>
-                            <td class="col-5">{{comment.type}} / {{getCommentableTitle(comment)}}</td>
-                            <td class="col-1">
-                                <router-link :to="{name: 'adminEditComment', params: {id: comment.id}}" v-if="$can('edit_comment')" title="Edit comment">
-                                    <i class="fas fa-pen mr-2"></i>
-                                </router-link>
-                                <i class="fas" :class="getStatusIcon(comment.status)"></i>
-                            </td>
-                        </tr>
-                        <tr class="d-flex">
-                            <td class="col-12" v-html="bbCode(comment.content)"></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="box-content mb-2">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr class="d-flex">
+                                <th class="col-1">
+                                    <sort-button
+                                        field="id"
+                                        :sorting="sorting"
+                                        @changed="getComments()"
+                                    >ID</sort-button>
+                                </th>
+                                <th class="col-3">
+                                    <sort-button
+                                        field="create_time"
+                                        :sorting="sorting"
+                                        @changed="getComments()"
+                                    >Date</sort-button>
+                                </th>
+                                <th class="col-2">
+                                    <sort-button
+                                        field="author.username"
+                                        :sorting="sorting"
+                                        @changed="getComments()"
+                                    >Author</sort-button>
+                                </th>
+                                <th class="col-5">
+                                    <sort-button
+                                        field="type"
+                                        :sorting="sorting"
+                                        @changed="getComments()"
+                                    >Type</sort-button>
+                                </th>
+                                <th class="col-1">
+                                    <sort-button
+                                        field="status"
+                                        :sorting="sorting"
+                                        @changed="getComments()"
+                                    >Ok?</sort-button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody v-for="comment in comments" :key="comment.id">
+                            <tr class="comment-row d-flex">
+                                <td class="col-1">{{comment.id}}</td>
+                                <td class="col-3">{{comment.create_time | formatTimestamp}}</td>
+                                <td class="col-2">{{comment.author.username}}</td>
+                                <td class="col-5">{{comment.type}} / {{getCommentableTitle(comment)}}</td>
+                                <td class="col-1">
+                                    <router-link :to="{name: 'adminEditComment', params: {id: comment.id}}" v-if="$can('edit_comment')" title="Edit comment">
+                                        <i class="fas fa-pen mr-2"></i>
+                                    </router-link>
+                                    <i class="fas" :class="getStatusIcon(comment.status)"></i>
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <td class="col-12" v-html="bbCode(comment.content)"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="bg-light p-2 rounded">
                 <pagination

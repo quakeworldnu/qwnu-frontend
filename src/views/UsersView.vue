@@ -8,48 +8,50 @@
                 </form>
             </div>
 
-            <table class="table">
-                <tr>
-                    <th>
-                        <sort-button
-                            field="username"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        >Username</sort-button>
-                    </th>
-                    <th>
-                        <!-- <sort-button
-                            field="profile.nation.iso"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        > -->
-                        Nationality
-                        <!-- </sort-button> -->
-                    </th>
-                    <th>
-                        <sort-button
-                            field="createtime"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        >Registered</sort-button>
-                    </th>
-                    <th>
-                        <sort-button
-                            field="lastvisit"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        >Last visit</sort-button>
-                    </th>
-                </tr>
-                <tr v-for="user in users" :key="user.id">
-                    <td>
-                        <router-link :to="{name: 'user', params: { id: user.id}}">{{user.username}}</router-link>
-                    </td>
-                    <td v-html="getFlag(user)"></td>
-                    <td>{{user.createtime | formatTimestamp('YYYY-MM-DD')}}</td>
-                    <td>{{user.lastvisit | formatTimestamp('YYYY-MM-DD')}}</td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <sort-button
+                                field="username"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            >Username</sort-button>
+                        </th>
+                        <th>
+                            <!-- <sort-button
+                                field="profile.nation.iso"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            > -->
+                            Nationality
+                            <!-- </sort-button> -->
+                        </th>
+                        <th>
+                            <sort-button
+                                field="createtime"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            >Registered</sort-button>
+                        </th>
+                        <th>
+                            <sort-button
+                                field="lastvisit"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            >Last visit</sort-button>
+                        </th>
+                    </tr>
+                    <tr v-for="user in users" :key="user.id">
+                        <td>
+                            <router-link :to="{name: 'user', params: { id: user.id}}">{{user.username}}</router-link>
+                        </td>
+                        <td v-html="getFlag(user)"></td>
+                        <td>{{user.createtime | formatTimestamp('YYYY-MM-DD')}}</td>
+                        <td>{{user.lastvisit | formatTimestamp('YYYY-MM-DD')}}</td>
+                    </tr>
+                </table>
+            </div>
 
             <div class="bg-light p-2 rounded">
                 <pagination

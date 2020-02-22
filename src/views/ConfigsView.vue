@@ -12,62 +12,64 @@
                 </form>
             </div>
 
-            <table class="table">
-                <tr>
-                    <th>
-                        <sort-button
-                            field="title"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        >Title</sort-button>
-                    </th>
-                    <th>
-                        <!-- <sort-button
-                            field="title"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        > -->
-                        Client
-                        <!-- </sort-button> -->
-                    </th>
-                    <th>
-                        <sort-button
-                            field="create_time"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        >Added</sort-button>
-                    </th>
-                    <th>
-                        <!-- <sort-button
-                            field="user.username"
-                            :sorting="sorting"
-                            @changed="onPageChange()"
-                        > -->
-                        Added by
-                        <!-- </sort-button> -->
-                    </th>
-                    <th>
-                        DL
-                    </th>
-                </tr>
-                <tr v-for="config in configs" :key="config.id">
-                    <td>
-                        <router-link :to="{name: 'config', params: { id: config.id}}">
-                            {{config.title}}
-                        </router-link>
-                    </td>
-                    <td>{{config.engineName}} {{config.modeName}}</td>
-                    <td>{{config.create_time | formatTimestamp('YYYY-MM-DD')}}</td>
-                    <td>
-                        <user-name v-if="config.user" :user="config.user"></user-name>
-                    </td>
-                    <td class="p-0">
-                        <button type="button" class="btn btn-default btn-xs mb-0" @click="download(config)" title="Download config">
-                            <i class="fas fa-download"></i>
-                        </button>
-                    </td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>
+                            <sort-button
+                                field="title"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            >Title</sort-button>
+                        </th>
+                        <th>
+                            <!-- <sort-button
+                                field="title"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            > -->
+                            Client
+                            <!-- </sort-button> -->
+                        </th>
+                        <th>
+                            <sort-button
+                                field="create_time"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            >Added</sort-button>
+                        </th>
+                        <th>
+                            <!-- <sort-button
+                                field="user.username"
+                                :sorting="sorting"
+                                @changed="onPageChange()"
+                            > -->
+                            Added by
+                            <!-- </sort-button> -->
+                        </th>
+                        <th>
+                            DL
+                        </th>
+                    </tr>
+                    <tr v-for="config in configs" :key="config.id">
+                        <td>
+                            <router-link :to="{name: 'config', params: { id: config.id}}">
+                                {{config.title}}
+                            </router-link>
+                        </td>
+                        <td>{{config.engineName}} {{config.modeName}}</td>
+                        <td>{{config.create_time | formatTimestamp('YYYY-MM-DD')}}</td>
+                        <td>
+                            <user-name v-if="config.user" :user="config.user"></user-name>
+                        </td>
+                        <td class="p-0">
+                            <button type="button" class="btn btn-default btn-xs mb-0" @click="download(config)" title="Download config">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
             <div class="bg-light p-2 rounded">
                 <pagination

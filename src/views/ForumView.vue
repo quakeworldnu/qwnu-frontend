@@ -10,35 +10,37 @@
                     New topic
                 </router-link>
             </div>
-            <table class="table" v-if="forumTopics.length > 0">
-                <tr>
-                    <th>Topic</th>
-                    <th style="width: 120px;">Replies</th>
-                    <th style="width: 200px;">Latest post</th>
-                </tr>
-                <tr v-for="forumTopic in forumTopics" :key="forumTopic.id">
-                    <td>
-                        <strong>
-                            <i v-if="forumTopic.sticky" class="fas fa-thumbtack mr-1" title="Stickied topic"></i>
-                            <router-link
-                                :to="{name: 'forumTopic', params: { id: forumTopic.id}}"
-                            >
-                            {{forumTopic.name}}
-                            </router-link>
-                        </strong>
-                        <br/>
-                        <span v-if="forumTopic.comment">
-                            {{forumTopic.comment.author.username}}
-                        </span>
-                        <br>
-                    </td>
-                    <td>{{forumTopic.num_posts}}</td>
-                    <td>
-                        {{forumTopic.last_post_time | formatTimestamp('fromNow')}}<br/>
-                        {{forumTopic.last_author.username}}
-                    </td>
-                </tr>
-            </table>
+            <div class="table-responsive">
+                <table class="table" v-if="forumTopics.length > 0">
+                    <tr>
+                        <th>Topic</th>
+                        <th style="width: 120px;">Replies</th>
+                        <th style="width: 200px;">Latest post</th>
+                    </tr>
+                    <tr v-for="forumTopic in forumTopics" :key="forumTopic.id">
+                        <td>
+                            <strong>
+                                <i v-if="forumTopic.sticky" class="fas fa-thumbtack mr-1" title="Stickied topic"></i>
+                                <router-link
+                                    :to="{name: 'forumTopic', params: { id: forumTopic.id}}"
+                                >
+                                {{forumTopic.name}}
+                                </router-link>
+                            </strong>
+                            <br/>
+                            <span v-if="forumTopic.comment">
+                                {{forumTopic.comment.author.username}}
+                            </span>
+                            <br>
+                        </td>
+                        <td>{{forumTopic.num_posts}}</td>
+                        <td>
+                            {{forumTopic.last_post_time | formatTimestamp('fromNow')}}<br/>
+                            {{forumTopic.last_author.username}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
             <div class="bg-light p-2 rounded">
                 <pagination
