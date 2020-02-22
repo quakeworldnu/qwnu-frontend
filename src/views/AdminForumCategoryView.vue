@@ -55,7 +55,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
-                            v-if="!isNew && $can('delete_forum_category')"
+                            v-if="!forumCategory.isNew && $can('delete_forum_category')"
                             icon="fa-trash"
                             text="Really delete this forum category?"
                             @confirm="deleteForumCategory()"
@@ -149,10 +149,6 @@ export default {
                 })
         }
     },
-    computed: {
-        isNew() {
-            return this.forumCategory.id === null;
-        }
-    }
+    computed: {}
 }
 </script>

@@ -1,9 +1,10 @@
 import parseBbCode from "@/helpers/BbCode";
+import BaseModel from '@/models/BaseModel';
 import Category from '@/models/Category';
 import User from '@/models/User';
 import moment from 'moment';
 
-export class Article {
+export class Article extends BaseModel {
     constructor({
         id = null,
         author = null,
@@ -17,6 +18,8 @@ export class Article {
         update_time,
         status = 2 // 2 = Published
     } = {}) {
+        super();
+
         this.id = id;
         this.author = author ? new User(author) : null;
         this.category = category ? new Category(category) : null;
@@ -42,10 +45,6 @@ export class Article {
 
     contentBbCode() {
         return parseBbCode(this.content);
-    }
-
-    isNew() {
-        return this.id === null;
     }
 
     statusName() {

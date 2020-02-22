@@ -1,4 +1,6 @@
-export class Profile {
+import BaseModel from "@/models/BaseModel";
+
+export class Profile extends BaseModel {
     constructor({
         user_id,
         lastname,
@@ -41,6 +43,8 @@ export class Profile {
         keyboard,
         nation
     } = {}) {
+        super();
+
         this.user_id = user_id;
         this.lastname = lastname;
         this.firstname = firstname;

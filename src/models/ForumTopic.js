@@ -1,8 +1,9 @@
+import BaseModel from "@/models/BaseModel";
 import Comment from "@/models/Comment";
 import User from '@/models/User';
 import moment from 'moment';
 
-export class ForumTopic {
+export class ForumTopic extends BaseModel {
     constructor({
         id,
         name,
@@ -21,6 +22,8 @@ export class ForumTopic {
         comment_id,
         last_author
     } = {}) {
+        super();
+
         this.id = id;
         this.name = name;
         this.status = status;

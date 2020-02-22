@@ -78,7 +78,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
-                            v-if="!isNew && $can('delete_comment')"
+                            v-if="!comment.isNew && $can('delete_comment')"
                             icon="fa-trash"
                             text="Really delete this comment?"
                             @confirm="deleteComment()"
@@ -168,10 +168,6 @@ export default {
                 })
         }
     },
-    computed: {
-        isNew() {
-            return this.comment.id === null;
-        }
-    }
+    computed: {}
 }
 </script>

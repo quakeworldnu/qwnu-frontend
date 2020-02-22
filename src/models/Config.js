@@ -1,7 +1,8 @@
+import BaseModel from "@/models/BaseModel";
 import User from '@/models/User';
 import moment from 'moment';
 
-export class Config {
+export class Config extends BaseModel {
     constructor({
         id,
         title,
@@ -22,6 +23,8 @@ export class Config {
         update_time,
         comments_count
     } = {}) {
+        super();
+
         this.id = id;
         this.title = title,
         this.description = description;
@@ -126,10 +129,6 @@ export class Config {
         }
 
         return Config.TYPE_TYPES[this.type];
-    }
-
-    get isNew() {
-        return this.id === null || this.id === undefined;
     }
 
     download() {

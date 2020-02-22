@@ -1,7 +1,8 @@
+import BaseModel from "@/models/BaseModel";
 import ForumCategory from '@/models/ForumCategory';
 import ForumTopic from '@/models/ForumTopic';
 
-export class Forum {
+export class Forum extends BaseModel {
     constructor({
         id,
         name,
@@ -14,6 +15,8 @@ export class Forum {
         is_private,
         latest_updated_topic
     } = {}) {
+        super();
+
         this.id = id;
         this.name = name;
         this.description = description;

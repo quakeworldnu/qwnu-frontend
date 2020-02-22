@@ -1,8 +1,9 @@
 import parseBbCode from "@/helpers/BbCode";
+import BaseModel from "@/models/BaseModel";
 import User from '@/models/User';
 import moment from 'moment';
 
-export class Comment {
+export class Comment extends BaseModel {
     constructor({
         id = null,
         author,
@@ -16,6 +17,8 @@ export class Comment {
         type,
         post_id
     } = {}) {
+        super();
+
         this.id = id;
         this.author = author ? new User(author) : null;
         this.author_id = author_id;
@@ -41,10 +44,6 @@ export class Comment {
 
     contentBbCode() {
         return parseBbCode(this.content);
-    }
-
-    isNew() {
-        return this.id === null;
     }
 
     statusName() {

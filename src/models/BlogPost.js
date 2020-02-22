@@ -1,9 +1,10 @@
 import parseBbCode from "@/helpers/BbCode";
+import BaseModel from "@/models/BaseModel";
 import Category from '@/models/Category';
 import User from '@/models/User';
 import moment from 'moment';
 
-export class BlogPost {
+export class BlogPost extends BaseModel {
     constructor({
         id,
         author,
@@ -16,6 +17,8 @@ export class BlogPost {
         category,
         status
     } = {}) {
+        super();
+
         this.id = id;
         this.author = new User(author);
         this.body = body;

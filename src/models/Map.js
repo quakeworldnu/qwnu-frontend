@@ -1,6 +1,7 @@
+import BaseModel from "@/models/BaseModel";
 import moment from 'moment';
 
-export class Map {
+export class Map extends BaseModel {
     constructor({
         created_at,
         description,
@@ -43,6 +44,8 @@ export class Map {
         screenshots,
         updated_at
     } = {}) {
+        super();
+
         this.created_at = moment.unix(created_at);
         this.description = description;
         this.id = id;

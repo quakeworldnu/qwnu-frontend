@@ -1,8 +1,9 @@
+import BaseModel from "@/models/BaseModel";
 import Profile from '@/models/Profile';
 import Role from '@/models/Role';
 import moment from 'moment';
 
-export class User {
+export class User extends BaseModel {
     constructor({
         id,
         username,
@@ -13,6 +14,8 @@ export class User {
         profile = {},
         roles = []
     } = {}) {
+        super();
+
         this.id = id;
         this.username = username;
         this.createtime = createtime ? moment.unix(createtime) : null;

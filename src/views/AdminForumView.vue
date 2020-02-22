@@ -84,7 +84,7 @@
                 <div class="box-content-footer">&nbsp;
                     <div class="float-right">
                         <confirm-button
-                            v-if="!isNew && $can('delete_forum')"
+                            v-if="!forum.isNew && $can('delete_forum')"
                             icon="fa-trash"
                             text="Really delete this forum?"
                             @confirm="deleteForum()"
@@ -195,10 +195,6 @@ export default {
                 })
         }
     },
-    computed: {
-        isNew() {
-            return this.forum.id === null;
-        }
-    }
+    computed: {}
 }
 </script>
