@@ -4,7 +4,7 @@
         <div class="box-body">
             <div class="bg-light p-2 mb-2 rounded">
                 <form>
-                    <input type="text" class="form-control" :class="{'spinner-border': loading}" placeholder="Search name / description" :value="keyword" @input="update"/>
+                    <input type="text" class="form-control" :class="{'spinner-border': loading}" placeholder="Search name / description" v-model="keyword" @keydown.enter.prevent="search()"/>
                 </form>
             </div>
 
@@ -57,7 +57,6 @@
 import Pagination from "@/models/Pagination";
 import Sorting from "@/models/Sorting";
 import MapService from "@/services/MapService";
-import _ from 'lodash';
 
 export default {
     name: "Maps",
@@ -79,18 +78,17 @@ export default {
         this.getSearchedMaps();
     },
     methods: {
-        update: _.debounce(function (e) {
+        search() {
             this.pagination.page = 1;
             let query = this.pagination;
-            query.keyword = e.target.value;
-            this.keyword = e.target.value;
+            query.keyword = this.keyword;
             this.getSearchedMaps().then(() => {
                 this.$router.push({
                     name: "maps",
                     query: query
                 }).catch(error => {});
             });
-        }, 1000),
+        },
         onPageChange() {
             let query = this.pagination;
             query.keyword = this.keyword;

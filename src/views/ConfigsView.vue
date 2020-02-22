@@ -8,7 +8,7 @@
 
             <div class="bg-light p-2 mb-2 rounded">
                 <form>
-                    <input type="text" class="form-control" placeholder="Search title" :value="keyword" @input="update"/>
+                    <input type="text" class="form-control" placeholder="Search title" v-model="keyword" @keydown.enter.prevent="search()"/>
                 </form>
             </div>
 
@@ -86,7 +86,6 @@ import Pagination from "@/models/Pagination";
 import Sorting from "@/models/Sorting";
 import ConfigService from "@/services/ConfigService";
 import Config from "@/models/Config";
-import _ from "lodash";
 
 export default {
     name: "Configs",
@@ -107,18 +106,17 @@ export default {
         this.getSearchedConfigs();
     },
     methods: {
-        update: _.debounce(function (e) {
+        search() {
             this.pagination.page = 1;
             let query = this.pagination;
-            query.keyword = e.target.value;
-            this.keyword = e.target.value;
+            query.keyword = this.keyword;
             this.getSearchedConfigs().then(() => {
                 this.$router.push({
                     name: "configs",
                     query: query
                 }).catch(error => {});
             });
-        }, 1000),
+        },
         onPageChange() {
             let query = this.pagination;
             query.keyword = this.keyword;
