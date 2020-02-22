@@ -1,37 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
-import AboutView from './views/AboutView.vue';
-import AdminArticlesView from './views/AdminArticlesView.vue';
-import AdminArticleView from './views/AdminArticleView.vue';
-import AdminCommentsView from './views/AdminCommentsView.vue';
-import AdminCommentView from './views/AdminCommentView.vue';
-import AdminForumCategoriesView from './views/AdminForumCategoriesView.vue';
-import AdminForumCategoryView from './views/AdminForumCategoryView.vue';
-import AdminForumsView from './views/AdminForumsView.vue';
-import AdminForumView from './views/AdminForumView.vue';
-import AdminUsersView from './views/AdminUsersView.vue';
-import AdminUserView from './views/AdminUserView.vue';
-import ArticleView from './views/ArticleView.vue';
-import BlogPostsView from './views/BlogPostsView.vue';
-import BlogPostView from './views/BlogPostView.vue';
-import ConfigsView from './views/ConfigsView.vue';
-import ConfigView from './views/ConfigView.vue';
-import EditConfigView from './views/EditConfigView.vue';
-import EditProfileView from './views/EditProfileView.vue';
-import ForgotPasswordView from './views/ForgotPasswordView.vue';
-import ForumsView from './views/ForumsView.vue';
-import ForumTopicCreateView from './views/ForumTopicCreateView.vue';
-import ForumTopicView from './views/ForumTopicView.vue';
-import ForumView from './views/ForumView.vue';
-import HomeView from './views/HomeView.vue';
-import MapsView from './views/MapsView.vue';
-import MapView from './views/MapView.vue';
-import PasswordResetView from './views/PasswordResetView';
-import RegisterView from './views/RegisterView.vue';
-import UserActivationView from './views/UserActivationView.vue';
-import UsersView from './views/UsersView.vue';
-import UserView from './views/UserView.vue';
 
 Vue.use(Router);
 
@@ -95,124 +64,124 @@ export default new Router({
         {
             path: "/",
             name: "home",
-            component: HomeView
+            component: () => import("./views/HomeView.vue")
         },
         {
             path: "/blog-post/:id",
             name: "blogPost",
-            component: BlogPostView,
+            component: () => import("./views/BlogPostView.vue"),
             props: true
         },
         {
             path: "/blog-posts",
             name: "blogPosts",
-            component: BlogPostsView
+            component: () => import("./views/BlogPostsView.vue")
         },
         {
             path: "/config/edit/:id?",
             name: "editConfig",
-            component: EditConfigView,
+            component: () => import("./views/EditConfigView.vue"),
             props: true
         },
         {
             path: "/config/:id",
             name: "config",
-            component: ConfigView,
+            component: () => import("./views/ConfigView.vue"),
             props: true
         },
         {
             path: "/configs",
             name: "configs",
-            component: ConfigsView
+            component: () => import("./views/ConfigsView.vue")
         },
         {
             path: "/about",
             name: "about",
-            component: AboutView
+            component: () => import("./views/AboutView.vue")
         },
         {
             path: "/register",
             name: "register",
-            component: RegisterView
+            component: () => import("./views/RegisterView.vue")
         },
         {
             path: "/forgot-password",
             name: "forgotPassword",
-            component: ForgotPasswordView
+            component: () => import("./views/ForgotPasswordView.vue")
         },
         {
             path: "/password-reset",
             name: "passwordReset",
-            component: PasswordResetView
+            component: () => import("./views/PasswordResetView.vue")
         },
         {
             path: "/articles/:id",
             name: "article",
-            component: ArticleView,
+            component: () => import("./views/ArticleView.vue"),
             props: true
         },
         {
             path: "/forums",
             name: "forums",
-            component: ForumsView
+            component: () => import("./views/ForumsView.vue")
         },
         {
             path: "/forums/:id",
             name: "forum",
-            component: ForumView,
+            component: () => import("./views/ForumView.vue"),
             props: true
         },
         {
             path: "/forums/:id/new-topic",
             name: "forumTopicCreate",
-            component: ForumTopicCreateView,
+            component: () => import("./views/ForumTopicCreateView.vue"),
             props: true
         },
         {
             path: "/forum-topics/:id",
             name: "forumTopic",
-            component: ForumTopicView,
+            component: () => import("./views/ForumTopicView.vue"),
             props: true
         },
         {
             path: "/maps",
             name: "maps",
-            component: MapsView
+            component: () => import("./views/MapsView.vue")
         },
         {
             path: "/maps/:id",
             name: "map",
-            component: MapView,
+            component: () => import("./views/MapView.vue"),
             props: true
         },
         {
             path: "/users",
             name: "users",
-            component: UsersView
+            component: () => import("./views/UsersView.vue")
         },
         {
             path: "/users/:id",
             name: "user",
-            component: UserView,
+            component: () => import("./views/UserView.vue"),
             props: true
         },
         {
             path: "/users/activate/:email/:token",
             name: "user-activation",
-            component: UserActivationView,
+            component: () => import("./views/UserActivationView.vue"),
             props: true
         },
         {
             path: "/admin/article",
             name: "adminCreateArticle",
-            component: AdminArticleView,
+            component: () => import("./views/AdminArticleView.vue"),
             meta: { permissionRequired: "create_article" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/article/:id",
             name: "adminEditArticle",
-            component: AdminArticleView,
+            component: () => import("./views/AdminArticleView.vue"),
             props: true,
             meta: { permissionRequired: "edit_article" },
             beforeEnter: checkPermission
@@ -220,35 +189,35 @@ export default new Router({
         {
             path: "/profile/edit",
             name: "editProfile",
-            component: EditProfileView,
+            component: () => import("./views/EditProfileView.vue"),
             meta: { permissionRequired: "edit_user_profile" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/articles",
             name: "adminArticles",
-            component: AdminArticlesView,
+            component: () => import("./views/AdminArticlesView.vue"),
             meta: { permissionRequired: "list_articles" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/users",
             name: "adminUsers",
-            component: AdminUsersView,
+            component: () => import("./views/AdminUsersView.vue"),
             meta: { permissionRequired: "list_users" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/user",
             name: "adminCreateUser",
-            component: AdminUserView,
+            component: () => import("./views/AdminUserView.vue"),
             meta: { permissionRequired: "create_user" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/user/:id",
             name: "adminEditUser",
-            component: AdminUserView,
+            component: () => import("./views/AdminUserView.vue"),
             props: true,
             meta: { permissionRequired: "edit_user" },
             beforeEnter: checkPermission
@@ -256,14 +225,14 @@ export default new Router({
         {
             path: "/admin/comments",
             name: "adminComments",
-            component: AdminCommentsView,
+            component: () => import("./views/AdminCommentsView.vue"),
             meta: { permissionRequired: "list_comments" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/comment/:id",
             name: "adminEditComment",
-            component: AdminCommentView,
+            component: () => import("./views/AdminCommentView.vue"),
             props: true,
             meta: { permissionRequired: "edit_comment" },
             beforeEnter: checkPermission
@@ -271,21 +240,21 @@ export default new Router({
         {
             path: "/admin/forum-categories",
             name: "adminForumCategories",
-            component: AdminForumCategoriesView,
+            component: () => import("./views/AdminForumCategoriesView.vue"),
             meta: { permissionRequired: "list_forum_categories" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/forum-category",
             name: "adminCreateForumCategory",
-            component: AdminForumCategoryView,
+            component: () => import("./views/AdminForumCategoryView.vue"),
             meta: { permissionRequired: "create_forum_category" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/forum-category/:id",
             name: "adminEditForumCategory",
-            component: AdminForumCategoryView,
+            component: () => import("./views/AdminForumCategoryView.vue"),
             props: true,
             meta: { permissionRequired: "edit_forum_category" },
             beforeEnter: checkPermission
@@ -293,21 +262,21 @@ export default new Router({
         {
             path: "/admin/forums",
             name: "adminForums",
-            component: AdminForumsView,
+            component: () => import("./views/AdminForumsView.vue"),
             meta: { permissionRequired: "list_forums" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/forum",
             name: "adminCreateForum",
-            component: AdminForumView,
+            component: () => import("./views/AdminForumView.vue"),
             meta: { permissionRequired: "create_forum" },
             beforeEnter: checkPermission
         },
         {
             path: "/admin/forum/:id",
             name: "adminEditForum",
-            component: AdminForumView,
+            component: () => import("./views/AdminForumView.vue"),
             props: true,
             meta: { permissionRequired: "edit_forum" },
             beforeEnter: checkPermission
