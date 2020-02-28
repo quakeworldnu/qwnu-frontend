@@ -37,7 +37,9 @@ class BlogPostService extends BaseService {
     }
 
     createBlogPost(data) {
-        return this.post(`blog-posts`, data);
+        return this.post(`blog-posts`, data).then(
+            response => new BlogPost(response.data)
+        );
     }
 
     updateBlogPost(id, data) {

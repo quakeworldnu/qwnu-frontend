@@ -8,6 +8,7 @@
             <div class="m-0 box-content">
                 <p>
                     <router-link to="/profile/edit" v-if="$can('edit_user_profile')">Edit profile</router-link><br/>
+                    <router-link to="/blog-post/edit" v-if="$can('create_blog_post')">Create blog post</router-link><br/>
                     <router-link to="/admin/user" v-if="$can('create_user')">Create users</router-link><br/>
                     <router-link to="/admin/users" v-if="$can('list_users')">View users</router-link><br/>
                     <router-link to="/admin/article" v-if="$can('create_article')">Create article</router-link><br/>

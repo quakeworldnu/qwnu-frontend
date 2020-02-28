@@ -17,8 +17,8 @@
           {{blogPost.comments_count}}
           <div class="float-right">
             <router-link
-              :to="{name: 'adminEditBlogPost', params: {id: blogPost.id}}"
-              v-if="$can('edit_blog_post')"
+              :to="{name: 'editBlogPost', params: {id: blogPost.id}}"
+              v-if="$can('edit_blog_post') || ($can('edit_own_blog_post') && isOwnBlogPost)"
               title="Edit blog post"
             >
               <i class="fas fa-pen mr-2"></i>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import BlogPostService from "@/services/BlogPostService"
 import CommentList from "@/components/CommentList"
 
@@ -66,6 +67,14 @@ export default {
                 .catch(error => {
                     console.log("Error: Could not fetch blog post.", error)
                 })
+        }
+    },
+    computed: {
+        ...mapGetters({
+            $user: 'user'
+        }),
+        isOwnBlogPost() {
+          return this.$user.id === this.blogPost.author.id;
         }
     }
 }
