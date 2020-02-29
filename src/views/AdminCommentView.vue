@@ -121,7 +121,8 @@ export default {
                     this.comment = comment
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch comment.", error)
+                    this.$toasted.error('Could not fetch comment');
+                    console.log(error);
                 })
         },
         save() {
@@ -136,35 +137,36 @@ export default {
         updateComment() {
             CommentService.updateComment(this.comment.id, this.comment)
                 .then(response => {
-                    console.log("Success!")
+                    this.$toasted.success('Comment saved');
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not update comment');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update comment")
                 })
                 .finally(() => (this.loading = false))
         },
         createComment() {
             CommentService.createComment(this.comment)
                 .then(response => {
-                    console.log("Success!")
+                    this.$toasted.success('Comment saved');
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not create comment');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create comment")
                 })
                 .finally(() => (this.loading = false))
         },
         deleteComment() {
             CommentService.deleteComment(this.comment.id)
                 .then(response => {
-                    this.$router.push({ path: "/admin/comments" })
+                    this.$toasted.success('Comment deleted');
+                    this.$router.push({ path: "/admin/comments" });
                 })
                 .catch(error => {
-                    console.log(error)
-                    console.log("Could not delete comment.")
+                    this.$toasted.error('Could not delete comment');
+                    console.log(error);
                 })
         }
     },

@@ -134,7 +134,7 @@ export default {
                     this.forum = response.data
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch forum.", error)
+                    this.$toasted.error('Could not fetch forum');
                 })
         },
         saveForum() {
@@ -149,39 +149,40 @@ export default {
         updateForum() {
             ForumService.updateForum(this.forum.id, this.forum)
                 .then(response => {
+                    this.$toasted.success('Forum saved');
                     this.error.message = null;
                     this.error.list = [];
-                    console.log("Success!")
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not update forum.');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update forum.")
                 })
                 .finally(() => (this.loading = false))
         },
         createForum() {
             ForumService.createForum(this.forum)
                 .then(response => {
+                    this.$toasted.success('Forum saved');
                     this.error.message = null;
                     this.error.list = [];
-                    console.log("Success!")
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not create forum');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create forum.")
                 })
                 .finally(() => (this.loading = false))
         },
         deleteForum() {
             ForumService.deleteForum(this.forum.id)
                 .then(response => {
+                    this.$toasted.success('Forum deleted');
                     this.$router.push({ path: "/admin/forums" })
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not delete forum');
                     console.log(error)
-                    console.log("Could not delete forum.")
                 })
         },
         getForumCategories() {
@@ -190,8 +191,8 @@ export default {
                     this.forumCategories = response.forumCategories;
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not fetch forum categories');
                     console.log(error);
-                    console.log("Could not fetch forum categories.")
                 })
         }
     },

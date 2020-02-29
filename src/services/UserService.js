@@ -26,11 +26,15 @@ class UserService extends BaseService {
     }
 
     createUser(data) {
-        return this.post(`users`, data);
+        return this.post(`users`, data).then(
+            response => new User(response.data)
+        );
     }
 
     updateUser(id, data) {
-        return this.patch(`users/${id}`, data);
+        return this.patch(`users/${id}`, data).then(
+            response => new User(response.data)
+        );
     }
 
     deleteUser(id) {

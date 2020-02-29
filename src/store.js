@@ -90,6 +90,7 @@ export default new Vuex.Store({
             let user = response.data;
             localStorage.setItem('user', JSON.stringify(user));
             commit('updateProfileSuccess', {user});
+            return user;
         });
     }
   },

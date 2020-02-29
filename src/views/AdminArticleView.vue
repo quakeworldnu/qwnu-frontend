@@ -146,35 +146,36 @@ export default {
         updateArticle() {
             ArticleService.updateArticle(this.article.id, this.article)
                 .then(response => {
-                    console.log("Success!");
+                    this.$toasted.success('Article saved');
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not save article');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update article.")
                 })
                 .finally(() => (this.loading = false));
         },
         createArticle() {
             ArticleService.createArticle(this.article)
                 .then(response => {
-                    console.log("Success!");
+                    this.$toasted.success('Article saved');
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not create article');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create article.");
                 })
                 .finally(() => (this.loading = false))
         },
         deleteArticle() {
             ArticleService.deleteArticle(this.article.id)
                 .then(response => {
+                    this.$toasted.success('Article deleted');
                     this.$router.push({ path: "/admin/articles" });
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not delete article');
                     console.log(error);
-                    console.log("Could not delete article.");
                 })
         },
         getCategories() {
@@ -183,8 +184,8 @@ export default {
                     this.categories = categories;
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not fetch categories');
                     console.log(error);
-                    console.log("Could not fetch categories.");
                 })
         }
     }

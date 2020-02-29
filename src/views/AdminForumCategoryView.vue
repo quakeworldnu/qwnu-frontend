@@ -98,7 +98,7 @@ export default {
                     this.forumCategory = response.data
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch forum category.", error)
+                    this.$toasted.error('Could not fetch forum category');
                 })
         },
         saveForumCategory() {
@@ -115,12 +115,12 @@ export default {
                 .then(response => {
                     this.error.message = null;
                     this.error.list = [];
-                    console.log("Success!")
+                    this.$toasted.success('Forum category updated');
                 })
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update forum category.")
+                    this.$toasted.error('Could not update forum category');
                 })
                 .finally(() => (this.loading = false))
         },
@@ -129,23 +129,24 @@ export default {
                 .then(response => {
                     this.error.message = null;
                     this.error.list = [];
-                    console.log("Success!")
+                    this.$toasted.success('Forum category saved');
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not create forum category');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create forum category.")
                 })
                 .finally(() => (this.loading = false))
         },
         deleteForumCategory() {
             ForumService.deleteForumCategory(this.forumCategory.id)
                 .then(response => {
+                    this.$toasted.success('Forum category deleted');
                     this.$router.push({ path: "/admin/forum-categories" })
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not delete forum category');
                     console.log(error)
-                    console.log("Could not delete forum category.")
                 })
         }
     },

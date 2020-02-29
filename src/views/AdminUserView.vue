@@ -142,7 +142,8 @@ export default {
                     this.user = user;
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch user.", error)
+                    this.$toasted.error('Could not fetch user');
+                    console.log(error);
                 })
         },
         saveUser() {
@@ -156,36 +157,38 @@ export default {
         },
         updateUser() {
             UserService.updateUser(this.user.id, this.user)
-                .then(response => {
-                    console.log("Success!")
+                .then(user => {
+                    this.$toasted.success('User saved');
                 })
                 .catch(error => {
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not update user")
+                    this.$toasted.error('Could not update user');
                 })
                 .finally(() => (this.loading = false))
         },
         createUser() {
             UserService.createUser(this.user)
-                .then(response => {
-                    console.log("Success!")
+                .then(user => {
+                    this.$toasted.success('User saved');
+                    this.$router.push({ name: "adminEditUser", params: { id: user.id } }).catch(() => {});
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not created user');
                     this.error.message = error.response.data.message;
                     this.error.list = error.response.data.errors;
-                    console.log("Could not create user")
                 })
                 .finally(() => (this.loading = false))
         },
         deleteUser() {
             UserService.deleteUser(this.user.id)
                 .then(response => {
+                    this.$toasted.success('User deleted');
                     this.$router.push({ path: "/admin/users" })
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not delete user');
                     console.log(error)
-                    console.log("Could not delete user.")
                 })
         },
         getRoles() {
@@ -194,8 +197,8 @@ export default {
                     this.roles = roles;
                 })
                 .catch(error => {
+                    this.$toasted.error('Could not fetch roles');
                     console.log(error);
-                    console.log("Could not fetch roles.")
                 })
         }
     },

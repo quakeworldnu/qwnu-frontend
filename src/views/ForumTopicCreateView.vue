@@ -47,7 +47,7 @@ export default {
                     this.forum = response.data;
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch forum.", error);
+                    this.$toasted.error('Could not fetch forum');
                 });
         },
         redirectToForumTopic(forumTopicId) {

@@ -182,7 +182,8 @@ export default {
                     this.user = user
                 })
                 .catch(error => {
-                    console.log("Error: Could not fetch user.", error)
+                    this.$toasted.error('Could not save user');
+                    console.log(error);
                 })
         },
         saveProfile() {
@@ -191,6 +192,7 @@ export default {
                     this.errors = {
                         profile: {}
                     };
+                    this.$toasted.success('profile saved');
                 })
                 .catch(error => {
                     this.errors = error.response.data.errors;
