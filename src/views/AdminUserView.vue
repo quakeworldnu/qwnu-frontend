@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import AuthService from "@/services/AuthService"
+import RoleService from "@/services/RoleService"
 import UserService from "@/services/UserService"
 import User from "@/models/User"
 
@@ -189,7 +189,7 @@ export default {
                 })
         },
         getRoles() {
-            AuthService.getRoles()
+            RoleService.getRoles()
                 .then(roles => {
                     this.roles = roles;
                 })

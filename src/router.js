@@ -286,6 +286,28 @@ export default new Router({
             props: true,
             meta: { permissionRequired: "edit_forum" },
             beforeEnter: checkPermission
+        },
+        {
+            path: "/admin/roles",
+            name: "adminRoles",
+            component: () => import("./views/AdminRolesView.vue"),
+            meta: { permissionRequired: "list_roles" },
+            beforeEnter: checkPermission
+        },
+        {
+            path: "/admin/role",
+            name: "adminCreateRole",
+            component: () => import("./views/AdminRoleView.vue"),
+            meta: { permissionRequired: "create_role" },
+            beforeEnter: checkPermission
+        },
+        {
+            path: "/admin/role/:id",
+            name: "adminEditRole",
+            component: () => import("./views/AdminRoleView.vue"),
+            props: true,
+            meta: { permissionRequired: "edit_role" },
+            beforeEnter: checkPermission
         }
     ]
 });

@@ -17,7 +17,8 @@
                     <router-link to="/admin/forum-category" v-if="$can('create_forum_category')">Create forum categories</router-link><br/>
                     <router-link to="/admin/forum-categories" v-if="$can('list_forum_categories')">View forum categories</router-link><br/>
                     <router-link to="/admin/forum" v-if="$can('create_forum')">Create forum</router-link><br/>
-                    <router-link to="/admin/forums" v-if="$can('list_forums')">View forums</router-link>
+                    <router-link to="/admin/forums" v-if="$can('list_forums')">View forums</router-link><br/>
+                    <router-link to="/admin/roles" v-if="$can('list_roles')">View roles</router-link>
                 </p>
                 <button
                     type="submit"

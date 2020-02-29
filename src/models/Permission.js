@@ -1,14 +1,12 @@
 import BaseModel from "@/models/BaseModel";
-import Permission from "@/models/Permission";
 import moment from 'moment';
 
-export class Role extends BaseModel {
+export class Permission extends BaseModel {
     constructor({
         id,
         name,
         created_at,
-        updated_at,
-        permissions = []
+        updated_at
     } = {}) {
         super();
 
@@ -16,8 +14,7 @@ export class Role extends BaseModel {
         this.name = name;
         this.created_at = moment(created_at);
         this.updated_at = moment(updated_at);
-        this.permissions = permissions.map(p => new Permission(p));
     }
 }
 
-export default Role;
+export default Permission;
