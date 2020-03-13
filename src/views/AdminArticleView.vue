@@ -5,7 +5,7 @@
             <div class="box-content">
                 <h1>{{article.title}}</h1>
                 <div class="box-content-body">
-                    <form>
+                    <form @drop.prevent="addFile" @dragover.prevent>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Title</label>
                             <input
@@ -99,8 +99,10 @@
 
 <script>
 import Article from "@/models/Article";
+import File from "@/models/File";
 import ArticleService from "@/services/ArticleService";
 import CategoryService from "@/services/CategoryService";
+import FileService from "@/services/FileService";
 
 export default {
     name: "adminArticle",
@@ -125,6 +127,21 @@ export default {
         this.getCategories();
     },
     methods: {
+        addFile(e) {
+            let file = new File()
+            let files = e.dataTransfer.files;
+            file.name = files[0].name;
+            file.file = files[0];
+            FileService.createFile(file).then(file => {
+                let tag = `[url=${this.filePath(file.filename)}]${file.filename}[/url]`;
+                this.article.body += tag;
+            }).catch(error => {
+                console.log(error);
+            });
+        },
+        filePath(fileName) {
+            return process.env.VUE_APP_BACKEND_ROOT_URL + "/storage/" + fileName;
+        },
         getArticle() {
             ArticleService.getArticle(this.id)
                 .then(article => {
