@@ -27,6 +27,7 @@
                                 type="password"
                                 class="col-sm-6 form-control form-control-sm"
                                 v-model="user.password"
+                                autocomplete="off"
                             >
                             <small class="col-sm-4" v-if="errors.password">{{errors.password[0]}}</small>
                         </div>

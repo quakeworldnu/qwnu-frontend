@@ -33,9 +33,10 @@
                             <input
                                 type="password"
                                 class="col-sm-4 form-control form-control-sm"
-                                placeholder="new password"
+                                placeholder="password"
                                 v-model="user.password"
                                 required="false"
+                                autocomplete="off"
                             >
                             <small
                                 class="col-sm-4"
