@@ -6,7 +6,7 @@
         </div>
         <div class="box-body">
             <div class="mb-2">
-                <router-link :to="{name: 'forumTopicCreate'}" tag="button" class="btn btn-sm btn-info">
+                <router-link v-if="$can('create_forum_topic')" :to="{name: 'forumTopicCreate'}" tag="button" class="btn btn-sm btn-info">
                     New topic
                 </router-link>
             </div>
