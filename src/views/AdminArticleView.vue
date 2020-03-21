@@ -140,7 +140,7 @@ export default {
             });
         },
         filePath(fileName) {
-            return process.env.VUE_APP_BACKEND_ROOT_URL + "/storage/" + fileName;
+            return process.env.VUE_APP_BACKEND_ROOT_URL + "storage/uploads/" + fileName;
         },
         getArticle() {
             ArticleService.getArticle(this.id)
