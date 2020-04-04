@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-3 mb-2 rounded main-container">
+    <div v-if="author" class="ml-3 mb-2 rounded main-container">
         <div class="box-header">{{this.author.username}}'s blog</div>
         <div class="box-body">
             <div
