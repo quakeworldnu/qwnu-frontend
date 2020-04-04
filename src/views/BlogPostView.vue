@@ -1,6 +1,8 @@
 <template>
   <div v-if="blogPost" class="ml-3 mb-2 rounded main-container">
-    <div class="box-header">Blog post</div>
+    <div class="box-header">
+      <router-link :to="{name: 'blog', params: {userId: blogPost.author.id}}">{{blogPost.author.username}}'s blog</router-link>
+    </div>
     <div class="box-body">
       <div class="box-content">
         <h1>

@@ -67,6 +67,17 @@ export default new Router({
             component: () => import("./views/HomeView.vue")
         },
         {
+            path: "/blogs",
+            name: "blogs",
+            component: () => import("./views/BlogsView.vue")
+        },
+        {
+            path: "/blog/:userId",
+            name: "blog",
+            component: () => import("./views/BlogView.vue"),
+            props: true
+        },
+        {
             path: "/blog-post/edit/:id?",
             name: "editBlogPost",
             component: () => import("./views/EditBlogPostView.vue"),

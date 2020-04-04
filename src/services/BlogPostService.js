@@ -27,6 +27,19 @@ class BlogPostService extends BaseService {
                     });
     }
 
+    getPublishedBlogPostsByAuthor(authorId, pagination, sorting) {
+        let p = pagination;
+        let s = sorting;
+        return this.get(`users/${authorId}/blog-posts/published?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+                    .then(response => response.data)
+                    .then(response => {
+                        let blogPosts = response.data.map(b => new BlogPost(b));
+                        let pagination = new Pagination(response);
+
+                        return { blogPosts, pagination }
+                    });
+    }
+
     getBlogPost(id) {
         return this.get(`blog-posts/${id}`)
                    .then(response => new BlogPost(response.data));
