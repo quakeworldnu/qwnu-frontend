@@ -7,6 +7,7 @@ export class User extends BaseModel {
     constructor({
         id,
         username,
+        email,
         createtime,
         lastvisit,
         status = 1, // 1 = Active
@@ -18,6 +19,7 @@ export class User extends BaseModel {
 
         this.id = id;
         this.username = username;
+        this.email = email;
         this.createtime = createtime ? moment.unix(createtime) : null;
         this.lastvisit = lastvisit ? moment.unix(lastvisit) : null;
         this.status = status;
