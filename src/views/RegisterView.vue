@@ -51,6 +51,16 @@
                             >
                             <small class="col-sm-4" v-if="errors.password">{{errors.password[0]}}</small>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Confirm password</label>
+                            <input
+                                type="password"
+                                class="col-sm-4 form-control form-control-sm"
+                                placeholder="password"
+                                v-model="user.password_confirmation"
+                                required="true"
+                            >
+                        </div>
 
                         <button
                             type="submit"
