@@ -17,12 +17,12 @@
                         {{ forumTopic.name }}
                     </h1>
                     <div>
-                        <div class="comment-date">
+                        <span class="box-content-info">
                             {{ forumTopic.create_time | formatTimestamp }}
                             by {{ forumTopic.comment.author.username }}
-                        </div>
+                        </span>
                         <div
-                            class="comment-content"
+                            class="box-content-body"
                             v-html="bbCode(forumTopic.comment.content)"
                         ></div>
                     </div>
