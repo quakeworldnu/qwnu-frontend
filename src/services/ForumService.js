@@ -26,7 +26,8 @@ class ForumService extends BaseService {
     }
 
     getForumTopic(id) {
-        return this.get(`forum-topics/${id}`);
+        return this.get(`forum-topics/${id}`)
+                   .then(response => new ForumTopic(response.data));
     }
 
     getForums(pagination, sorting) {

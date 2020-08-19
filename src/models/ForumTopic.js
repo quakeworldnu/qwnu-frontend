@@ -1,5 +1,6 @@
 import BaseModel from "@/models/BaseModel";
 import Comment from "@/models/Comment";
+import Forum from "@/models/Forum";
 import User from '@/models/User';
 import moment from 'moment';
 
@@ -17,6 +18,7 @@ export class ForumTopic extends BaseModel {
         closed,
         sticky,
         type,
+        forum,
         forum_id,
         comment,
         comment_id,
@@ -37,9 +39,10 @@ export class ForumTopic extends BaseModel {
         this.sticky = sticky;
         this.type = type;
         this.forum_id = forum_id;
+        this.forum = forum ? new Forum(forum) : null;
         this.comment_id = comment_id;
-        this.comment = new Comment(comment);
-        this.last_author = new User(last_author);
+        this.comment = comment ? new Comment(comment) : null;
+        this.last_author = last_author ? new User(last_author) : null;
     }
 }
 
