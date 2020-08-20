@@ -41,7 +41,7 @@ export class ForumTopic extends BaseModel {
         this.forum_id = forum_id;
         this.forum = forum ? new Forum(forum) : null;
         this.comment_id = comment_id;
-        this.comment = comment ? new Comment(comment) : null;
+        this.comment = new Comment(comment);
         this.last_author = last_author ? new User(last_author) : null;
     }
 }
