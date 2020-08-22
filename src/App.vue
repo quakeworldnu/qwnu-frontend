@@ -97,15 +97,7 @@
 
                         <side-box-latest-comments></side-box-latest-comments>
 
-                        <div class="mb-2 rounded">
-                            <div class="box-header">
-                                <i class="fas fa-book-open"></i>
-                                Latest blog posts
-                            </div>
-                            <div class="box-body">
-                                <div class="box-content">Text</div>
-                            </div>
-                        </div>
+                        <side-box-latest-blog-posts></side-box-latest-blog-posts>
                     </div>
                 </div>
             </div>
@@ -181,17 +173,19 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
-import SideBoxLogin from "./components/SideBoxLogin";
-import SideBoxLoggedIn from "./components/SideBoxLoggedIn";
-import SideBoxStreams from "./components/SideBoxStreams";
+import SideBoxLatestBlogPosts from "./components/SideBoxLatestBlogPosts";
 import SideBoxLatestComments from "./components/SideBoxLatestComments";
+import SideBoxLoggedIn from "./components/SideBoxLoggedIn";
+import SideBoxLogin from "./components/SideBoxLogin";
+import SideBoxStreams from "./components/SideBoxStreams";
 
 export default {
     components: {
+        SideBoxLatestBlogPosts,
+        SideBoxLatestComments,
         SideBoxLoggedIn,
         SideBoxLogin,
         SideBoxStreams,
-        SideBoxLatestComments
     },
     computed: {
         ...mapGetters({
