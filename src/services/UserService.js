@@ -44,27 +44,31 @@ class UserService extends BaseService {
     getUsers(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`users?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let users = response.data.map(u => new User(u));
-                        let pagination = new Pagination(response);
+        return this.get(
+            `users?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let users = response.data.map(u => new User(u));
+                let pagination = new Pagination(response);
 
-                        return { users, pagination };
-                    });
+                return { users, pagination };
+            });
     }
 
     getUsersBySearch(keyword, pagination, sorting) {
         let p = pagination
         let s = sorting
-        return this.get(`users/search?keyword=${keyword}&page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let users = response.data.map(u => new User(u));
-                        let pagination = new Pagination(response);
+        return this.get(
+            `users/search?keyword=${keyword}&page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let users = response.data.map(u => new User(u));
+                let pagination = new Pagination(response);
 
-                        return { users, pagination };
-                    });
+                return { users, pagination };
+            });
     }
 }
 

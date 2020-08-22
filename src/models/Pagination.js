@@ -4,7 +4,7 @@ export class Pagination {
     // body style would be preferred...
     constructor({
         current_page = 1,
-        per_page = 0,
+        per_page = 15,
         total = 0
     } = {}) {
         this.page = current_page;

@@ -16,13 +16,15 @@ class ForumService extends BaseService {
     getForumTopicsForForum(id, pagination, sorting) {
         let p = pagination
         let s = sorting
-        return this.get(`forums/${id}/topics?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let forumTopics = response.data.map(ft => new ForumTopic(ft))
-                        let pagination = new Pagination(response);
-                        return { forumTopics, pagination };
-                    });
+        return this.get(
+            `forums/${id}/topics?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let forumTopics = response.data.map(ft => new ForumTopic(ft));
+                let pagination = new Pagination(response);
+                return { forumTopics, pagination };
+            });
     }
 
     getForumTopic(id) {
@@ -33,13 +35,15 @@ class ForumService extends BaseService {
     getForums(pagination, sorting) {
         let p = pagination
         let s = sorting
-        return this.get(`forums?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let forums = response.data.map(a => new Forum(a));
-                        let pagination = new Pagination(response);
-                        return { forums, pagination };
-                    });
+        return this.get(
+            `forums?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let forums = response.data.map(a => new Forum(a));
+                let pagination = new Pagination(response);
+                return { forums, pagination };
+            });
     }
 
     getForum(id) {
@@ -63,9 +67,13 @@ class ForumService extends BaseService {
         let action;
         if (pagination) {
             let p = pagination;
-            action = this.get(`forum-categories?page=${p.page}&sort=${s.sort}&order=${s.order}`);
+            action = this.get(
+                `forum-categories?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+            );
         } else {
-            action = this.get(`forum-categories?page=1&sort=${s.sort}&order=${s.order}`);
+            action = this.get(
+                `forum-categories?page=1&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+            );
         }
 
         return action.then(response => response.data)
@@ -81,9 +89,13 @@ class ForumService extends BaseService {
         let action;
         if (pagination) {
             let p = pagination;
-            action = this.get(`forum-categories/public?page=${p.page}&sort=${s.sort}&order=${s.order}`);
+            action = this.get(
+                `forum-categories/public?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+            );
         } else {
-            action = this.get(`forum-categories/public?page=1&sort=${s.sort}&order=${s.order}`);
+            action = this.get(
+                `forum-categories/public?page=1&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+            );
         }
 
         return action.then(response => response.data)

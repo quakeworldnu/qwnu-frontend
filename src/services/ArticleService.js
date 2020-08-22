@@ -12,7 +12,7 @@ class ArticleService extends BaseService {
     getArticles(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`articles?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+        return this.get(`articles?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`)
                     .then(response => response.data)
                     .then(response => {
                         let articles = response.data.map(a => new Article(a));
@@ -25,14 +25,16 @@ class ArticleService extends BaseService {
     getPublishedArticles(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`articles/published?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                   .then(response => response.data)
-                   .then(response => {
-                       let articles = response.data.map(a => new Article(a));
-                       let pagination = new Pagination(response);
+        return this.get(
+            `articles/published?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let articles = response.data.map(a => new Article(a));
+                let pagination = new Pagination(response);
 
-                       return { articles, pagination };
-                   });
+                return { articles, pagination };
+            });
     }
 
     getArticle(id) {

@@ -11,13 +11,16 @@ class BlogPostService extends BaseService {
 
     getBlogPosts(pagination) {
         let p = pagination
-        return this.get(`blog-posts?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        return this.get(
+            `blog-posts?page=${p.page}&per_page=${p.pageSize}&sort=${p.sort}&order=${p.order}`
+        );
     }
 
     getPublishedBlogPosts(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`blog-posts/published?page=${p.page}&sort=${s.sort}&order=${s.order}`)
+        console.log(p.pageSize);
+        return this.get(`blog-posts/published?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`)
                     .then(response => response.data)
                     .then(response => {
                         let blogPosts = response.data.map(b => new BlogPost(b));
@@ -30,14 +33,16 @@ class BlogPostService extends BaseService {
     getPublishedBlogPostsByAuthor(authorId, pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`users/${authorId}/blog-posts/published?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let blogPosts = response.data.map(b => new BlogPost(b));
-                        let pagination = new Pagination(response);
+        return this.get(
+            `users/${authorId}/blog-posts/published?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let blogPosts = response.data.map(b => new BlogPost(b));
+                let pagination = new Pagination(response);
 
-                        return { blogPosts, pagination }
-                    });
+                return { blogPosts, pagination };
+            });
     }
 
     getBlogPost(id) {

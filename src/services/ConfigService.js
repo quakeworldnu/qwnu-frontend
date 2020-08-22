@@ -29,20 +29,22 @@ class ConfigService extends BaseService {
     getConfigs(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`configs?page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let configs = response.data.map(c => new Config(c));
-                        let pagination = new Pagination(response);
+        return this.get(
+            `configs?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let configs = response.data.map(c => new Config(c));
+                let pagination = new Pagination(response);
 
-                        return { configs, pagination };
-                    });
+                return { configs, pagination };
+            });
     }
 
     getConfigsBySearch(keyword, pagination, sorting) {
         let p = pagination
         let s = sorting
-        return this.get(`configs/search?keyword=${keyword}&page=${p.page}&sort=${s.sort}&order=${s.order}`)
+        return this.get(`configs/search?keyword=${keyword}&page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`)
                     .then(response => response.data)
                     .then(response => {
                         let configs = response.data.map(c => new Config(c));

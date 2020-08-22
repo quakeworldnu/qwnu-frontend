@@ -11,20 +11,24 @@ class MapService extends BaseService {
 
     getMaps(pagination) {
         let p = pagination;
-        return this.get(`maps?page=${p.page}&sort=${p.sort}&order=${p.order}`);
+        return this.get(
+            `maps?page=${p.page}&per_page=${p.pageSize}&sort=${p.sort}&order=${p.order}`
+        );
     }
 
     getMapsBySearch(keyword, pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        return this.get(`maps/search?keyword=${keyword}&page=${p.page}&sort=${s.sort}&order=${s.order}`)
-                    .then(response => response.data)
-                    .then(response => {
-                        let maps = response.data.map(m => new Map(m));
-                        let pagination = new Pagination(response);
+        return this.get(
+            `maps/search?keyword=${keyword}&page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+        )
+            .then(response => response.data)
+            .then(response => {
+                let maps = response.data.map(m => new Map(m));
+                let pagination = new Pagination(response);
 
-                        return { maps, pagination };
-                    });
+                return { maps, pagination };
+            });
     }
 
     getMap(id) {

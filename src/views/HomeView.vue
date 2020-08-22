@@ -35,11 +35,7 @@ export default {
     data() {
         return {
             articles: [],
-            pagination: new Pagination({
-                current_page: 1,
-                per_page: 1,
-                total: 0
-            }),
+            pagination: new Pagination(),
             sorting: new Sorting({
                 sort: "create_time",
                 order: "desc",
