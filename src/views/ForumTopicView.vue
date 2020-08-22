@@ -38,8 +38,6 @@
                         <div class="row" v-if="!forumTopic.comment._isEditing">
                             <div class="col-md-12">
                                 <button
-                                    type="button"
-                                    class="btn btn-sm float-right"
                                     v-if="
                                         $can('edit_comment') ||
                                             ($can('edit_own_comment') &&
@@ -47,11 +45,23 @@
                                                     $user
                                                 ))
                                     "
+                                    type="button"
+                                    class="btn btn-sm float-right"
+                                    title="Edit topic"
                                     @click.prevent="
                                         forumTopic.comment._isEditing = true
                                     "
                                 >
                                     <i class="fas fa-pen"></i>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-sm float-right"
+                                    title="Comment on topic"
+                                    @click.prevent="scrollToCommentForm()"
+                                >
+                                    <i class="fas fa-reply"></i>
                                 </button>
                             </div>
                         </div>
@@ -106,6 +116,10 @@ export default {
         },
         bbCode(value) {
             return parseBbCode(value);
+        },
+        scrollToCommentForm() {
+            var elmnt = document.getElementById("comment-form");
+            elmnt.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     }
 };

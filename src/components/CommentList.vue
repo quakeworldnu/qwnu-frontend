@@ -30,13 +30,14 @@
                     <div class="row" v-if="!comment._isEditing">
                         <div class="col-md-12">
                             <button
-                                type="button"
-                                class="btn btn-sm float-right"
                                 v-if="
                                     $can('edit_comment') ||
                                         ($can('edit_own_comment') &&
                                             comment.isCreatedBy($user))
                                 "
+                                type="button"
+                                class="btn btn-sm float-right"
+                                title="Edit comment"
                                 @click.prevent="comment._isEditing = true"
                             >
                                 <i class="fas fa-pen"></i>

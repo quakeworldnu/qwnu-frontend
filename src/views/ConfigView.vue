@@ -22,8 +22,8 @@
           {{config.comments_count}}
           <div class="float-right">
             <router-link
-              :to="{name: 'editConfig', params: {id: config.id}}"
               v-if="$can('edit_config') || isOwnConfig"
+              :to="{name: 'editConfig', params: {id: config.id}}"
               title="Edit config"
             >
               <i class="fas fa-pen mr-2"></i>

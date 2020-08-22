@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form>
+        <form id="comment-form">
             <div class="form-group">
                 <p v-if="error.message">Error: {{ error.message }}</p>
             </div>

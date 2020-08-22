@@ -18,9 +18,16 @@
           <i class="fas fa-comments mr-2"></i>
           {{blogPost.comments_count}}
           <div class="float-right">
+            <span
+                class="btn btn-sm mr-3 p-0"
+                title="Comment on blog post"
+                @click.prevent="scrollToCommentForm()"
+            >
+                <i class="fas fa-reply"></i>
+            </span>
             <router-link
-              :to="{name: 'editBlogPost', params: {id: blogPost.id}}"
               v-if="$can('edit_blog_post') || ($can('edit_own_blog_post') && isOwnBlogPost)"
+              :to="{name: 'editBlogPost', params: {id: blogPost.id}}"
               title="Edit blog post"
             >
               <i class="fas fa-pen mr-2"></i>
@@ -69,6 +76,10 @@ export default {
                 .catch(error => {
                     console.log("Error: Could not fetch blog post.", error)
                 })
+        },
+        scrollToCommentForm() {
+            var elmnt = document.getElementById("comment-form");
+            elmnt.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     },
     computed: {
