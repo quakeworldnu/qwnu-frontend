@@ -13,7 +13,7 @@
                         class="comment-content"
                         v-html="bbCode(comment.content)"
                     ></div>
-                    <div v-if="comment.hasBeenUpdated()" class="row">
+                    <div v-if="comment.hasBeenUpdated() && !comment._isEditing" class="row">
                         <div class="col-md-12 font-italic">
                             Updated
                             {{ comment.update_time | formatTimestamp }}
