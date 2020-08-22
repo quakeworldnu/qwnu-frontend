@@ -94,7 +94,7 @@ class ForumService extends BaseService {
             );
         } else {
             action = this.get(
-                `forum-categories/public?page=1&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`
+                `forum-categories/public?page=1&per_page=100&sort=${s.sort}&order=${s.order}`
             );
         }
 
