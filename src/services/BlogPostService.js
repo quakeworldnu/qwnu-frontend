@@ -19,7 +19,6 @@ class BlogPostService extends BaseService {
     getPublishedBlogPosts(pagination, sorting) {
         let p = pagination;
         let s = sorting;
-        console.log(p.pageSize);
         return this.get(`blog-posts/published?page=${p.page}&per_page=${p.pageSize}&sort=${s.sort}&order=${s.order}`)
                     .then(response => response.data)
                     .then(response => {
