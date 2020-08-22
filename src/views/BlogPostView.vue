@@ -19,7 +19,7 @@
           {{blogPost.comments_count}}
           <div class="float-right">
             <span
-                class="btn btn-sm mr-3 p-0"
+                class="mr-3 p-0 pointer"
                 title="Comment on blog post"
                 @click.prevent="scrollToCommentForm()"
             >

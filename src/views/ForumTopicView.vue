@@ -37,7 +37,7 @@
                         </div>
                         <div class="row" v-if="!forumTopic.comment._isEditing">
                             <div class="col-md-12">
-                                <button
+                                <span
                                     v-if="
                                         $can('edit_comment') ||
                                             ($can('edit_own_comment') &&
@@ -45,24 +45,22 @@
                                                     $user
                                                 ))
                                     "
-                                    type="button"
-                                    class="btn btn-sm float-right"
+                                    class="float-right pointer"
                                     title="Edit topic"
                                     @click.prevent="
                                         forumTopic.comment._isEditing = true
                                     "
                                 >
                                     <i class="fas fa-pen"></i>
-                                </button>
+                                </span>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-sm float-right"
+                                <span
+                                    class="float-right mr-2 pointer"
                                     title="Comment on topic"
                                     @click.prevent="scrollToCommentForm()"
                                 >
                                     <i class="fas fa-reply"></i>
-                                </button>
+                                </span>
                             </div>
                         </div>
                     </div>

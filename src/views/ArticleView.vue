@@ -33,7 +33,7 @@
                     {{ article.comments_count }}
                     <div class="float-right">
                         <span
-                            class="btn btn-sm mr-3 p-0"
+                            class="pointer mr-3 p-0"
                             title="Comment on article"
                             @click.prevent="scrollToCommentForm()"
                         >

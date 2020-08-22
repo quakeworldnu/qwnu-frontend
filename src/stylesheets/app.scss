@@ -172,6 +172,11 @@ body {
   color: inherit;
 }
 
+.comment-footer {
+  padding: 10px;
+  min-height: 36px;
+}
+
 .pagination {
     overflow: scroll-x;
 }
@@ -309,4 +314,8 @@ li.VuePagination__pagination-item:not(.VuePagination__pagination-item-prev-page)
 
 th {
      white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
 }

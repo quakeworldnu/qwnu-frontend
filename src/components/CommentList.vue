@@ -27,22 +27,19 @@
                             @saved="comment._isEditing = false"
                         ></comment-form>
                     </div>
-                    <div class="row" v-if="!comment._isEditing">
-                        <div class="col-md-12">
-                            <button
-                                v-if="
-                                    $can('edit_comment') ||
-                                        ($can('edit_own_comment') &&
-                                            comment.isCreatedBy($user))
-                                "
-                                type="button"
-                                class="btn btn-sm float-right"
-                                title="Edit comment"
-                                @click.prevent="comment._isEditing = true"
-                            >
-                                <i class="fas fa-pen"></i>
-                            </button>
-                        </div>
+                    <div class="comment-footer" v-if="!comment._isEditing">
+                        <span
+                            v-if="
+                                $can('edit_comment') ||
+                                    ($can('edit_own_comment') &&
+                                        comment.isCreatedBy($user))
+                            "
+                            class="float-right pointer"
+                            title="Edit comment"
+                            @click.prevent="comment._isEditing = true"
+                        >
+                            <i class="fas fa-pen"></i>
+                        </span>
                     </div>
                 </div>
                 <div v-if="comments.length === 0">
