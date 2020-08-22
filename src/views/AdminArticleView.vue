@@ -136,6 +136,7 @@ export default {
                 let tag = `[url=${this.filePath(file.filename)}]${file.filename}[/url]`;
                 this.article.body += tag;
             }).catch(error => {
+                this.$toasted.error('Could not upload file');
                 console.log(error);
             });
         },
