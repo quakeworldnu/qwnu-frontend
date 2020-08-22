@@ -17,6 +17,11 @@ export default {
             }
             return false;
         }
+    },
+    computed: {
+        $user() {
+            return store.getters.user;
+        }
     }
 }
 </script>

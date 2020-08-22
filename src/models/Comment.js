@@ -19,6 +19,8 @@ export class Comment extends BaseModel {
     } = {}) {
         super();
 
+        this.UPDATE_GRACE_PERIOD = 300;
+
         this.id = id;
         this.author = author ? new User(author) : null;
         this.author_id = author_id;
@@ -31,6 +33,8 @@ export class Comment extends BaseModel {
         this.type = type;
         this.post_id = post_id;
 
+        this._isEditing = false;
+
         this.STATUS_TYPES = {
             0: "Deleted",
             1: "Draft",
@@ -42,8 +46,17 @@ export class Comment extends BaseModel {
         return parseBbCode(this.body);
     }
 
+    hasBeenUpdated() {
+        const endOfGracePeriod = moment(this.create_time).add(this.UPDATE_GRACE_PERIOD, 'second');
+        return this.update_time.isAfter(endOfGracePeriod);
+    }
+
     contentBbCode() {
         return parseBbCode(this.content);
+    }
+
+    isCreatedBy(user) {
+        return this.author.id === user.id;
     }
 
     statusName() {

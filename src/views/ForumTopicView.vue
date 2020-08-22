@@ -22,9 +22,39 @@
                             by {{ forumTopic.comment.author.username }}
                         </span>
                         <div
+                            v-if="!forumTopic.comment._isEditing"
                             class="box-content-body"
                             v-html="bbCode(forumTopic.comment.content)"
                         ></div>
+                        <div
+                            v-if="forumTopic.comment._isEditing"
+                            class="box-content-body"
+                        >
+                            <comment-form
+                                :comment="forumTopic.comment"
+                                @saved="forumTopic.comment._isEditing = false"
+                            ></comment-form>
+                        </div>
+                        <div class="row" v-if="!forumTopic.comment._isEditing">
+                            <div class="col-md-12">
+                                <button
+                                    type="button"
+                                    class="btn btn-sm float-right"
+                                    v-if="
+                                        $can('edit_comment') ||
+                                            ($can('edit_own_comment') &&
+                                                forumTopic.comment.isCreatedBy(
+                                                    $user
+                                                ))
+                                    "
+                                    @click.prevent="
+                                        forumTopic.comment._isEditing = true
+                                    "
+                                >
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,12 +67,14 @@
 <script>
 import ForumService from "@/services/ForumService";
 import CommentService from "@/services/CommentService";
+import CommentForm from "@/components/CommentForm";
 import CommentList from "@/components/CommentList";
 import { parseBbCode } from "@/helpers/BbCode";
 
 export default {
     name: "forum",
     components: {
+        CommentForm,
         CommentList
     },
     props: {
