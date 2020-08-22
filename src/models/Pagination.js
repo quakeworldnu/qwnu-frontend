@@ -7,9 +7,9 @@ export class Pagination {
         per_page = 15,
         total = 0
     } = {}) {
-        this.page = current_page;
-        this.totalRecords = total;
-        this.pageSize = per_page;
+        this.page = parseInt(current_page);
+        this.totalRecords = parseInt(total);
+        this.pageSize = parseInt(per_page);
     }
 }
 
