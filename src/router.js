@@ -172,6 +172,17 @@ export default new Router({
             props: true
         },
         {
+            path: "/messages",
+            name: "messages",
+            component: () => import("./views/MessagesView.vue")
+        },
+        {
+            path: "/conversation/:userId",
+            name: "conversation",
+            component: () => import("./views/ConversationView.vue"),
+            props: true
+        },
+        {
             path: "/users",
             name: "users",
             component: () => import("./views/UsersView.vue")
