@@ -9,6 +9,10 @@ class AuthService extends BaseService {
         return this.post("login", data);
     }
 
+    logout() {
+        return this.post("logout");
+    }
+
     getMyPermissions() {
         return this.get("my/permissions");
     }

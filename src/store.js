@@ -74,6 +74,7 @@ export default new Vuex.Store({
     },
     logout({commit}) {
         // TODO: Send logout request to backend so we delete the token server-side
+        AuthService.logout();
         commit('logout');
         localStorage.clear();
         delete axios.defaults.headers.common['Authorization'];
