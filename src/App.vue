@@ -126,9 +126,6 @@
                         <li>
                             <router-link to="/forums">Forum</router-link>
                         </li>
-                        <li>
-                            <router-link to="/maps">Maps</router-link>
-                        </li>
                     </ul>
                 </div>
                 <div class="col-md-2 section">
@@ -146,16 +143,13 @@
                     </ul>
                 </div>
                 <div class="col-md-2 section">
-                    <span class="section-header">Media</span>
+                    <span class="section-header">Game content</span>
                     <ul>
                         <li>
-                            <a href="#">Images</a>
+                             <router-link to="/configs">Configs</router-link>
                         </li>
                         <li>
-                            <a href="#">Video</a>
-                        </li>
-                        <li>
-                            <a href="#">Game content</a>
+                            <router-link to="/maps">Maps</router-link>
                         </li>
                     </ul>
                 </div>
